@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Millikan Oil Drop Experiment | PhysicaNova</title>
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <meta name="description"
+        content="Simulate the Millikan Oil Drop experiment to determine the elementary electric charge. Adjust voltage, observe oil drops, and calculate charge.">
+    <link rel="canonical" href="https://physicanova.com/millikan.html">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Millikan Oil Drop Experiment | PhysicaNova">
+    <meta property="og:description"
+        content="Determine the elementary electric charge with this interactive Millikan Oil Drop simulation.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://physicanova.com/millikan.html">
+    <meta property="og:image" content="https://physicanova.com/og-image.jpg">
+
+    <link rel="stylesheet" href="millikan.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Inter:wght@400;600&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="app-container">
+        <header>
+            <a href="index.html" class="home-btn"
+                style="position: absolute; left: 20px; text-decoration: none; font-size: 1.5rem;" title="Home">🏠</a>
+            <h1>Millikan Oil Drop Experiment</h1>
+        </header>
+
+        <main class="lab-bench">
+            <!-- Sol Panel: Mikroskop Görünümü -->
+            <section class="microscope-view-container">
+                <div class="eyepiece">
+                    <canvas id="simulationCanvas" width="500" height="500"></canvas>
+                    <div class="vignette"></div>
+                    <div class="reticle"></div>
+                    <!-- Izgara/Cetvel çizgileri burada CSS ile veya ayrı bir katmanla çizilecek -->
+                </div>
+                <div class="status-panel">
+                    <div class="status-item">Sıcaklık: <span id="temp-display">20°C</span></div>
+                    <div class="status-item">Yağ Yoğunluğu: <span id="density-display">875</span> kg/m³</div>
+                    <div class="status-item">Viskozite: <span id="viscosity-display">1.81e-5</span> Pa.s</div>
+                    <div class="status-item">Plakalar arası mesafe: <span id="distance-display">5.00</span> mm</div>
+                    <div class="status-item">Kareler arası mesafe: <span id="distance-display">0.50</span> mm</div>
+                </div>
+
+                <div class="view-controls" style="margin-top: 10px; text-align: center;">
+                    <button id="zoom-btn" class="secondary-btn"
+                        style="width: auto; padding: 5px 15px; font-size: 0.8rem;">🔍 Zoom: Kilitli (Kapalı)</button>
+                </div>
+            </section>
+
+            <!-- Sağ Panel: Kontroller -->
+            <aside class="controls-panel">
+
+                <div class="control-group">
+                    <h2>Voltaj Kaynağı</h2>
+                    <div class="voltage-display-container">
+                        <input type="number" id="voltage-input" value="0" min="-2000" max="2000"> <span
+                            class="unit">V</span>
+                    </div>
+                    <input type="range" id="voltage-slider" min="-2000" max="2000" step="1" value="0">
+                    <div class="voltage-buttons">
+                        <button onclick="setVoltage(0)" class="secondary-btn">Sıfırla (0V)</button>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <h2>Kronometre</h2>
+                    <div class="stopwatch-display" id="stopwatch-display">00:00.00</div>
+                    <div class="stopwatch-controls">
+                        <button id="start-stop-btn" class="primary-btn">Başlat</button>
+                        <button id="reset-btn" class="secondary-btn">Sıfırla</button>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <h2>Operasyon</h2>
+                    <button id="spray-btn" class="action-btn">Damla Püskürt</button>
+                    <div id="selected-drop-info" class="info-panel" style="display:none;"></div>
+                </div>
+
+                <div class="info-box">
+                    <p><small>Her büyük kare arası: <strong>0.5 mm</strong></small></p>
+                </div>
+
+            </aside>
+        </main>
+    </div>
+
+    <script src="millikan.js"></script>
+    <footer style="text-align: center; padding: 1rem; color: #94a3b8; font-size: 0.8rem; margin-top: auto;">
+        <p>© 2026 PhysicaNova</p>
+    </footer>
+</body>
+
+</html>

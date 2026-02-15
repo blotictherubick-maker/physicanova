@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frank-Hertz Experiment Simulation | PhysicaNova</title>
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <meta name="description"
+        content="Prove the quantization of energy levels in atoms with the Frank-Hertz experiment simulation. Measure mercury atom excitation energies.">
+    <link rel="canonical" href="https://physicanova.com/frank_hertz.html">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Frank-Hertz Experiment Simulation | PhysicaNova">
+    <meta property="og:description"
+        content="Interactive Frank-Hertz experiment simulation. Verify quantum energy levels in atoms.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://physicanova.com/frank_hertz.html">
+    <meta property="og:image" content="https://physicanova.com/og-image.jpg">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Inter:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="frank_hertz.css">
+</head>
+
+<body>
+
+    <header>
+        <a href="index.html" class="home-btn" title="Home">🏠</a>
+        <h1>Frank-Hertz Experiment</h1>
+    </header>
+
+    <div class="container">
+
+        <main class="simulation-layout">
+
+            <!-- Left Column: Tube & Graph -->
+            <div class="simulation-main">
+                <div class="tube-container">
+                    <canvas id="tubeCanvas"></canvas>
+                    <div class="tube-overlay">
+                        <div class="electrode cathode" style="left: 40px; top: 10px;">Katot (K)</div>
+                        <div class="electrode grid" style="right: 60px; top: 10px;">Izgara (G)</div>
+                        <div class="electrode anode" style="right: 10px; top: 10px;">Anot (A)</div>
+                    </div>
+                </div>
+
+                <div class="graph-container">
+                    <canvas id="graphCanvas"></canvas>
+                    <div class="axis-labels">
+                        <span class="x-label">V<sub>hız</sub> (V)</span>
+                        <span class="y-label">Akım (I<sub>A</sub>)</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: Controls -->
+            <aside class="controls-panel">
+
+                <div class="control-group">
+                    <h3>Voltaj Kontrolleri</h3>
+
+                    <div class="slider-container">
+                        <label for="accVoltage">Hızlandırma Gerilimi (U<sub>2</sub>)
+                            <span class="info-icon"
+                                data-tooltip="Katot ile ızgara arasındaki ana hızlandırıcı gerilim. PDF'de U2 olarak geçer. Enerjiyi belirler.">i</span>
+                            <span class="value-display" id="accVoltageDisplay">0.0 V</span>
+                        </label>
+                        <input type="range" id="accVoltage" min="0" max="80" step="0.1" value="0">
+                    </div>
+
+                    <div class="slider-container">
+                        <label for="retVoltage">Durdurma Gerilimi (U<sub>3</sub>)
+                            <span class="info-icon"
+                                data-tooltip="Izgara ile anot arasındaki ters potansiyel (Frenleyici). PDF'de U3 olarak geçer. Düşük enerjili elektronları eler.">i</span>
+                            <span class="value-display" id="retVoltageDisplay">1.5 V</span>
+                        </label>
+                        <input type="range" id="retVoltage" min="0" max="10" step="0.1" value="1.5">
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <h3>Diğer Parametreler</h3>
+
+                    <div class="slider-container">
+                        <label for="temperature">Sıcaklık (Isıtıcı)
+                            <span class="info-icon"
+                                data-tooltip="Fırın sıcaklığı. Yüksek sıcaklık daha fazla elektron emisyonu sağlar ve cıva buhar basıncını etkiler.">i</span>
+                            <span class="value-display" id="tempDisplay">180 °C</span>
+                        </label>
+                        <input type="range" id="temperature" min="150" max="220" step="1" value="180">
+                    </div>
+                </div>
+
+                <div class="button-group">
+                    <button id="resetBtn" class="btn secondary">Sıfırla</button>
+                    <button id="autoScanBtn" class="btn primary">Otomatik Tara</button>
+                </div>
+
+                <div class="info-panel">
+                    <h3>Nasıl Çalışır?</h3>
+                    <p>
+                        V<sub>hız</sub> arttıkça akım artar, ancak 4.9V katlarında keskin düşüşler görülür.
+                        Bu, elektronların Hg atomlarıyla esnek olmayan çarpışma yaparak enerjilerinin çoğunu (4.9eV)
+                        kaybetmesinden kaynaklanır.
+                    </p>
+                </div>
+
+            </aside>
+
+        </main>
+    </div>
+
+    <script src="frank_hertz.js"></script>
+    <footer style="text-align: center; padding: 1rem; color: #94a3b8; font-size: 0.8rem; margin-top: auto;">
+        <p>© 2026 PhysicaNova</p>
+    </footer>
+</body>
+
+</html>

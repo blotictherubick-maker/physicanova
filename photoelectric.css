@@ -1,0 +1,263 @@
+:root {
+    --bg-dark: #0f172a;
+    --panel-bg: rgba(30, 41, 59, 0.8);
+    --border-color: rgba(148, 163, 184, 0.2);
+    --accent: #f59e0b;
+    /* Amber for light/energy feel */
+    --text-primary: #f1f5f9;
+    --text-secondary: #94a3b8;
+    --success: #10b981;
+    --danger: #ef4444;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--text-primary);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header */
+header {
+    background: rgba(15, 23, 42, 0.95);
+    border-bottom: 1px solid var(--border-color);
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.home-btn {
+    position: absolute;
+    left: 20px;
+    text-decoration: none;
+    font-size: 1.5rem;
+    transition: transform 0.2s;
+}
+
+.home-btn:hover {
+    transform: scale(1.1);
+}
+
+h1 {
+    margin: 0;
+    font-size: 1.5rem;
+    background: linear-gradient(to right, #f59e0b, #fbbf24);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Main Layout */
+.lab-container {
+    display: flex;
+    flex: 1;
+    /* height: calc(100vh - 65px); Removed for sticky footer */
+}
+
+/* Left: Simulation Area */
+.simulation-area {
+    flex: 2;
+    background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right: 1px solid var(--border-color);
+}
+
+canvas {
+    background: transparent;
+    border-radius: 8px;
+    /* border: 1px solid var(--border-color); */
+}
+
+.readout-panel {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: var(--panel-bg);
+    padding: 15px;
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border-color);
+}
+
+.readout-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+    min-width: 180px;
+}
+
+.readout-value {
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 700;
+    color: var(--accent);
+}
+
+/* Right: Controls Panel */
+.controls-panel {
+    flex: 1;
+    background: #1e293b;
+    padding: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    min-width: 320px;
+    max-width: 400px;
+}
+
+.control-group {
+    background: rgba(15, 23, 42, 0.5);
+    padding: 15px;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+}
+
+.control-group h3 {
+    margin: 0 0 15px 0;
+    font-size: 1rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 8px;
+}
+
+/* Sliders & Inputs */
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+}
+
+.slider-container {
+    margin-bottom: 15px;
+}
+
+input[type="range"] {
+    width: 100%;
+    margin: 10px 0;
+    accent-color: var(--accent);
+}
+
+select {
+    width: 100%;
+    padding: 10px;
+    background: #0f172a;
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    border-radius: 6px;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+select:focus {
+    outline: none;
+    border-color: var(--accent);
+}
+
+/* Wavelength Slider needs dynamic gradient */
+#wavelength-slider {
+    appearance: none;
+    -webkit-appearance: none;
+    height: 8px;
+    border-radius: 4px;
+    background: linear-gradient(to right,
+            #9b59b6 0%,
+            /* UV/Purple (~400nm) */
+            #3498db 25%,
+            /* Blue (~480nm) */
+            #2ecc71 50%,
+            /* Green (~550nm) */
+            #f1c40f 75%,
+            /* Yellow (~600nm) */
+            #e74c3c 100%
+            /* Red (~700nm+) */
+        );
+}
+
+#wavelength-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #fff;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    border: 2px solid var(--bg-dark);
+}
+
+.value-display {
+    float: right;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.9rem;
+    color: var(--accent);
+}
+
+/* Chart Container */
+.chart-container {
+    height: 200px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    position: relative;
+    margin-top: 10px;
+}
+
+/* Tooltip/Info */
+.info-tooltip {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin-top: 5px;
+    font-style: italic;
+}
+
+/* Tooltips */
+.info-icon {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background: rgba(255, 255, 255, 0.2);
+    color: var(--accent);
+    border-radius: 50%;
+    text-align: center;
+    line-height: 16px;
+    font-size: 12px;
+    font-style: italic;
+    font-family: serif;
+    cursor: help;
+    margin-left: 8px;
+    position: relative;
+    border: 1px solid var(--accent);
+}
+
+.info-icon:hover::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 120%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(15, 23, 42, 0.95);
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    white-space: normal;
+    width: 200px;
+    z-index: 100;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--border-color);
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    text-align: left;
+    pointer-events: none;
+}

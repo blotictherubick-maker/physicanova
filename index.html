@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhysicaNova | Virtual Physics Lab</title>
+    <link rel="icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <meta name="description"
+        content="PhysicaNova: Interactive virtual physics laboratory simulations. Explore Millikan Oil Drop, Photoelectric Effect, Diffraction, Compton Scattering, and Frank-Hertz experiments online.">
+    <link rel="canonical" href="https://physicanova.com/">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="PhysicaNova | Virtual Physics Lab">
+    <meta property="og:description"
+        content="Interactive virtual physics laboratory simulations. Explore fundamental physics experiments online.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://physicanova.com/">
+    <meta property="og:image" content="https://physicanova.com/og-image.jpg">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="PhysicaNova | Virtual Physics Lab">
+    <meta name="twitter:description"
+        content="Interactive virtual physics laboratory simulations. Explore fundamental physics experiments online.">
+    <meta name="twitter:image" content="https://physicanova.com/og-image.jpg">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="hub.css">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "PhysicaNova",
+      "url": "https://physicanova.com"
+    }
+    </script>
+</head>
+
+<body>
+
+    <header>
+        <h1>PhysicaNova</h1>
+        <div class="subtitle">Virtual Physics Laboratory | Sanal Fizik Laboratuvarı</div>
+    </header>
+
+    <main>
+        <div class="experiment-grid">
+
+            <!-- Millikan Experiment Card -->
+            <a href="millikan.html" class="experiment-card">
+                <div class="status-badge">Aktif</div>
+                <div class="card-image millikan-bg"></div>
+                <div class="card-content">
+                    <h2 class="card-title">Millikan Yağ Damlası</h2>
+                    <p class="card-desc">
+                        Elektrik alanı ve yerçekimi altında yüklü yağ damlacıklarının hareketini inceleyerek elementer
+                        yükü hesaplayın.
+                    </p>
+                </div>
+            </a>
+
+            <!-- Photoelectric Effect Card -->
+            <a href="photoelectric.html" class="experiment-card">
+                <div class="status-badge"
+                    style="background: rgba(245, 158, 11, 0.2); color: #fbbf24; border-color: rgba(245, 158, 11, 0.3);">
+                    YENİ</div>
+                <div class="card-image photoelectric-bg"></div>
+                <div class="card-content">
+                    <h2 class="card-title">Fotoelektrik Olay</h2>
+                    <p class="card-desc">
+                        Işığın metal yüzeylerden elektron koparmasını inceleyerek foton enerjisini ve Planck sabitini
+                        keşfedin.
+                    </p>
+                </div>
+            </a>
+
+            <!-- Diffraction Experiment Card -->
+            <a href="diffraction.html" class="experiment-card">
+                <div class="status-badge"
+                    style="background: rgba(139, 92, 246, 0.2); color: #a78bfa; border-color: rgba(139, 92, 246, 0.3);">
+                    EKLEME</div>
+                <div class="card-image diffraction-bg"></div>
+                <div class="card-content">
+                    <h2 class="card-title">Tek ve Çift Yarıkta Kırınım</h2>
+                    <p class="card-desc">
+                        Işığın dalga doğasını, girişim ve kırınım desenlerini interaktif simülasyonla inceleyin.
+                    </p>
+                </div>
+            </a>
+
+            <!-- Compton Experiment Card -->
+            <a href="compton.html" class="experiment-card">
+                <div class="status-badge"
+                    style="background: rgba(56, 189, 248, 0.2); color: #38bdf8; border-color: rgba(56, 189, 248, 0.3);">
+                    YENİ</div>
+                <div class="card-image compton-bg"
+                    style="background: linear-gradient(135deg, #0f172a, #1e293b); display: flex; align-items: center; justify-content: center;">
+                    <div style="font-size: 3rem; color: #38bdf8;">λ'</div>
+                </div>
+                <div class="card-content">
+                    <h2 class="card-title">Compton Saçılması</h2>
+                    <p class="card-desc">
+                        Yüksek enerjili fotonların elektronlarla etkileşimi sonucu oluşan dalga boyu değişimini
+                        keşfedin.
+                    </p>
+                </div>
+            </a>
+
+            <!-- Frank-Hertz Experiment Card -->
+            <a href="frank_hertz.html" class="experiment-card">
+                <div class="status-badge"
+                    style="background: rgba(0, 188, 212, 0.2); color: #00bcd4; border-color: rgba(0, 188, 212, 0.3);">
+                    YENİ</div>
+                <div class="card-image frank-hertz-bg"
+                    style="background: linear-gradient(45deg, #111, #222); display: flex; align-items: center; justify-content: center;">
+                    <div style="font-size: 3rem; color: #00bcd4; opacity: 0.5;">Hg</div>
+                </div>
+                <div class="card-content">
+                    <h2 class="card-title">Frank-Hertz Deneyi</h2>
+                    <p class="card-desc">
+                        Cıva atomlarıyla elektron çarpışmalarını inceleyerek enerji seviyelerinin kuantize olduğunu
+                        kanıtlayın.
+                    </p>
+                </div>
+            </a>
+
+        </div>
+    </main>
+
+    <footer
+        style="text-align: center; padding: 2rem; color: #94a3b8; font-size: 0.9rem; margin-top: 2rem; border-top: 1px solid rgba(148, 163, 184, 0.1);">
+        <p>© 2026 PhysicaNova — Interactive Physics Experiments</p>
+    </footer>
+
+</body>
+
+</html>

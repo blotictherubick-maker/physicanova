@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compton Scattering Simulation | PhysicaNova</title>
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <meta name="description"
+        content="Analyze the Compton Effect. Observe photon-electron collisions, measure wavelength shifts, and verify the particle nature of X-rays.">
+    <link rel="canonical" href="https://physicanova.com/compton.html">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Compton Scattering Simulation | PhysicaNova">
+    <meta property="og:description"
+        content="Interactive Compton Scattering simulation. Explore photon-electron interactions.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://physicanova.com/compton.html">
+    <meta property="og:image" content="https://physicanova.com/og-image.jpg">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Inter:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="compton.css">
+</head>
+
+<body>
+
+    <header>
+        <a href="index.html" class="home-btn" title="Home">🏠</a>
+        <h1>Compton Scattering Experiment</h1>
+    </header>
+
+    <div class="lab-container">
+        <!-- Simulation View -->
+        <main class="simulation-area" id="sim-container">
+            <canvas id="comptonCanvas" width="800" height="600"></canvas>
+
+            <div class="readout-panel">
+                <div class="readout-item">
+                    <span>Gelen Dalga Boyu:</span>
+                    <span class="readout-value" id="lambda-incident">0.00 pm</span>
+                </div>
+                <div class="readout-item">
+                    <span>Saçılan Dalga Boyu:</span>
+                    <span class="readout-value" id="lambda-scattered">0.00 pm</span>
+                </div>
+                <div class="readout-item">
+                    <span>Dalga Boyu Farkı (Δλ):</span>
+                    <span class="readout-value" id="lambda-shift">0.00 pm</span>
+                </div>
+                <hr style="border-color: rgba(255,255,255,0.1)">
+                <div class="readout-item">
+                    <span>Gelen Foton Enerjisi:</span>
+                    <span class="readout-value" id="energy-incident">0.00 keV</span>
+                </div>
+                <div class="readout-item">
+                    <span>Saçılan Foton Enerjisi:</span>
+                    <span class="readout-value" id="energy-scattered">0.00 keV</span>
+                </div>
+                <div class="readout-item">
+                    <span>Elektron Kinetik Enerjisi:</span>
+                    <span class="readout-value" id="energy-electron">0.00 keV</span>
+                </div>
+            </div>
+        </main>
+
+        <!-- Controls -->
+        <aside class="controls-panel">
+
+            <div class="control-group">
+                <h3>Gelen Foton</h3>
+                <div class="slider-container">
+                    <label for="wavelength-slider">Dalga Boyu (λ)
+                        <span class="info-icon"
+                            data-tooltip="Gelen fotonun dalga boyu. Genellikle X-ışınları mertebesindedir (pikometre).">i</span>
+                        <span class="value-display" id="wavelength-val">71.0 pm</span>
+                    </label>
+                    <input type="range" id="wavelength-slider" min="10" max="200" value="71" step="1">
+                    <div class="info-tooltip">10 pm - 200 pm (X-Işınları)</div>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <h3>Dedektör Konumu</h3>
+                <div class="slider-container">
+                    <label for="angle-slider">Saçılma Açısı (θ)
+                        <span class="info-icon"
+                            data-tooltip="Fotonun geliş doğrultusundan sapma açısı. Dedektör bu açıda saçılan fotonları ölçer.">i</span>
+                        <span class="value-display" id="angle-val">45°</span>
+                    </label>
+                    <input type="range" id="angle-slider" min="0" max="180" value="45" step="1">
+                </div>
+            </div>
+
+            <div class="control-group">
+                <h3>Bilgi</h3>
+                <p style="font-size:0.9rem; color:#94a3b8; line-height:1.5;">
+                    Compton saçılması, yüksek enerjili bir fotonun serbest bir elektrona çarpıp enerji kaybetmesi
+                    olayıdır.
+                    <br><br>
+                    Formül: <br>
+                    <span style="font-family:'Roboto Mono'; color:var(--accent);">Δλ = λ' - λ = (h/mₑc)(1 - cosθ)</span>
+                    <br><br>
+                    h/mₑc (Compton dalga boyu) ≈ 2.43 pm
+                </p>
+                <div style="margin-top:15px;">
+                    <button id="btn-fire"
+                        style="width:100%; padding:10px; background:var(--accent); border:none; border-radius:6px; color:#fff; font-weight:bold; cursor:pointer;">Foton
+                        Gönder</button>
+                </div>
+            </div>
+
+        </aside>
+    </div>
+
+    <script src="compton.js"></script>
+    <footer style="text-align: center; padding: 1rem; color: #94a3b8; font-size: 0.8rem; margin-top: auto;">
+        <p>© 2026 PhysicaNova</p>
+    </footer>
+</body>
+
+</html>

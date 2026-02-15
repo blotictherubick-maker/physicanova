@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diffraction and Interference Experiments | PhysicaNova</title>
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <meta name="description"
+        content="Interact with Single and Double Slit Diffraction simulations. Explore wave nature of light, interference patterns, and intensity graphs.">
+    <link rel="canonical" href="https://physicanova.com/diffraction.html">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Diffraction and Interference Experiments | PhysicaNova">
+    <meta property="og:description"
+        content="Explore wave nature of light with Single/Double Slit Diffraction simulations.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://physicanova.com/diffraction.html">
+    <meta property="og:image" content="https://physicanova.com/og-image.jpg">
+
+    <link rel="stylesheet" href="diffraction.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Inter:wght@400;600&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="app-container">
+        <header>
+            <a href="index.html" class="home-btn" title="Home">🏠</a>
+            <h1>Diffraction and Interference</h1>
+        </header>
+
+        <main class="lab-bench">
+            <!-- Sol Panel: Simülasyon Görünümü -->
+            <section class="simulation-container">
+                <div class="canvas-wrapper">
+                    <!-- Deney Düzeneği (Schematic View) -->
+                    <div class="schematic-view">
+                        <canvas id="setupCanvas" width="600" height="200"></canvas>
+                        <div class="canvas-label">Deney Düzeneği</div>
+                    </div>
+
+                    <!-- Görsel Desen -->
+                    <div class="pattern-view">
+                        <canvas id="patternCanvas" width="600" height="150"></canvas>
+                        <div class="canvas-label">Kırınım Deseni (Ekran)</div>
+                    </div>
+
+                    <!-- Grafik -->
+                    <div class="graph-view">
+                        <canvas id="graphCanvas" width="600" height="300"></canvas>
+                        <div class="canvas-label">Yoğunluk Grafiği</div>
+                        <button id="btn-maximize-graph" class="maximize-btn" title="Grafiği Büyüt">⤢</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sağ Panel: Kontroller -->
+            <aside class="controls-panel">
+
+                <div class="control-group">
+                    <h2>Deney Modu</h2>
+                    <div class="mode-selector">
+                        <label class="radio-label">
+                            <input type="radio" name="mode" value="single" checked onchange="setMode('single')">
+                            Tek Yarık
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="mode" value="double" onchange="setMode('double')">
+                            Çift Yarık
+                        </label>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <h2>Işık Kaynağı</h2>
+                    <div class="control-item">
+                        <label for="wavelength">Dalga Boyu <span class="info-icon"
+                                data-tooltip="Işığın rengini ve enerjisini belirler. Dalga boyu arttıkça (kırmızıya gittikçe) kırınım deseni genişler.">i</span>
+                            (<span id="wavelength-val">500</span> nm)</label>
+                        <input type="range" id="wavelength" min="380" max="780" step="1" value="500"
+                            class="wavelength-slider">
+                        <div class="spectrum-gradient"></div>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <h2>Yarık Ayarları</h2>
+                    <div class="control-item">
+                        <label for="slit-width">Yarık Genişliği (a): <span class="info-icon"
+                                data-tooltip="Yarığın genişliği. Yarık küçüldükçe kırınım etkisi artar ve desen ekrana daha geniş yayılır.">i</span>
+                            <span id="slit-width-val">0.10</span> mm</label>
+                        <input type="range" id="slit-width" min="0.02" max="0.50" step="0.01" value="0.10">
+                    </div>
+
+                    <div class="control-item disabled" id="separation-control">
+                        <label for="slit-separation">Yarıklar Arası Mesafe (d): <span class="info-icon"
+                                data-tooltip="İki yarık arasındaki mesafe (sadece Çift Yarık modunda). Mesafe arttıkça girişim saçakları sıklaşır.">i</span>
+                            <span id="slit-separation-val">0.25</span> mm</label>
+                        <input type="range" id="slit-separation" min="0.10" max="1.00" step="0.01" value="0.25"
+                            disabled>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <h2>Ekran Ayarları</h2>
+                    <div class="control-item">
+                        <label for="screen-distance">Ekran Uzaklığı (L): <span class="info-icon"
+                                data-tooltip="Yarık düzlemi ile ekran arasındaki mesafe. Mesafe arttıkça desen orantılı olarak büyür.">i</span>
+                            <span id="screen-distance-val">1.0</span> m</label>
+                        <input type="range" id="screen-distance" min="0.5" max="5.0" step="0.1" value="1.0">
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <h3>Formüller</h3>
+                    <div id="formula-display">
+                        <p><strong>Tek Yarık Minima:</strong><br> $\sin(\theta) = \frac{n\lambda}{a}$</p>
+                    </div>
+                </div>
+
+            </aside>
+        </main>
+    </div>
+
+    <!-- MathJax for formulas -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="diffraction.js"></script>
+    <footer style="text-align: center; padding: 1rem; color: #94a3b8; font-size: 0.8rem; margin-top: auto;">
+        <p>© 2026 PhysicaNova</p>
+    </footer>
+</body>
+
+</html>

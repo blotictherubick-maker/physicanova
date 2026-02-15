@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photoelectric Effect Simulation | PhysicaNova</title>
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <meta name="description"
+        content="Explore the Photoelectric Effect. Adjust light intensity and wavelength, select target metals, and measure stopping potential to understand the particle nature of light.">
+    <link rel="canonical" href="https://physicanova.com/photoelectric.html">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Photoelectric Effect Simulation | PhysicaNova">
+    <meta property="og:description"
+        content="Interactive Photoelectric Effect simulation. Explore the particle nature of light.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://physicanova.com/photoelectric.html">
+    <meta property="og:image" content="https://physicanova.com/og-image.jpg">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Inter:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="photoelectric.css">
+    <!-- Chart.js for graphs if needed later, or we draw on canvas -->
+</head>
+
+<body>
+
+    <header>
+        <a href="index.html" class="home-btn" title="Home">🏠</a>
+        <h1>Photoelectric Effect Experiment</h1>
+    </header>
+
+    <div class="lab-container">
+        <!-- Simulation View -->
+        <main class="simulation-area" id="sim-container">
+            <canvas id="photoelectricCanvas" width="800" height="600"></canvas>
+
+            <div class="readout-panel">
+                <div class="readout-item">
+                    <span>Akım:</span>
+                    <span class="readout-value" id="current-display">0.00 μA</span>
+                </div>
+                <!-- Hidden advanced readouts for curiosity -->
+                <div class="readout-item">
+                    <span>Elektron KE:</span>
+                    <span class="readout-value" id="ke-display">0.00 eV</span>
+                </div>
+                <div class="readout-item">
+                    <span>Foton Enerjisi:</span>
+                    <span class="readout-value" id="photon-energy-display">0.00 eV</span>
+                </div>
+            </div>
+        </main>
+
+        <!-- Controls -->
+        <aside class="controls-panel">
+
+            <!-- Light Source Controls -->
+            <div class="control-group">
+                <h3>Işık Kaynağı</h3>
+
+                <div class="slider-container">
+                    <label for="wavelength-slider">Dalga Boyu (Renk)
+                        <span class="info-icon"
+                            data-tooltip="Fotonların enerjisini (rengini) değiştirir. Düşük dalga boyu = yüksek enerji (UV/Mavi).">i</span>
+                        <span class="value-display" id="wavelength-val">510 nm</span>
+                    </label>
+                    <input type="range" id="wavelength-slider" min="200" max="850" value="510" step="1">
+                    <div class="info-tooltip">200nm (UV) - 850nm (IR)</div>
+                </div>
+
+                <div class="slider-container">
+                    <label for="intensity-slider">Işık Şiddeti
+                        <span class="info-icon"
+                            data-tooltip="Birim zamanda gönderilen foton sayısını (parlaklığı) değiştirir. Akım miktarını etkiler, ancak durdurma potansiyelini etkilemez.">i</span>
+                        <span class="value-display" id="intensity-val">5 %</span>
+                    </label>
+                    <input type="range" id="intensity-slider" min="0" max="100" value="5" step="1">
+                </div>
+            </div>
+
+            <!-- Material Selection -->
+            <div class="control-group">
+                <h3>Hedef Metal (Katot)</h3>
+                <label for="metal-select">Metal Seçimi:
+                    <span class="info-icon"
+                        data-tooltip="Işığın çarptığı metal levha. Her metalin elektron koparmak için gereken minimum enerjisi (iş fonksiyonu) farklıdır.">i</span>
+                </label>
+                <select id="metal-select">
+                    <option value="sodium">Sodyum (Na) - 2.36 eV</option>
+                    <option value="calcium">Kalsiyum (Ca) - 2.90 eV</option>
+                    <option value="zinc">Çinko (Zn) - 4.30 eV</option>
+                    <option value="copper">Bakır (Cu) - 4.70 eV</option>
+                    <option value="platinum">Platin (Pt) - 6.35 eV</option>
+                    <option value="unknown">Bilinmeyen Metal (?)</option>
+                </select>
+                <div id="metal-info" class="info-tooltip" style="margin-top:10px;">
+                    Eşik Frekansı: <span id="threshold-freq">--</span> THz
+                </div>
+            </div>
+
+            <!-- Voltage Source -->
+            <div class="control-group">
+                <h3>Voltaj Kaynağı</h3>
+                <div class="slider-container">
+                    <label for="voltage-slider">Uygulanan Voltaj
+                        <span class="info-icon"
+                            data-tooltip="Plakalar arasına uygulanan potansiyel fark. Negatif voltaj elektronları geri iter (durdurma potansiyeli).">i</span>
+                        <span class="value-display" id="voltage-val">0.00 V</span>
+                    </label>
+                    <input type="range" id="voltage-slider" min="-5.00" max="5.00" value="0.00" step="0.05">
+                    <button id="btn-zero-voltage" style="margin-top:5px; padding:4px 8px; cursor:pointer;">0V
+                        Yap</button>
+                </div>
+            </div>
+
+            <!-- Live Graph (Placeholder/Canvas) -->
+            <!-- Live Graph removed -->
+
+        </aside>
+    </div>
+
+    <script src="photoelectric.js"></script>
+    <footer style="text-align: center; padding: 1rem; color: #94a3b8; font-size: 0.8rem; margin-top: auto;">
+        <p>© 2026 PhysicaNova</p>
+    </footer>
+</body>
+
+</html>
