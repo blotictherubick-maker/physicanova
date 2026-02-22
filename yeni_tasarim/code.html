@@ -6,6 +6,7 @@
 <title>PhysicaNova - Modern Fizik Simülasyonları</title>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Noto+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <script>
         tailwind.config = {
@@ -219,10 +220,10 @@
 </div>
 <!-- Grid -->
 <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 gap-6">
-
-<!-- Card 1: Fotoelektrik -->
+<!-- Card 1 -->
 <div class="group bg-card-dark rounded-xl overflow-hidden border border-border-dark hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5 flex flex-col">
 <div class="relative aspect-video overflow-hidden bg-black">
+<!-- Difficulty Badge -->
 <div class="absolute top-3 right-3 z-10 flex gap-0.5 bg-black/60 backdrop-blur-sm px-2 py-1 rounded-full border border-white/10">
 <span class="material-symbols-outlined text-yellow-500 text-[14px] filled">star</span>
 <span class="material-symbols-outlined text-yellow-500 text-[14px] filled">star</span>
@@ -241,139 +242,14 @@
 <h3 class="text-white text-lg font-bold mb-2 font-display group-hover:text-primary transition-colors">Fotoelektrik Etki</h3>
 <p class="text-text-secondary text-sm mb-4 line-clamp-2">Işığın metal yüzeylerden elektron koparmasını ve frekansın etkisini gözlemleyin.</p>
 <div class="mt-auto pt-4 border-t border-border-dark/50">
-<a href="photoelectric.html" class="w-full flex items-center justify-center gap-2 bg-white/5 hover:bg-primary text-white text-sm font-semibold py-2.5 rounded-lg transition-all group-hover:bg-primary">
+<button class="w-full flex items-center justify-center gap-2 bg-white/5 hover:bg-primary text-white text-sm font-semibold py-2.5 rounded-lg transition-all group-hover:bg-primary">
 <span class="material-symbols-outlined text-[18px]">play_arrow</span>
                                 Simülasyonu Başlat
-                            </a>
+                            </button>
 </div>
 </div>
 </div>
-
-<!-- Extra Card 1: Millikan (Eklendi) -->
-<div class="group bg-card-dark rounded-xl overflow-hidden border border-border-dark hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5 flex flex-col">
-    <div class="relative aspect-video overflow-hidden bg-black">
-    <div class="absolute top-3 right-3 z-10 flex gap-0.5 bg-black/60 backdrop-blur-sm px-2 py-1 rounded-full border border-white/10">
-    <span class="material-symbols-outlined text-yellow-500 text-[14px] filled">star</span>
-    <span class="material-symbols-outlined text-yellow-500 text-[14px] filled">star</span>
-    <span class="material-symbols-outlined text-yellow-500 text-[14px] filled">star</span>
-    <span class="material-symbols-outlined text-yellow-500 text-[14px] filled">star</span>
-    <span class="material-symbols-outlined text-yellow-500 text-[14px] filled">star</span>
-    </div>
-    <div class="w-full h-full transition-transform duration-500 group-hover:scale-105 opacity-80 group-hover:opacity-100 flex items-center justify-center" style="background: linear-gradient(45deg, #111, #333);">
-        <span class="material-symbols-outlined text-white text-6xl opacity-30">science</span>
-    </div>
-    <div class="absolute inset-0 bg-gradient-to-t from-card-dark via-transparent to-transparent opacity-80"></div>
-    </div>
-    <div class="p-5 flex flex-col flex-1">
-    <div class="flex items-center gap-2 mb-2">
-    <span class="text-[10px] font-bold uppercase tracking-wider text-green-400 bg-green-400/10 px-2 py-0.5 rounded border border-green-400/20">Klasik</span>
-    <span class="text-[10px] font-bold uppercase tracking-wider text-text-secondary bg-white/5 px-2 py-0.5 rounded border border-white/10">Lise</span>
-    </div>
-    <h3 class="text-white text-lg font-bold mb-2 font-display group-hover:text-primary transition-colors">Millikan Yağ Damlası</h3>
-    <p class="text-text-secondary text-sm mb-4 line-clamp-2">Elektrik alanı ve yerçekimi altında yüklü yağ damlacıklarının hareketini inceleyin.</p>
-    <div class="mt-auto pt-4 border-t border-border-dark/50">
-    <a href="millikan.html" class="w-full flex items-center justify-center gap-2 bg-white/5 hover:bg-primary text-white text-sm font-semibold py-2.5 rounded-lg transition-all group-hover:bg-primary">
-    <span class="material-symbols-outlined text-[18px]">play_arrow</span>
-                                    Simülasyonu Başlat
-                                </a>
-    </div>
-    </div>
-    </div>
-
-<!-- Extra Card 2: Compton Saçılması (Eklendi) -->
-<div class="group bg-card-dark rounded-xl overflow-hidden border border-border-dark hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5 flex flex-col">
-    <div class="relative aspect-video overflow-hidden bg-black">
-    <div class="absolute top-3 right-3 z-10 flex gap-0.5 bg-black/60 backdrop-blur-sm px-2 py-1 rounded-full border border-white/10">
-    <span class="material-symbols-outlined text-yellow-500 text-[14px] filled">star</span>
-    <span class="material-symbols-outlined text-yellow-500 text-[14px] filled">star</span>
-    <span class="material-symbols-outlined text-yellow-500 text-[14px] filled">star</span>
-    <span class="material-symbols-outlined text-yellow-500 text-[14px] filled">star</span>
-    <span class="material-symbols-outlined text-text-secondary/40 text-[14px]">star</span>
-    </div>
-    <div class="w-full h-full transition-transform duration-500 group-hover:scale-105 opacity-80 group-hover:opacity-100 flex items-center justify-center" style="background: linear-gradient(135deg, #0f172a, #1e293b);">
-        <div style="font-size: 3rem; color: #38bdf8; opacity: 0.5;">λ'</div>
-    </div>
-    <div class="absolute inset-0 bg-gradient-to-t from-card-dark via-transparent to-transparent opacity-80"></div>
-    </div>
-    <div class="p-5 flex flex-col flex-1">
-    <div class="flex items-center gap-2 mb-2">
-    <span class="text-[10px] font-bold uppercase tracking-wider text-blue-400 bg-blue-400/10 px-2 py-0.5 rounded border border-blue-400/20">Kuantum</span>
-    <span class="text-[10px] font-bold uppercase tracking-wider text-text-secondary bg-white/5 px-2 py-0.5 rounded border border-white/10">Lisans</span>
-    </div>
-    <h3 class="text-white text-lg font-bold mb-2 font-display group-hover:text-primary transition-colors">Compton Saçılması</h3>
-    <p class="text-text-secondary text-sm mb-4 line-clamp-2">Yüksek enerjili fotonların elektronlarla etkileşimi sonucu oluşan dalga boyu değişimini keşfedin.</p>
-    <div class="mt-auto pt-4 border-t border-border-dark/50">
-    <a href="compton.html" class="w-full flex items-center justify-center gap-2 bg-white/5 hover:bg-primary text-white text-sm font-semibold py-2.5 rounded-lg transition-all group-hover:bg-primary">
-    <span class="material-symbols-outlined text-[18px]">play_arrow</span>
-                                    Simülasyonu Başlat
-                                </a>
-    </div>
-    </div>
-    </div>
-
-<!-- Extra Card 3: Frank-Hertz (Eklendi) -->
-<div class="group bg-card-dark rounded-xl overflow-hidden border border-border-dark hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5 flex flex-col">
-    <div class="relative aspect-video overflow-hidden bg-black">
-    <div class="absolute top-3 right-3 z-10 flex gap-0.5 bg-black/60 backdrop-blur-sm px-2 py-1 rounded-full border border-white/10">
-    <span class="material-symbols-outlined text-yellow-500 text-[14px] filled">star</span>
-    <span class="material-symbols-outlined text-yellow-500 text-[14px] filled">star</span>
-    <span class="material-symbols-outlined text-yellow-500 text-[14px] filled">star</span>
-    <span class="material-symbols-outlined text-text-secondary/40 text-[14px]">star</span>
-    <span class="material-symbols-outlined text-text-secondary/40 text-[14px]">star</span>
-    </div>
-    <div class="w-full h-full transition-transform duration-500 group-hover:scale-105 opacity-80 group-hover:opacity-100 flex items-center justify-center" style="background: linear-gradient(45deg, #111, #222);">
-        <div style="font-size: 3rem; color: #00bcd4; opacity: 0.5;">Hg</div>
-    </div>
-    <div class="absolute inset-0 bg-gradient-to-t from-card-dark via-transparent to-transparent opacity-80"></div>
-    </div>
-    <div class="p-5 flex flex-col flex-1">
-    <div class="flex items-center gap-2 mb-2">
-    <span class="text-[10px] font-bold uppercase tracking-wider text-cyan-400 bg-cyan-400/10 px-2 py-0.5 rounded border border-cyan-400/20">Atom</span>
-    <span class="text-[10px] font-bold uppercase tracking-wider text-text-secondary bg-white/5 px-2 py-0.5 rounded border border-white/10">Lisans</span>
-    </div>
-    <h3 class="text-white text-lg font-bold mb-2 font-display group-hover:text-primary transition-colors">Frank-Hertz Deneyi</h3>
-    <p class="text-text-secondary text-sm mb-4 line-clamp-2">Cıva atomlarıyla elektron çarpışmalarını inceleyerek enerji seviyelerinin kuantize olduğunu kanıtlayın.</p>
-    <div class="mt-auto pt-4 border-t border-border-dark/50">
-    <a href="frank_hertz.html" class="w-full flex items-center justify-center gap-2 bg-white/5 hover:bg-primary text-white text-sm font-semibold py-2.5 rounded-lg transition-all group-hover:bg-primary">
-    <span class="material-symbols-outlined text-[18px]">play_arrow</span>
-                                    Simülasyonu Başlat
-                                </a>
-    </div>
-    </div>
-    </div>
-
- <!-- Extra Card 4: Kırınım (Eklendi) -->
- <div class="group bg-card-dark rounded-xl overflow-hidden border border-border-dark hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5 flex flex-col">
-    <div class="relative aspect-video overflow-hidden bg-black">
-    <div class="absolute top-3 right-3 z-10 flex gap-0.5 bg-black/60 backdrop-blur-sm px-2 py-1 rounded-full border border-white/10">
-    <span class="material-symbols-outlined text-yellow-500 text-[14px] filled">star</span>
-    <span class="material-symbols-outlined text-yellow-500 text-[14px] filled">star</span>
-    <span class="material-symbols-outlined text-yellow-500 text-[14px] filled">star</span>
-    <span class="material-symbols-outlined text-yellow-500 text-[14px] filled">star</span>
-    <span class="material-symbols-outlined text-text-secondary/40 text-[14px]">star</span>
-    </div>
-    <div class="w-full h-full transition-transform duration-500 group-hover:scale-105 opacity-80 group-hover:opacity-100 flex items-center justify-center" style="background: linear-gradient(135deg, #111, #444);">
-        <span class="material-symbols-outlined text-white text-6xl opacity-30">waves</span>
-    </div>
-    <div class="absolute inset-0 bg-gradient-to-t from-card-dark via-transparent to-transparent opacity-80"></div>
-    </div>
-    <div class="p-5 flex flex-col flex-1">
-    <div class="flex items-center gap-2 mb-2">
-    <span class="text-[10px] font-bold uppercase tracking-wider text-purple-400 bg-purple-400/10 px-2 py-0.5 rounded border border-purple-400/20">Optik</span>
-    <span class="text-[10px] font-bold uppercase tracking-wider text-text-secondary bg-white/5 px-2 py-0.5 rounded border border-white/10">Lise</span>
-    </div>
-    <h3 class="text-white text-lg font-bold mb-2 font-display group-hover:text-primary transition-colors">Tek ve Çift Yarıkta Kırınım</h3>
-    <p class="text-text-secondary text-sm mb-4 line-clamp-2">Işığın dalga doğasını, girişim ve kırınım desenlerini interaktif simülasyonla inceleyin.</p>
-    <div class="mt-auto pt-4 border-t border-border-dark/50">
-    <a href="diffraction.html" class="w-full flex items-center justify-center gap-2 bg-white/5 hover:bg-primary text-white text-sm font-semibold py-2.5 rounded-lg transition-all group-hover:bg-primary">
-    <span class="material-symbols-outlined text-[18px]">play_arrow</span>
-                                    Simülasyonu Başlat
-                                </a>
-    </div>
-    </div>
-    </div>
-
-<!-- Placeholder Card 2: İkizler Paradoksu -->
+<!-- Card 2 -->
 <div class="group bg-card-dark rounded-xl overflow-hidden border border-border-dark hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5 flex flex-col">
 <div class="relative aspect-video overflow-hidden bg-black">
 <div class="absolute top-3 right-3 z-10 flex gap-0.5 bg-black/60 backdrop-blur-sm px-2 py-1 rounded-full border border-white/10">
@@ -394,15 +270,14 @@
 <h3 class="text-white text-lg font-bold mb-2 font-display group-hover:text-primary transition-colors">Özel Görelilik: İkizler Paradoksu</h3>
 <p class="text-text-secondary text-sm mb-4 line-clamp-2">Zaman genişlemesini ve uzunluk daralmasını görselleştirin. Işık hızına yaklaşırken neler olur?</p>
 <div class="mt-auto pt-4 border-t border-border-dark/50">
-<button onclick="alert('Bu simülasyon henüz hazır değil. Yapım aşamasında!');" class="w-full flex items-center justify-center gap-2 bg-white/5 hover:bg-primary text-white text-sm font-semibold py-2.5 rounded-lg transition-all group-hover:bg-primary">
+<button class="w-full flex items-center justify-center gap-2 bg-white/5 hover:bg-primary text-white text-sm font-semibold py-2.5 rounded-lg transition-all group-hover:bg-primary">
 <span class="material-symbols-outlined text-[18px]">play_arrow</span>
-                                Hazırlanıyor
+                                Simülasyonu Başlat
                             </button>
 </div>
 </div>
 </div>
-
-<!-- Placeholder Card 3: Michelson-Morley Deneyi -->
+<!-- Card 3 -->
 <div class="group bg-card-dark rounded-xl overflow-hidden border border-border-dark hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5 flex flex-col">
 <div class="relative aspect-video overflow-hidden bg-black">
 <div class="absolute top-3 right-3 z-10 flex gap-0.5 bg-black/60 backdrop-blur-sm px-2 py-1 rounded-full border border-white/10">
@@ -423,15 +298,14 @@
 <h3 class="text-white text-lg font-bold mb-2 font-display group-hover:text-primary transition-colors">Michelson-Morley Deneyi</h3>
 <p class="text-text-secondary text-sm mb-4 line-clamp-2">Esir maddesini (ether) tespit etmeye yönelik ünlü deneyi tekrarlayın ve interferometre kullanın.</p>
 <div class="mt-auto pt-4 border-t border-border-dark/50">
-    <button onclick="alert('Bu simülasyon henüz hazır değil. Yapım aşamasında!');" class="w-full flex items-center justify-center gap-2 bg-white/5 hover:bg-primary text-white text-sm font-semibold py-2.5 rounded-lg transition-all group-hover:bg-primary">
+<button class="w-full flex items-center justify-center gap-2 bg-white/5 hover:bg-primary text-white text-sm font-semibold py-2.5 rounded-lg transition-all group-hover:bg-primary">
 <span class="material-symbols-outlined text-[18px]">play_arrow</span>
-                                Hazırlanıyor
+                                Simülasyonu Başlat
                             </button>
 </div>
 </div>
 </div>
-
-<!-- Placeholder Card 4: Rutherford Atom Modeli -->
+<!-- Card 4 -->
 <div class="group bg-card-dark rounded-xl overflow-hidden border border-border-dark hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5 flex flex-col">
 <div class="relative aspect-video overflow-hidden bg-black">
 <div class="absolute top-3 right-3 z-10 flex gap-0.5 bg-black/60 backdrop-blur-sm px-2 py-1 rounded-full border border-white/10">
@@ -452,15 +326,14 @@
 <h3 class="text-white text-lg font-bold mb-2 font-display group-hover:text-primary transition-colors">Rutherford Atom Modeli</h3>
 <p class="text-text-secondary text-sm mb-4 line-clamp-2">Altın levha deneyini simüle edin. Alfa parçacıklarının saçılmasını inceleyin.</p>
 <div class="mt-auto pt-4 border-t border-border-dark/50">
-    <button onclick="alert('Bu simülasyon henüz hazır değil. Yapım aşamasında!');" class="w-full flex items-center justify-center gap-2 bg-white/5 hover:bg-primary text-white text-sm font-semibold py-2.5 rounded-lg transition-all group-hover:bg-primary">
+<button class="w-full flex items-center justify-center gap-2 bg-white/5 hover:bg-primary text-white text-sm font-semibold py-2.5 rounded-lg transition-all group-hover:bg-primary">
 <span class="material-symbols-outlined text-[18px]">play_arrow</span>
-Hazırlanıyor
+                                Simülasyonu Başlat
                             </button>
 </div>
 </div>
 </div>
-
-<!-- Placeholder Card 5: Yarı Ömür -->
+<!-- Card 5 -->
 <div class="group bg-card-dark rounded-xl overflow-hidden border border-border-dark hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5 flex flex-col">
 <div class="relative aspect-video overflow-hidden bg-black">
 <div class="absolute top-3 right-3 z-10 flex gap-0.5 bg-black/60 backdrop-blur-sm px-2 py-1 rounded-full border border-white/10">
@@ -481,15 +354,14 @@ Hazırlanıyor
 <h3 class="text-white text-lg font-bold mb-2 font-display group-hover:text-primary transition-colors">Yarı Ömür ve Radyoaktif Bozunma</h3>
 <p class="text-text-secondary text-sm mb-4 line-clamp-2">Radyoaktif izotopların bozunma hızlarını ve yarı ömür grafiklerini analiz edin.</p>
 <div class="mt-auto pt-4 border-t border-border-dark/50">
-    <button onclick="alert('Bu simülasyon henüz hazır değil. Yapım aşamasında!');" class="w-full flex items-center justify-center gap-2 bg-white/5 hover:bg-primary text-white text-sm font-semibold py-2.5 rounded-lg transition-all group-hover:bg-primary">
+<button class="w-full flex items-center justify-center gap-2 bg-white/5 hover:bg-primary text-white text-sm font-semibold py-2.5 rounded-lg transition-all group-hover:bg-primary">
 <span class="material-symbols-outlined text-[18px]">play_arrow</span>
-                                Hazırlanıyor
+                                Simülasyonu Başlat
                             </button>
 </div>
 </div>
 </div>
-
-<!-- Placeholder Card 6: Stern-Gerlach -->
+<!-- Card 6 -->
 <div class="group bg-card-dark rounded-xl overflow-hidden border border-border-dark hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5 flex flex-col">
 <div class="relative aspect-video overflow-hidden bg-black">
 <div class="absolute top-3 right-3 z-10 flex gap-0.5 bg-black/60 backdrop-blur-sm px-2 py-1 rounded-full border border-white/10">
@@ -510,21 +382,20 @@ Hazırlanıyor
 <h3 class="text-white text-lg font-bold mb-2 font-display group-hover:text-primary transition-colors">Stern-Gerlach Deneyi</h3>
 <p class="text-text-secondary text-sm mb-4 line-clamp-2">Atomların manyetik momentinin kuantizasyonunu ve spin kavramını keşfedin.</p>
 <div class="mt-auto pt-4 border-t border-border-dark/50">
-    <button onclick="alert('Bu simülasyon henüz hazır değil. Yapım aşamasında!');" class="w-full flex items-center justify-center gap-2 bg-white/5 hover:bg-primary text-white text-sm font-semibold py-2.5 rounded-lg transition-all group-hover:bg-primary">
+<button class="w-full flex items-center justify-center gap-2 bg-white/5 hover:bg-primary text-white text-sm font-semibold py-2.5 rounded-lg transition-all group-hover:bg-primary">
 <span class="material-symbols-outlined text-[18px]">play_arrow</span>
-                                Hazırlanıyor
+                                Simülasyonu Başlat
                             </button>
 </div>
 </div>
 </div>
-
 </div>
 <!-- Pagination -->
 <div class="max-w-7xl mx-auto mt-12 mb-8 flex flex-col md:flex-row items-center justify-between border-t border-border-dark pt-6">
 <span class="text-sm text-text-secondary mb-4 md:mb-0">
-                    Toplam <span class="text-white font-medium">9</span> simülasyondan <span class="text-white font-medium">1-9</span> arası gösteriliyor
+                    Toplam <span class="text-white font-medium">42</span> simülasyondan <span class="text-white font-medium">1-6</span> arası gösteriliyor
                 </span>
-<!-- <div class="flex items-center gap-2">
+<div class="flex items-center gap-2">
 <button class="size-9 flex items-center justify-center rounded-lg border border-border-dark bg-card-dark text-text-secondary hover:text-white hover:border-primary/50 transition-colors disabled:opacity-50" disabled="">
 <span class="material-symbols-outlined text-sm">chevron_left</span>
 </button>
@@ -536,7 +407,7 @@ Hazırlanıyor
 <button class="size-9 flex items-center justify-center rounded-lg border border-border-dark bg-card-dark text-text-secondary hover:text-white hover:border-primary/50 transition-colors">
 <span class="material-symbols-outlined text-sm">chevron_right</span>
 </button>
-</div> -->
+</div>
 </div>
 </main>
 </div>
