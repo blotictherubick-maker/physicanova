@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jackson Problem 7.1: Stokes Parametreleri ve Kutuplanma</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="stokes.css">
+</head>
+
+<body class="dark-theme">
+    <header class="app-header">
+        <a href="index.html" class="back-link">
+            <span class="material-symbols-outlined">arrow_back</span>
+            PhysicaNova
+        </a>
+        <h1>Optik Laboratuvarı: Stokes Parametreleri (Jackson 7.1)</h1>
+    </header>
+
+    <main class="dashboard-container">
+        <!-- Visualization Area -->
+        <section class="viewport-panel glass-panel">
+            <div class="canvas-container">
+                <!-- 2D View using Canvas -->
+                <canvas id="stokesCanvas"></canvas>
+
+                <!-- Overlay Data -->
+                <div class="labels-overlay">
+                    <div class="label-box top-label">Polarizasyon Elipsi</div>
+                    <div class="label-box bottom-label">Eksenler: A = <span id="valA">0.00</span>, B = <span
+                            id="valB">0.00</span></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Controls Area -->
+        <section class="controls-panel glass-panel">
+            <h2 class="panel-title flex items-center gap-2">
+                <span class="material-symbols-outlined text-primary">tune</span>
+                Stokes Parametreleri
+            </h2>
+
+            <!-- Problem Presets -->
+            <div class="control-group">
+                <h3>Jackson Problem 7.1 Seçimleri</h3>
+                <div class="radio-group preset-group">
+                    <button class="preset-btn active" id="btnPartA">Part (a)</button>
+                    <button class="preset-btn" id="btnPartB">Part (b)</button>
+                    <button class="preset-btn" id="btnCustom">Özel</button>
+                </div>
+            </div>
+
+            <!-- Parameters -->
+            <div class="control-group">
+                <h3><span>S<sub>0</sub> (Toplam Şiddet):</span> <span id="valS0" class="value-highlight">3</span></h3>
+                <input type="range" id="sliderS0" min="0" max="30" step="1" value="3">
+            </div>
+
+            <div class="control-group">
+                <h3><span>S<sub>1</sub> (Yatay/Dikey):</span> <span id="valS1" class="value-highlight">-1</span></h3>
+                <input type="range" id="sliderS1" min="-30" max="30" step="1" value="-1">
+            </div>
+
+            <div class="control-group">
+                <h3><span>S<sub>2</sub> (Çapraz 45°):</span> <span id="valS2" class="value-highlight">2</span></h3>
+                <input type="range" id="sliderS2" min="-30" max="30" step="1" value="2">
+            </div>
+
+            <div class="control-group">
+                <h3><span>S<sub>3</sub> (Dairesel):</span> <span id="valS3" class="value-highlight">-2</span></h3>
+                <input type="range" id="sliderS3" min="-30" max="30" step="1" value="-2">
+            </div>
+
+            <p id="polarizationWarning" style="color: #ef4444; font-size: 0.85rem; display: none;">Uyarı: S₀² &lt; S₁² +
+                S₂² + S₃² (Fiziksel olmayan durum). Değerler otomatik düzeltildi.</p>
+
+            <!-- Mathematical Results -->
+            <div class="results-box card-dark mt-auto">
+                <div style="display: flex; justify-content: space-between; align-items: center; cursor: pointer;"
+                    id="toggleMathSection">
+                    <h3>Sonuçlar & Çözüm Ekranı</h3>
+                    <span class="material-symbols-outlined" id="toggleIcon">expand_less</span>
+                </div>
+
+                <div class="math-steps" id="mathDetails">
+                    <div class="step">
+                        <span class="step-label">Lineer Baz (x-y):</span>
+                        <div style="font-size: 0.9rem; margin-top: 4px; color: #cbd5e1;">
+                            a₁ = <span id="res_a1" class="highlight">1.00</span>,
+                            a₂ = <span id="res_a2" class="highlight">1.41</span><br>
+                            &delta; (Faz Farkı) = <span id="res_delta" class="highlight">-45.00</span>&deg;
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <span class="step-label">Dairesel Baz:</span>
+                        <div style="font-size: 0.9rem; margin-top: 4px; color: #cbd5e1;">
+                            a₊ = <span id="res_ap" class="highlight">0.71</span>,
+                            a₋ = <span id="res_am" class="highlight">1.58</span><br>
+                            &Delta; (Faz Farkı) = <span id="res_DeltaC" class="highlight">116.57</span>&deg;
+                        </div>
+                    </div>
+
+                    <div class="step pt-2 mt-2 border-t border-slate-700">
+                        <span class="step-label">Elips Geometrisi:</span>
+                        <div style="font-size: 0.9rem; margin-top: 4px; color: #cbd5e1;">
+                            Yönelim (&psi;) = <span id="res_psi" class="highlight">58.28</span>&deg;<br>
+                            Eliptiklik (&epsilon;) = <span id="res_eps" class="highlight">-20.91</span>&deg;<br>
+                            Helisite = <span id="res_helicity" class="highlight" style="color:#38bdf8;">Negatif
+                                (Sağ)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <script src="stokes.js"></script>
+</body>
+
+</html>
