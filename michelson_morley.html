@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html class="dark" lang="tr">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Michelson-Morley Deneyi - PhysicaNova</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Noto+Sans:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1337ec",
+                        "primary-hover": "#0f2cb8",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101322",
+                        "card-dark": "#161821",
+                        "border-dark": "#282b39",
+                        "text-secondary": "#9da1b9",
+                        "laser-red": "#ff2a2a",
+                        "ether-blue": "#0ea5e9"
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"],
+                        "body": ["Noto Sans", "sans-serif"]
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    }
+                },
+            },
+        }
+    </script>
+    <link rel="stylesheet" href="michelson_morley.css" />
+</head>
+
+<body class="bg-background-dark text-slate-100 antialiased h-screen flex flex-col overflow-hidden font-body">
+
+    <!-- Top Navigation -->
+    <header class="flex items-center justify-between border-b border-border-dark bg-[#111218] px-6 py-3 shrink-0">
+        <div class="flex items-center gap-4">
+            <a href="index.html"
+                class="text-text-secondary hover:text-white transition-colors flex items-center justify-center">
+                <span class="material-symbols-outlined text-2xl">arrow_back</span>
+            </a>
+            <div class="h-6 w-px bg-border-dark"></div>
+            <div class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-primary">biotech</span>
+                <h1 class="text-white text-lg font-bold font-display">Michelson-Morley Deneyi</h1>
+            </div>
+            <span
+                class="ml-2 text-[10px] font-bold uppercase tracking-wider text-teal-400 bg-teal-400/10 px-2 py-0.5 rounded border border-teal-400/20 hidden sm:inline-block">Optik
+                • İleri Seviye</span>
+        </div>
+        <div class="flex items-center gap-3">
+            <button id="infoBtn"
+                class="flex items-center justify-center text-text-secondary hover:text-white p-2 rounded-lg hover:bg-white/5 transition-colors"
+                title="Teori ve Bilgi">
+                <span class="material-symbols-outlined">help</span>
+            </button>
+            <button id="resetSimBtn"
+                class="flex items-center justify-center p-2 rounded-lg bg-card-dark border border-border-dark text-white hover:border-primary hover:text-primary transition-all group"
+                title="Simülasyonu Sıfırla">
+                <span
+                    class="material-symbols-outlined group-hover:-rotate-180 transition-transform duration-500">refresh</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 flex flex-col lg:flex-row overflow-hidden relative">
+
+        <!-- Left Panel: Controls -->
+        <aside
+            class="w-full lg:w-80 border-r border-border-dark bg-[#111218] flex flex-col shrink-0 overflow-y-auto z-10 custom-scrollbar">
+            <div class="p-5 space-y-6">
+
+                <!-- Setup Section -->
+                <div>
+                    <h2 class="text-sm font-bold text-white uppercase tracking-wider mb-4 flex items-center gap-2">
+                        <span class="material-symbols-outlined text-base text-primary">settings_applications</span>
+                        Deney Ayarları
+                    </h2>
+
+                    <!-- Theoretical Model Toggle -->
+                    <div class="mb-5 bg-card-dark p-3 rounded-xl border border-border-dark relative overflow-hidden">
+                        <div
+                            class="absolute top-0 right-0 w-16 h-16 bg-primary/5 rounded-bl-[100%] pointer-events-none">
+                        </div>
+                        <label class="block text-xs font-semibold text-text-secondary mb-2">Teorik Model</label>
+                        <div class="flex bg-[#101322] rounded-lg p-1 border border-border-dark relative">
+                            <!-- Toggle Background Slider -->
+                            <div id="modelToggleBg"
+                                class="absolute top-1 left-1 bottom-1 w-[calc(50%-4px)] bg-primary rounded-md transition-transform duration-300 ease-in-out shadow-sm shadow-primary/20">
+                            </div>
+
+                            <button id="modelEther"
+                                class="flex-1 text-xs py-1.5 font-semibold text-white z-10 transition-colors"
+                                data-model="ether">
+                                Eter Hipotezi
+                            </button>
+                            <button id="modelRelativity"
+                                class="flex-1 text-xs py-1.5 font-semibold text-text-secondary z-10 transition-colors"
+                                data-model="relativity">
+                                Özel Görelilik
+                            </button>
+                        </div>
+                        <p id="modelDescription" class="text-[10px] text-text-secondary mt-2 leading-relaxed h-[30px]">
+                            Eter hipotezi: Dönen dünyada ışık, 'eter rüzgarı' nedeniyle kollarda farklı sürelerde
+                            ilerler.
+                        </p>
+                    </div>
+
+                    <!-- Setup Controls -->
+                    <div class="space-y-4">
+                        <!-- Ether Velocity -->
+                        <div class="control-group">
+                            <div class="flex justify-between mb-1 items-end">
+                                <label class="text-xs font-medium text-text-secondary flex items-center gap-1">
+                                    <span class="material-symbols-outlined text-[14px] text-ether-blue">air</span>
+                                    Eter Rüzgarı Hızı (<span class="italic font-serif">v</span>)
+                                </label>
+                                <span id="vVal" class="text-xs font-bold text-white tabular-nums">0 <span
+                                        class="text-text-secondary text-[10px] font-normal">c</span></span>
+                            </div>
+                            <input type="range" id="vSlider" min="0" max="0.5" step="0.01" value="0.1"
+                                class="w-full h-1.5 bg-border-dark rounded-lg appearance-none cursor-pointer ether-slider">
+                            <div class="flex justify-between mt-1">
+                                <span class="text-[9px] text-text-secondary">0c</span>
+                                <span class="text-[9px] text-ether-blue font-medium">Büyük Abartı</span>
+                                <span class="text-[9px] text-text-secondary">0.5c</span>
+                            </div>
+                        </div>
+
+                        <!-- Rotation Angle -->
+                        <div class="control-group">
+                            <div class="flex justify-between mb-1 items-end">
+                                <label class="text-xs font-medium text-text-secondary flex items-center gap-1">
+                                    <span class="material-symbols-outlined text-[14px]">rotate_right</span>
+                                    Düzeneğin Açısı (<span class="italic font-serif">θ</span>)
+                                </label>
+                                <span id="angleVal" class="text-xs font-bold text-white tabular-nums">0°</span>
+                            </div>
+                            <input type="range" id="angleSlider" min="0" max="360" step="1" value="0"
+                                class="w-full h-1.5 bg-border-dark rounded-lg appearance-none cursor-pointer focus:ring-1 focus:ring-primary/50 default-slider">
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="border-border-dark/50">
+
+                <!-- Beam / Optics Section -->
+                <div>
+                    <h2 class="text-sm font-bold text-white uppercase tracking-wider mb-4 flex items-center gap-2">
+                        <span class="material-symbols-outlined text-base text-laser-red">flare</span> Lazer Ayarları
+                    </h2>
+
+                    <!-- Wavelength -->
+                    <div class="control-group mb-4">
+                        <div class="flex justify-between mb-1 items-end">
+                            <label class="text-xs font-medium text-text-secondary">Dalga Boyu (<span
+                                    class="italic font-serif">λ</span>)</label>
+                            <span id="lambdaVal"
+                                class="text-xs font-bold text-laser-red drop-shadow-[0_0_2px_rgba(255,42,42,0.5)] tabular-nums">650
+                                nm</span>
+                        </div>
+                        <input type="range" id="lambdaSlider" min="400" max="700" step="10" value="650"
+                            class="w-full h-1.5 rounded-lg appearance-none cursor-pointer wavelength-slider">
+                        <div class="w-full h-2 mt-1 rounded spectrum-bar opacity-80"></div>
+                    </div>
+                </div>
+
+                <hr class="border-border-dark/50">
+
+                <!-- Observation Panel Data -->
+                <div class="bg-card-dark p-4 rounded-xl border border-border-dark">
+                    <h3 class="text-xs font-bold text-white mb-3 flex items-center gap-1">
+                        <span class="material-symbols-outlined text-[16px] text-primary">data_usage</span> Gözlem
+                        Verileri
+                    </h3>
+
+                    <div class="space-y-2">
+                        <div class="flex justify-between items-center py-1 border-b border-border-dark/30">
+                            <span class="text-xs text-text-secondary">Beklenen Saçak Kayması:</span>
+                            <span id="fringeShiftVal" class="text-sm font-bold text-white font-mono">0.00</span>
+                        </div>
+                        <div class="flex justify-between items-center py-1">
+                            <span class="text-xs text-text-secondary">Hedeflenen Sonuç:</span>
+                            <span id="expectedResultStatus" class="text-xs font-semibold text-yellow-500">Girişim
+                                Yok</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </aside>
+
+        <!-- Right Area: Visualizations -->
+        <div class="flex-1 flex flex-col lg:flex-row relative bg-[#0a0a0a]">
+
+            <!-- Ether Wind Visualizer (Background Effects) -->
+            <div id="etherBackground"
+                class="absolute inset-0 pointer-events-none opacity-30 transition-opacity duration-500 z-0">
+                <canvas id="etherWindCanvas" class="w-full h-full"></canvas>
+            </div>
+
+            <!-- Interferometer Top View -->
+            <div class="flex-1 relative z-10 border-b border-border-dark p-4 flex flex-col min-h-[50vh]">
+                <h3 class="absolute top-4 left-6 text-sm font-semibold text-white/50 flex items-center gap-2">
+                    <span class="material-symbols-outlined text-base">architecture</span>
+                    İnterferometre Düzeneği (Kuşbakışı)
+                </h3>
+
+                <!-- Main Simulation Canvas -->
+                <div class="flex-1 w-full h-full flex items-center justify-center relative mt-6">
+                    <div class="relative max-w-full max-h-full" style="aspect-ratio: 1/1;">
+                        <canvas id="setupCanvas" class="w-full h-full drop-shadow-2xl"></canvas>
+                    </div>
+                </div>
+
+                <!-- Legend -->
+                <div
+                    class="absolute bottom-4 left-6 flex gap-4 text-[10px] text-text-secondary bg-black/40 px-3 py-1.5 rounded backdrop-blur-sm border border-white/5">
+                    <div class="flex items-center gap-1.5">
+                        <div class="w-3 h-0.5 bg-laser-red shadow-[0_0_3px_#ff2a2a]"></div> Lazer Işını
+                    </div>
+                    <div class="flex items-center gap-1.5">
+                        <div class="w-3 h-3 bg-white/80 rounded-sm"></div> Tam Yansıtıcı Ayna
+                    </div>
+                    <div class="flex items-center gap-1.5">
+                        <div class="w-3 h-3 bg-cyan-400/50 rounded-sm"></div> Yarı Geçirgen Ayna
+                    </div>
+                </div>
+
+                <!-- Theory Badge overlay -->
+                <div id="theoryBadge"
+                    class="absolute top-4 right-6 bg-card-dark border border-border-dark px-3 py-1.5 rounded-lg flex items-center gap-2 shadow-lg transition-all duration-300">
+                    <div class="w-2 h-2 rounded-full bg-ether-blue animate-pulse-slow indicator-dot"></div>
+                    <span class="text-xs font-medium text-white badge-text">Eter Hipotezi Aktif</span>
+                </div>
+            </div>
+
+            <!-- Pattern Observation Screen -->
+            <div class="w-full lg:w-1/3 bg-[#111218] p-4 relative z-10 flex flex-col border-l border-border-dark">
+                <h3 class="absolute top-4 left-6 text-sm font-semibold text-white/50 flex items-center gap-2 z-20">
+                    <span class="material-symbols-outlined text-base">visibility</span>
+                    Gözlem Ekranı (Girişim Deseni)
+                </h3>
+
+                <div class="flex-1 w-full flex justify-center items-center mt-6 h-full">
+                    <div
+                        class="relative w-[300px] h-[300px] max-w-full max-h-full border-[8px] border-[#222] rounded-full overflow-hidden shadow-[0_0_30px_rgba(0,0,0,0.8)_inset] bg-black">
+                        <!-- Crosshair -->
+                        <div class="absolute inset-x-0 top-1/2 h-px bg-white/20 -translate-y-1/2 z-10"></div>
+                        <div class="absolute inset-y-0 left-1/2 w-px bg-white/20 -translate-x-1/2 z-10"></div>
+
+                        <!-- Pattern Canvas -->
+                        <canvas id="patternCanvas" class="w-full h-full absolute inset-0"></canvas>
+
+                        <!-- Vignette -->
+                        <div
+                            class="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_40%,rgba(0,0,0,0.8)_100%)] pointer-events-none z-20">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Info Modal -->
+    <div id="infoModal"
+        class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flexitems-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300 flex">
+        <div
+            class="bg-card-dark border border-border-dark rounded-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto transform scale-95 transition-transform duration-300 shadow-2xl">
+            <div
+                class="sticky top-0 bg-card-dark/90 backdrop-blur border-b border-border-dark px-6 py-4 flex justify-between items-center z-10">
+                <h2 class="text-xl font-bold text-white font-display">Michelson-Morley Deneyi Hakkında</h2>
+                <button id="closeModalBtn" class="text-text-secondary hover:text-white">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+            <div class="p-6 text-sm text-text-secondary space-y-4 font-body leading-relaxed">
+                <p><strong>Amaç:</strong> Işığın uzayda yayılmasını sağladığına inanılan varsayımsal maddesel ortam olan
+                    <span class="text-white font-medium">Esir'in (Eter)</span> varlığını tespit etmek için
+                    tasarlanmıştır.
+                </p>
+                <div class="bg-black/40 rounded-lg p-4 border border-border-dark/50">
+                    <h4 class="text-white font-semibold mb-2">Nasıl Çalışır?</h4>
+                    <ul class="list-disc pl-5 space-y-1">
+                        <li>Farklı yönlere (biri eter akıntısına paralel, diğeri dik) giden iki ışık demeti bölünür ve
+                            aynalardan yansıtılıp tekrar birleştirilir.</li>
+                        <li>Eğer dünya eter içinde hareket ediyorsa, akıntıya paralel giden ışığın gidiş-dönüş süresi,
+                            dik giden ışığınkinden daha uzun olmalıdır.</li>
+                        <li>Düzeneği (interferometreyi) döndürdüğümüzde bu zaman farkı değişmeli ve gözlem ekranındaki
+                            girişim saçaklarında belirgin bir kayma (<span class="italic text-primary">fringe
+                                shift</span>) oluşturmalıdır.</li>
+                    </ul>
+                </div>
+                <div class="bg-primary/10 border-l-4 border-primary p-4 rounded-r-lg">
+                    <h4 class="text-white font-semibold mb-1">Tarihi Sonuç (Özel Görelilik)</h4>
+                    <p>Michelson ve Morley (1887) düzeneği tüm yönlerde döndürdü ancak <strong>hiçbir kayma
+                            gözlemleyemedi (Null Result)</strong>. Bu şaşırtıcı sonuç, ışık hızının kaynağın veya
+                        gözlemcinin hareketinden bağımsız ve tüm yönlerde sabit olduğunu gösterdi ve Albert Einstein'ın
+                        <strong>Özel Görelilik Kuramı'nın</strong> temellerini attı.
+                    </p>
+                </div>
+                <p class="text-xs italic pt-2">Simülasyonumuzda <strong>"Eter Hipotezi"ni</strong> seçerseniz, tarihteki
+                    bilim insanlarının beklediği klasik fizik sonucunu; <strong>"Özel Görelilik"i</strong> seçerseniz
+                    ise gerçekte olan durumu gözlemleyebilirsiniz.</p>
+            </div>
+            <div class="border-t border-border-dark px-6 py-4 flex justify-end">
+                <button id="understandBtn"
+                    class="bg-primary hover:bg-primary-hover text-white px-6 py-2 rounded-lg font-semibold transition-colors">
+                    Anladım
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="michelson_morley.js"></script>
+</body>
+
+</html>

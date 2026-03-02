@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>202 Sınıf Deneyleri: Fermat Prensibi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="202_sinif_deneyleri.css">
+</head>
+
+<body>
+    <header class="app-header">
+        <a href="index.html" class="back-link">← PhysicaNova</a>
+        <h1>202 Sınıf Deneyleri</h1>
+    </header>
+
+    <main class="experiment-container">
+        <!-- Question Panel -->
+        <section class="question-panel glass-panel">
+            <h2>Soru 1: Göreceli Optik - Işığın "Bilinçli" Rotası</h2>
+            <p class="scenario">
+                Sahilde görevli bir cankurtaran, suda boğulma tehlikesi geçiren bir yüzücü fark eder.
+                Cankurtaranın kumdaki koşma hızı <strong>v₁</strong>, sudaki yüzme hızı ise <strong>v₂</strong>'dir.
+                Kumda çok daha hızlı hareket edebilmektedir (<span class="math">v₁ > v₂</span>).
+            </p>
+            <p class="question-text">
+                Boğulan kişiye <strong>en kısa sürede</strong> ulaşmak için cankurtaran hangi yolu seçmelidir?
+                Düz bir çizgi çizip fiziksel olarak en kısa mesafeyi mi almalıdır, yoksa kumda daha fazla,
+                suda daha az zaman geçireceği kırık bir yolu mu tercih etmelidir?
+            </p>
+            <div class="sub-questions">
+                <div class="q-block">
+                    <strong>a)</strong> Bu senaryodan yola çıkarak, ışığın havadan (n₁) suya (n₂) geçerken,
+                    hızının azaldığını bilerek yön değiştirip normale yaklaşmasının (Snell Yasası) kavramsal nedenini
+                    açıklayınız.
+                </div>
+                <div class="q-block class-discussion">
+                    <strong>b) (Sınıf Tartışması İçin):</strong> Cankurtaranın beyni vardır ve en kısa zamanı hesaplamak
+                    için durumu analiz edebilir. Ancak cansız bir elektromanyetik dalga olan ışık yüzeye çarptığı an
+                    en kısa zamanı alan yolu seçmesi gerektiğini ve o yolun neresi olduğunu nasıl "bilir"?
+                    Işık geleceği mi görüyor?
+                </div>
+            </div>
+        </section>
+
+        <!-- Simulation Panel -->
+        <section class="simulation-panel glass-panel">
+            <div class="canvas-wrapper">
+                <canvas id="fermatCanvas"></canvas>
+                <div class="environment-labels">
+                    <span class="env-label sand">Kum (Hava / Hızlı Ortam) <span id="v1Display">v₁ = 2.0
+                            m/s</span></span>
+                    <span class="env-label water">Su (Cam / Yavaş Ortam) <span id="v2Display">v₂ = 1.0 m/s</span></span>
+                </div>
+            </div>
+
+            <div class="dashboard">
+                <div class="controls">
+                    <h3>Parametreler</h3>
+                    <div class="slider-group">
+                        <label>Ortam 1 Hızı (v<sub>1</sub>)</label>
+                        <input type="range" id="v1Slider" min="1.0" max="4.0" step="0.1" value="2.0">
+                    </div>
+                    <div class="slider-group">
+                        <label>Ortam 2 Hızı (v<sub>2</sub>)</label>
+                        <input type="range" id="v2Slider" min="0.5" max="3.0" step="0.1" value="1.0">
+                    </div>
+                    <button id="findOptimalBtn" class="btn primary">Optimum Rotayı Bul (Snell)</button>
+                </div>
+
+                <div class="metrics">
+                    <h3>Sonuçlar</h3>
+                    <div class="metric-card time-card">
+                        <span class="label">Geçen Süre (t)</span>
+                        <span class="value" id="totalTimeDisplay">0.00 s</span>
+                        <div class="bar-container">
+                            <div id="timeBar" class="bar"></div>
+                        </div>
+                        <span class="sub-label">Hedef Minimum: <span id="minTimeDisplay">0.00 s</span></span>
+                    </div>
+                    <div class="metric-row">
+                        <div class="metric-card small">
+                            <span class="label">Mesafe 1 (Ortam 1)</span>
+                            <span class="value" id="dist1Display">0.0 m</span>
+                        </div>
+                        <div class="metric-card small">
+                            <span class="label">Mesafe 2 (Ortam 2)</span>
+                            <span class="value" id="dist2Display">0.0 m</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="snell-checker">
+                    <h3>Snell Yasası Doğrulaması</h3>
+                    <p class="description">Öğrenci Kılavuzu: Toplam zaman grafiği yeşil olana (en düşük süreyi bulana)
+                        kadar kırılma noktasını sürükleyin. Sonrasında aşağıdaki oranları kıyaslayın.</p>
+                    <div class="ratio-compare">
+                        <div class="ratio">
+                            <span>sin(θ₁) / sin(θ₂)</span>
+                            <span id="sinRatio">0.00</span>
+                        </div>
+                        <div class="equals">≈</div>
+                        <div class="ratio">
+                            <span>v₁ / v₂ (Sabit)</span>
+                            <span id="velRatio">2.00</span>
+                        </div>
+                    </div>
+                    <div id="snellMatchIndicator" class="snell-indicator">Eşleşme Bekleniyor...</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="202_sinif_deneyleri.js"></script>
+</body>
+
+</html>

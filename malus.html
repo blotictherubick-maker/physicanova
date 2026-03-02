@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Malus Yasası: Işığın Kutuplanması</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="malus.css">
+</head>
+
+<body class="dark-theme">
+    <header class="app-header">
+        <a href="index.html" class="back-link">
+            <span class="material-symbols-outlined">arrow_back</span>
+            PhysicaNova
+        </a>
+        <h1>Optik Laboratuvarı: Malus Yasası</h1>
+    </header>
+
+    <main class="dashboard-container">
+        <!-- Visualization Area -->
+        <section class="viewport-panel glass-panel">
+            <div class="canvas-container">
+                <!-- 3D Isometric View using Canvas -->
+                <canvas id="malusCanvas"></canvas>
+
+                <!-- Overlay Data -->
+                <div class="labels-overlay">
+                    <div class="label-box src-label">Işık Kaynağı (<span id="srcTypeLabel">Polarize Değil</span>)</div>
+                    <div class="label-box p1-label">Polarizör 1 (θ₁ = <span id="p1AngleLabel">0</span>°)</div>
+                    <div class="label-box p2-label">Polarizör 2 (θ₂ = <span id="p2AngleLabel">45</span>°)</div>
+                    <div class="label-box screen-label">Ekran (Şiddet: <span id="finalIntLabel">50</span>%)</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Controls Area -->
+        <section class="controls-panel glass-panel">
+            <h2 class="panel-title flex items-center gap-2">
+                <span class="material-symbols-outlined text-primary">tune</span>
+                Deney Parametreleri
+            </h2>
+
+            <div class="control-group">
+                <h3>Işık Kaynağı</h3>
+                <div class="radio-group">
+                    <label class="radio-btn">
+                        <input type="radio" name="sourceType" value="unpolarized" checked>
+                        <span class="btn-content">Polarize Değil</span>
+                    </label>
+                    <label class="radio-btn">
+                        <input type="radio" name="sourceType" value="polarized">
+                        <span class="btn-content">Dikey Polarize (0°)</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <h3><span>Polarizör 1 (P<sub>1</sub>) Açısı:</span> <span id="theta1Display"
+                        class="value-highlight">0°</span></h3>
+                <input type="range" id="theta1Slider" min="0" max="180" step="1" value="0">
+                <p class="helper-text">İlk filtrenin (polarizör) iletim ekseninin dikey ile yaptığı açı.</p>
+            </div>
+
+            <div class="control-group">
+                <h3><span>Polarizör 2 (P<sub>2</sub>) Analizör Açısı:</span> <span id="theta2Display"
+                        class="value-highlight">90°</span></h3>
+                <input type="range" id="theta2Slider" min="0" max="180" step="1" value="90">
+                <p class="helper-text">İkinci filtrenin (analizör) iletim ekseninin dikey ile yaptığı açı.</p>
+            </div>
+
+            <!-- Mathematical Results -->
+            <div class="results-box card-dark mt-auto">
+                <h3>Malus Yasası Hesaplaması</h3>
+
+                <div class="math-steps">
+                    <div class="step">
+                        <span class="step-label">Başlangıç Şiddeti (I<sub>0</sub>):</span>
+                        <span class="step-value">100%</span>
+                    </div>
+
+                    <div class="step" id="p1StepBox">
+                        <span class="step-label">P<sub>1</sub>'den sonraki Şiddet (I<sub>1</sub>):</span>
+                        <span class="step-equation"></span>
+                        <span class="step-value highlight" id="i1ValueDisplay">50.0%</span>
+                    </div>
+
+                    <div class="step" id="p2StepBox">
+                        <span class="step-label">P<sub>2</sub>'den sonraki Şiddet (I<sub>2</sub>):</span>
+                        <span class="step-equation">I<sub>1</sub> cos<sup>2</sup>(&Delta;&theta;)</span>
+                        <span class="step-value highlight result" id="i2ValueDisplay">0.0%</span>
+                    </div>
+
+                    <!-- Progress Bar for Final Intensity -->
+                    <div class="intensity-bar-container mt-3">
+                        <div class="intensity-track">
+                            <div class="intensity-fill" id="intensityProgressBar" style="width: 25%"></div>
+                        </div>
+                        <div class="intensity-labels">
+                            <span>0% (Karanlık)</span>
+                            <span>100% (Parlak)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <script src="malus.js"></script>
+</body>
+
+</html>

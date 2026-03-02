@@ -1,0 +1,96 @@
+/* michelson_morley.css */
+
+/* Custom Scrollbar for the app */
+.custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #282b39;
+    border-radius: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #3f445a;
+}
+
+/* Wavelength Slider Styling */
+.wavelength-slider {
+    background: transparent;
+}
+.wavelength-slider::-webkit-slider-thumb {
+    appearance: none;
+    width: 14px;
+    height: 14px;
+    background: #fff;
+    border: 2px solid #ff2a2a; /* Will be updated by JS */
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    margin-top: -6px;
+}
+.wavelength-slider::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 4px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 4px;
+}
+
+/* Base Default Sliders (Ether, Angle) */
+.default-slider::-webkit-slider-thumb {
+    appearance: none;
+    width: 14px;
+    height: 14px;
+    background: #1337ec;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 0 5px rgba(0,0,0,0.5);
+    margin-top: -5px; /* (thumb height/2) - (track height/2) */
+    transition: transform 0.1s;
+}
+.default-slider::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
+}
+
+.ether-slider::-webkit-slider-thumb {
+    appearance: none;
+    width: 14px;
+    height: 14px;
+    background: #0ea5e9;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 0 5px rgba(0,0,0,0.5);
+    margin-top: -5px;
+    transition: transform 0.1s;
+}
+.ether-slider::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
+}
+
+/* Spectrum helper bar */
+.spectrum-bar {
+    background: linear-gradient(to right, 
+        violet 0%, 
+        indigo 15%, 
+        blue 30%, 
+        cyan 45%, 
+        green 60%, 
+        yellow 75%, 
+        orange 85%, 
+        red 100%);
+}
+
+.modal-open {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+}
+
+.modal-open > div {
+    transform: scale(1) !important;
+}
