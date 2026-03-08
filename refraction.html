@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kırılma ve Görünür Derinlik</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="lens_sim.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+
+<body class="dark-theme">
+    <header class="app-header">
+        <a href="index.html" class="back-link">
+            <span class="material-symbols-outlined">arrow_back</span>
+            PhysicaNova
+        </a>
+        <h1>Optik Laboratuvarı: Kırılma Yüzeyleri</h1>
+    </header>
+
+    <main class="dashboard-container">
+        <!-- Visualization Area -->
+        <section class="viewport-panel glass-panel">
+            <div class="canvas-container">
+                <canvas id="refractionCanvas"></canvas>
+
+                <!-- Overlay Data -->
+                <div class="labels-overlay">
+                    <div class="label-box top-left-label" style="background: rgba(0,0,0,0.8); padding: 1rem;">
+                        Denklem: <br><span
+                            style="font-size: 1.2rem; display: block; margin-top: 0.5rem; text-align: center; font-family: 'Times New Roman', Times, serif;">n<sub>a</sub>/s
+                            + n<sub>b</sub>/s' = (n<sub>b</sub> - n<sub>a</sub>)/R</span>
+                    </div>
+                    <div class="label-box top-right-label">
+                        Büyütme (m): <span id="magLabel">1.0</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Controls Area -->
+        <section class="controls-panel glass-panel">
+            <h2 class="panel-title flex items-center gap-2">
+                <span class="material-symbols-outlined text-primary">water_drop</span>
+                Ortam Seçenekleri
+            </h2>
+
+            <div class="control-group">
+                <h3><span>Gelen Ortam İndisi (n<sub>a</sub>):</span> <span id="naDisplay"
+                        class="value-highlight">1.33</span></h3>
+                <input type="range" id="naSlider" min="1.0" max="2.5" step="0.01" value="1.33">
+                <p class="helper-text">Işığın çıktığı (cismin bulunduğu) ortam (örn. Su = 1.33).</p>
+            </div>
+
+            <div class="control-group">
+                <h3><span>Giden Ortam İndisi (n<sub>b</sub>):</span> <span id="nbDisplay"
+                        class="value-highlight">1.00</span></h3>
+                <input type="range" id="nbSlider" min="1.0" max="2.5" step="0.01" value="1.00">
+                <p class="helper-text">Işığın girdiği (gözlemcinin bulunduğu) ortam (örn. Hava = 1.00).</p>
+            </div>
+
+            <div class="control-group">
+                <h3><span>Yüzey Eğriliği (R):</span> <span id="rDisplay" class="value-highlight">Düzlem (∞)</span></h3>
+                <input type="range" id="rSlider" min="-500" max="500" step="1" value="0">
+                <p class="helper-text">0 ise düzlem yüzeydir. Görünür derinlik deneyi için 0'da bırakın.</p>
+            </div>
+
+            <div class="control-group">
+                <h3><span>Cisim Uzaklığı (s):</span> <span id="sDisplay" class="value-highlight">200</span> birim</h3>
+                <input type="range" id="sSlider" min="20" max="400" step="1" value="200">
+            </div>
+
+            <!-- Mathematical Results -->
+            <div class="results-box card-dark mt-auto">
+                <h3>Sonuçlar</h3>
+
+                <div class="math-steps">
+                    <div class="step">
+                        <span class="step-label">Cisim Uzaklığı (s):</span>
+                        <span class="step-value"><span id="resS">200</span></span>
+                    </div>
+
+                    <div class="step">
+                        <span class="step-label">Görüntü Uzaklığı (s'):</span>
+                        <span class="step-value result" id="resSPrime">-150.4</span>
+                    </div>
+
+                    <div class="step" style="border-bottom: none;">
+                        <span class="step-label">Durum:</span>
+                        <span class="step-value" id="resType"
+                            style="color: var(--accent-yellow); font-size: 1rem;">Sanal Görüntü (Görünür
+                            Derinlik)</span>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <script src="refraction.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İnce Mercek Simülatörü</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="lens_sim.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+
+<body class="dark-theme">
+    <header class="app-header">
+        <a href="index.html" class="back-link">
+            <span class="material-symbols-outlined">arrow_back</span>
+            PhysicaNova
+        </a>
+        <h1>Optik Laboratuvarı: Mercekler</h1>
+    </header>
+
+    <main class="dashboard-container">
+        <!-- Visualization Area -->
+        <section class="viewport-panel glass-panel">
+            <div class="canvas-container">
+                <canvas id="lensCanvas"></canvas>
+
+                <!-- Overlay Data -->
+                <div class="labels-overlay">
+                    <div class="label-box top-left-label">
+                        İnce Mercek Denklemi: <span>1/s + 1/s' = 1/f</span>
+                    </div>
+                    <div class="label-box top-right-label">
+                        Büyütme (m): <span id="magLabel">1.0</span>
+                    </div>
+                    <div class="instruction-overlay">Cismi (ok) farenizle sağa/sola taşıyabilirsiniz.</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Controls Area -->
+        <section class="controls-panel glass-panel">
+            <h2 class="panel-title flex items-center gap-2">
+                <span class="material-symbols-outlined text-primary">tune</span>
+                Deney Parametreleri
+            </h2>
+
+            <!-- Mercek Tipi Seçimi -->
+            <div class="control-group">
+                <h3>Mercek Tipi</h3>
+                <div class="radio-group">
+                    <label class="radio-btn">
+                        <input type="radio" name="lensType" value="converging" checked>
+                        <span class="btn-content">İnce Kenarlı (Yakınsak)</span>
+                    </label>
+                    <label class="radio-btn">
+                        <input type="radio" name="lensType" value="diverging">
+                        <span class="btn-content">Kalın Kenarlı (Iraksak)</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="control-group" id="focalLengthControl">
+                <h3><span>Odak Uzaklığı (|f|):</span> <span id="focalDisplay" class="value-highlight">100</span> birim
+                </h3>
+                <input type="range" id="focalSlider" min="30" max="300" step="1" value="100">
+                <p class="helper-text">Mercek ile odak noktaları (F1, F2) arasındaki mesafe.</p>
+            </div>
+
+            <div class="control-group">
+                <h3><span>Cisim Uzaklığı (s):</span> <span id="sDisplay" class="value-highlight">200</span> birim</h3>
+                <input type="range" id="sSlider" min="20" max="600" step="1" value="200">
+            </div>
+
+            <div class="control-group">
+                <h3><span>Cisim Boyu (y):</span> <span id="yDisplay" class="value-highlight">60</span> birim</h3>
+                <input type="range" id="ySlider" min="-120" max="120" step="1" value="60">
+            </div>
+
+            <!-- Mathematical Results -->
+            <div class="results-box card-dark mt-auto">
+                <h3>Gerçek Zamanlı Sonuçlar</h3>
+
+                <div class="math-steps">
+                    <div class="step">
+                        <span class="step-label">Odak (f):</span>
+                        <span class="step-value highlight" id="resF">100</span>
+                    </div>
+
+                    <div class="step">
+                        <span class="step-label">Cisim Uzaklığı (s):</span>
+                        <span class="step-value"><span id="resS">200.0</span></span>
+                    </div>
+
+                    <div class="step">
+                        <span class="step-label">Görüntü Uzaklığı (s'):</span>
+                        <span class="step-value result" id="resSPrime">200.0</span>
+                    </div>
+
+                    <div class="step">
+                        <span class="step-label">Görüntü Özellikleri:</span>
+                        <span class="step-value" id="resType"
+                            style="color: var(--accent-green); font-size: 1rem;">Gerçek, Ters</span>
+                    </div>
+
+                    <div class="step">
+                        <span class="step-label">Görüntü Boyu (y'):</span>
+                        <span class="step-value" id="resYPrime">-60.0</span>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <script src="lens_sim.js"></script>
+</body>
+
+</html>
