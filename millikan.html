@@ -22,6 +22,8 @@
     <meta property="og:image" content="https://physicanova.com/og-image.jpg">
 
     <link rel="stylesheet" href="millikan.css">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet">
     <link
         href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Inter:wght@400;600&display=swap"
         rel="stylesheet">
@@ -30,10 +32,17 @@
 <body>
 
     <div class="app-container">
-        <header>
-            <a href="index.html" class="home-btn"
-                style="position: absolute; left: 20px; text-decoration: none; font-size: 1.5rem;" title="Home">🏠</a>
-            <h1>Millikan Oil Drop Experiment</h1>
+        <header
+            style="display: flex; align-items: center; padding: 1rem 2rem; background: rgba(17, 18, 24, 0.95); border-bottom: 1px solid rgba(255, 255, 255, 0.08); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); z-index: 50; position: relative; text-align: left;">
+            <a href="index.html"
+                style="display: flex; align-items: center; gap: 0.5rem; color: #9da1b9; text-decoration: none; font-weight: 500; margin-right: 2rem; transition: color 0.2s; font-family: 'Inter', sans-serif;"
+                onmouseover="this.style.color='#1337ec'" onmouseout="this.style.color='#9da1b9'">
+                <span class="material-symbols-outlined">arrow_back</span>
+                PhysicaNova
+            </a>
+            <h1
+                style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 1.5rem; font-weight: 700; color: #fff;">
+                Millikan Oil Drop Experiment</h1>
         </header>
 
         <main class="lab-bench">
