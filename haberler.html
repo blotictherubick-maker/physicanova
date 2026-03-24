@@ -98,56 +98,11 @@
                 </h1>
             </div>
 
-            <div class="space-y-6">
-                <!-- Example Blog Post -->
-                <article
-                    class="bg-card-dark border border-border-dark rounded-xl p-6 hover:border-primary/50 transition-colors shadow-lg">
-                    <div class="flex items-center gap-4 mb-4">
-                        <span
-                            class="bg-primary/10 text-primary text-xs font-bold px-3 py-1 rounded-full border border-primary/20">Güncelleme</span>
-                        <time class="text-text-secondary text-sm font-medium">23 Mart 2026</time>
-                    </div>
-                    <h2 class="text-xl font-bold text-white mb-3 cursor-pointer hover:text-primary transition-colors">
-                        PhysicaNova V2: Yeni Simülasyonlar ve Modern Arayüz
-                    </h2>
-                    <p class="text-text-secondary leading-relaxed mb-5">
-                        Fizik eğitimini daha interaktif hale getirmek için platformumuzu yeniledik. Yeni arayüz tasarımı
-                        ile hem mobil cihazlarda hem de masaüstünde daha iyi bir deneyim sunuyoruz. Optik
-                        Laboratuvarı'na 3 yeni sanal deney eklendi ve tüm eski simülasyonların arayüzü güncellendi.
-                    </p>
-                    <a href="#"
-                        class="inline-flex items-center gap-2 text-primary font-semibold text-sm hover:text-primary-hover transition-colors group">
-                        Devamını Oku
-                        <span
-                            class="material-symbols-outlined text-base group-hover:translate-x-1 transition-transform">arrow_forward</span>
-                    </a>
-                </article>
-
-                <!-- Example Blog Post 2 -->
-                <article
-                    class="bg-card-dark border border-border-dark rounded-xl p-6 hover:border-primary/50 transition-colors shadow-lg">
-                    <div class="flex items-center gap-4 mb-4">
-                        <span
-                            class="bg-teal-500/10 text-teal-400 text-xs font-bold px-3 py-1 rounded-full border border-teal-500/20">Yeni
-                            İçerik</span>
-                        <time class="text-text-secondary text-sm font-medium">15 Mart 2026</time>
-                    </div>
-                    <h2 class="text-xl font-bold text-white mb-3 cursor-pointer hover:text-primary transition-colors">
-                        Michelson-Morley Deneyi Simülasyonu Eklendi
-                    </h2>
-                    <p class="text-text-secondary leading-relaxed mb-5">
-                        Özel Görelilik teorisinin temelini atan tarihi Michelson-Morley deneyinin etkileşimli
-                        simülasyonu artık platformumuzda. Eter hipotezi ile gerçekliğin sonuçlarını kıyaslayın ve neden
-                        "Null Result" alındığını kendiniz gözlemleyin. Modern fizik konularına sağlam bir temel atmak
-                        için ideal bir içerik!
-                    </p>
-                    <a href="#"
-                        class="inline-flex items-center gap-2 text-primary font-semibold text-sm hover:text-primary-hover transition-colors group">
-                        Deneye Git
-                        <span
-                            class="material-symbols-outlined text-base group-hover:translate-x-1 transition-transform">arrow_forward</span>
-                    </a>
-                </article>
+            <div class="space-y-6" id="news-container">
+                <!-- Data fetching in progress... -->
+                <div class="flex justify-center p-10">
+                    <div class="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-primary"></div>
+                </div>
             </div>
         </div>
     </main>
@@ -156,6 +111,7 @@
         style="text-align: center; padding: 1.5rem; color: #9da1b9; font-size: 0.85rem; border-top: 1px solid #282b39; background-color: #111218;">
         <p>© 2026 PhysicaNova</p>
     </footer>
+    <script type="module" src="haberler.js"></script>
 </body>
 
 </html>
