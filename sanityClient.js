@@ -6,7 +6,7 @@ import { toHTML } from 'https://esm.sh/@portabletext/to-html@2.0.0';
 export const sanityClient = createClient({
   projectId: '3778qog4', // TODO: panelden alınacak ID
   dataset: 'production',
-  useCdn: true, // Production için hızlı CDN okuması
+  useCdn: false, // Her zaman en taze veriyi çekmek için CDN'i geçici olarak kapatıyoruz
   apiVersion: '2024-03-24', // Güncel tarih
 });
 

@@ -75,23 +75,23 @@ function renderNews(posts) {
     const ytThumbUrl = post.youtubeUrl ? getYouTubeThumbnailUrl(post.youtubeUrl) : null;
     
     if (imgUrl) {
-      imageHtml = `<img src="${imgUrl}" alt="${safeTitle}" loading="lazy" class="w-full h-48 object-cover rounded-lg mb-4 opacity-80 hover:opacity-100 transition-opacity">`;
+      imageHtml = `<img src="${imgUrl}" alt="${safeTitle}" loading="lazy" class="w-full aspect-video object-cover rounded-lg mb-4 opacity-80 hover:opacity-100 transition-opacity">`;
     } else if (ytThumbUrl) {
        // Video kapak fotoğrafı ve üzerine Play butonu eklentisi
        imageHtml = `
-       <div class="relative w-full h-48 mb-4 opacity-80 hover:opacity-100 transition-opacity rounded-lg overflow-hidden group">
+       <div class="relative w-full aspect-video mb-4 opacity-80 hover:opacity-100 transition-opacity rounded-lg overflow-hidden group">
          <img src="${ytThumbUrl}" alt="${safeTitle}" loading="lazy" class="w-full h-full object-cover">
          <div class="absolute inset-0 bg-black/40 flex items-center justify-center group-hover:bg-black/20 transition-colors">
             <span class="material-symbols-outlined text-white text-5xl">play_circle</span>
          </div>
        </div>`;
     } else {
-      imageHtml = `<div class="w-full h-48 bg-background-dark border-2 border-dashed border-border-dark rounded-lg mb-4 flex items-center justify-center opacity-80 hover:opacity-100 transition-opacity">
+      imageHtml = `<div class="w-full aspect-video bg-background-dark border-2 border-dashed border-border-dark rounded-lg mb-4 flex items-center justify-center opacity-80 hover:opacity-100 transition-opacity">
         <span class="material-symbols-outlined text-5xl text-border-dark">image</span>
       </div>`;
     }
 
-    const featuredClass = post.featured ? 'ring-1 ring-primary/80 shadow-[0_0_20px_rgba(19,55,236,0.15)] relative overflow-hidden' : '';
+    const featuredClass = post.featured ? 'md:col-span-2 lg:col-span-2 ring-1 ring-primary/80 shadow-[0_0_20px_rgba(19,55,236,0.15)] relative overflow-hidden' : '';
     const featuredBadge = post.featured ? `
       <div class="absolute top-0 right-0">
         <div class="bg-primary text-white text-[10px] font-bold px-8 py-1 rotate-45 translate-x-[30%] translate-y-[50%] shadow-lg">ÖNE ÇIKAN</div>
