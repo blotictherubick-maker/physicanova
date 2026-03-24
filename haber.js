@@ -1,12 +1,12 @@
 import { sanityClient, urlFor, renderPortableText, getYouTubeEmbedUrl, escapeHTML } from './sanityClient.js';
 
 const categoryStyles = {
-  'Güncelleme': 'bg-primary/10 text-primary border-primary/20',
-  'Yeni İçerik': 'bg-teal-500/10 text-teal-400 border-teal-500/20',
-  'Duyuru': 'bg-primary/10 text-primary border-primary/20',
-  'Haber': 'bg-blue-500/10 text-blue-400 border-blue-500/20',
-  'Video': 'bg-red-500/10 text-red-400 border-red-500/20',
-  'Blog': 'bg-purple-500/10 text-purple-400 border-purple-500/20',
+  'Güncelleme': 'bg-black/5 text-ink border-border-soft',
+  'Yeni İçerik': 'bg-black/5 text-ink border-border-soft',
+  'Duyuru': 'bg-black/5 text-ink border-border-soft',
+  'Haber': 'bg-black/5 text-ink border-border-soft',
+  'Video': 'bg-black/5 text-ink border-border-soft',
+  'Blog': 'bg-black/5 text-ink border-border-soft',
 };
 
 async function fetchNewsDetail() {
@@ -46,19 +46,19 @@ async function fetchNewsDetail() {
 
 function showError(title, message, is404 = false) {
   document.getElementById('news-detail-container').innerHTML = `
-    <div class="text-center p-12 bg-card-dark rounded-xl border border-border-dark flex flex-col items-center justify-center min-h-[40vh]">
-      <span class="material-symbols-outlined text-[80px] ${is404 ? 'text-primary/50' : 'text-red-500/50'} mb-6">
+    <div class="text-center p-12 bg-surface rounded border border-border-soft flex flex-col items-center justify-center min-h-[40vh]">
+      <span class="material-symbols-outlined text-[80px] ${is404 ? 'text-primary/50' : 'text-accent/50'} mb-6">
         ${is404 ? 'search_off' : 'cloud_off'}
       </span>
-      <h1 class="text-2xl md:text-3xl font-display font-bold text-white mb-4">${escapeHTML(title)}</h1>
-      <p class="text-text-secondary max-w-md mx-auto mb-8">${escapeHTML(message)}</p>
+      <h1 class="text-2xl md:text-3xl font-display font-bold text-ink mb-4 tracking-tight">${escapeHTML(title)}</h1>
+      <p class="text-ink-light max-w-md mx-auto mb-8">${escapeHTML(message)}</p>
       
       <div class="flex gap-4">
-        <a href="haberler.html" class="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white font-medium rounded-lg hover:bg-primary-hover transition-colors shadow-lg">
+        <a href="haberler.html" class="inline-flex items-center gap-2 px-6 py-3 bg-paper text-ink font-medium rounded border border-border-soft hover:border-primary/50 hover:text-primary transition-all shadow-sm">
           <span class="material-symbols-outlined text-sm">arrow_back</span>
           Haberlere Dön
         </a>
-        ${!is404 ? `<button onclick="window.location.reload()" class="inline-flex items-center gap-2 px-6 py-3 bg-card-dark border border-border-dark text-white font-medium rounded-lg hover:bg-[#1f2233] transition-colors"><span class="material-symbols-outlined text-sm">refresh</span> Yenile</button>` : ''}
+        ${!is404 ? `<button onclick="window.location.reload()" class="inline-flex items-center gap-2 px-6 py-3 bg-surface border border-border-soft text-ink font-medium rounded hover:bg-white transition-colors shadow-sm"><span class="material-symbols-outlined text-sm">refresh</span> Yenile</button>` : ''}
       </div>
     </div>
   `;
@@ -86,14 +86,14 @@ function renderDetail(post) {
     day: 'numeric', month: 'long', year: 'numeric'
   });
   
-  const style = categoryStyles[safeCategory] || 'bg-gray-500/10 text-gray-400 border-gray-500/20';
+  const style = categoryStyles[safeCategory] || 'bg-black/5 text-ink-light border-border-soft';
 
-  // Görsel Fallback (Eğer yoksa hero gösterilmeyecek veya placeholder eklenebilir, genelde direkt başlıktan girmek daha şıktır detay sayfasında)
+  // Görsel Fallback
   let imageHtml = '';
   const imgUrl = urlFor(post.coverImage)?.width(1200).height(600).url();
   if (imgUrl) {
-      imageHtml = `<figure class="mb-8 overflow-hidden rounded-xl border border-border-dark shadow-2xl bg-[#0a0c16]">
-          <img src="${imgUrl}" alt="${safeTitle}" class="w-full h-auto max-h-[500px] object-contain hover:scale-105 transition-transform duration-700">
+      imageHtml = `<figure class="mb-8 overflow-hidden rounded border border-border-soft shadow-sm bg-surface">
+          <img src="${imgUrl}" alt="${safeTitle}" class="w-full h-auto max-h-[500px] object-cover transition-transform duration-700">
       </figure>`;
   }
 
@@ -103,7 +103,7 @@ function renderDetail(post) {
       const embedUrl = getYouTubeEmbedUrl(post.youtubeUrl);
       if (embedUrl) {
           videoHtml = `
-            <div class="relative w-full pb-[56.25%] mb-10 rounded-xl overflow-hidden border border-border-dark shadow-lg bg-black">
+            <div class="relative w-full pb-[56.25%] mb-10 rounded overflow-hidden border border-border-soft shadow-sm bg-black">
                 <iframe class="absolute top-0 left-0 w-full h-full" src="${embedUrl}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
           `;
@@ -115,22 +115,22 @@ function renderDetail(post) {
   container.innerHTML = `
       ${imageHtml}
       
-      <div class="flex items-center gap-4 mb-6">
-          <span class="${style} text-sm font-bold px-3 py-1 rounded-full border">${safeCategory}</span>
-          <time class="text-text-secondary text-sm font-medium flex items-center gap-1.5" datetime="${post.publishedAt}">
+      <div class="flex flex-wrap items-center gap-4 mb-6">
+          <span class="${style} text-xs tracking-wider uppercase font-bold px-3 py-1 rounded-sm border">${safeCategory}</span>
+          <time class="text-ink-light text-sm font-medium flex items-center gap-1.5" datetime="${post.publishedAt}">
             <span class="material-symbols-outlined text-[16px]">calendar_month</span>
             ${date}
           </time>
       </div>
 
-      <h1 class="text-3xl md:text-5xl font-bold font-display text-white mb-8 leading-tight">
+      <h1 class="text-3xl md:text-5xl font-bold font-display text-ink mb-8 leading-tight tracking-tight">
           ${safeTitle}
       </h1>
 
       ${videoHtml}
 
       <div class="portable-text text-lg pb-12">
-          ${bodyHtml || '<div class="p-6 bg-card-dark rounded-xl border border-border-dark text-text-secondary italic text-center">Bu haber için metin içeriği girilmemiş.</div>'}
+          ${bodyHtml || '<div class="p-6 bg-surface rounded border border-border-soft text-ink-light italic text-center">Bu haber için metin içeriği girilmemiş.</div>'}
       </div>
   `;
 }

@@ -5,94 +5,50 @@
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Haberler - PhysicaNova</title>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Noto+Sans:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
-        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        "primary": "#1337ec",
-                        "primary-hover": "#0f2cb8",
-                        "background-light": "#f6f6f8",
-                        "background-dark": "#101322",
-                        "card-dark": "#161821",
-                        "border-dark": "#282b39",
-                        "text-secondary": "#9da1b9",
-                    },
-                    fontFamily: {
-                        "display": ["Space Grotesk", "sans-serif"],
-                        "body": ["Noto Sans", "sans-serif"]
-                    }
-                },
-            },
-        }
-    </script>
+    <style>
+        body { background-color: #F8F9FA; color: #212529; font-family: 'Inter', sans-serif; }
+        .sidebar { background-color: #F1F3F5; border-right: 1px solid #DEE2E6; }
+        .hero-banner { background: linear-gradient(rgba(27, 67, 50, 0.05), rgba(27, 67, 50, 0.05)), url('assets/lab-bg.jpg'); background-size: cover; background-position: center; }
+        .btn-primary { background-color: #1B4332; color: white; padding: 10px 24px; border-radius: 6px; transition: all 0.2s; }
+        .btn-primary:hover { background-color: #2D6A4F; }
+    </style>
 </head>
 
-<body class="bg-background-dark text-slate-100 antialiased min-h-screen flex flex-col font-body">
-    <!-- Header / Navbar -->
-    <header
-        class="flex items-center justify-between whitespace-nowrap border-b border-solid border-border-dark bg-[#111218] px-6 lg:px-10 py-3 sticky top-0 z-50">
-        <div class="flex items-center gap-8">
-            <a href="index.html" class="flex items-center gap-3 text-white hover:opacity-80 transition-opacity">
-                <div class="size-8 flex items-center justify-center text-primary">
-                    <span class="material-symbols-outlined text-3xl">science</span>
-                </div>
-                <h2 class="text-white text-xl font-bold leading-tight tracking-[-0.015em] font-display">PhysicaNova</h2>
-            </a>
-            <nav class="hidden lg:flex items-center gap-9">
-                <a class="text-text-secondary text-sm font-medium hover:text-white transition-colors"
-                    href="index.html">Simülasyonlar</a>
-                <a class="text-text-secondary text-sm font-medium hover:text-white transition-colors"
-                    href="#">Konular</a>
-                <a class="text-text-secondary text-sm font-medium hover:text-white transition-colors"
-                    href="#">Dersler</a>
-                <a class="text-white text-sm font-medium hover:text-primary transition-colors"
-                    href="haberler.html">Haberler</a>
-                <a class="text-text-secondary text-sm font-medium hover:text-white transition-colors"
-                    href="hakkimizda.html">Hakkımızda</a>
-            </nav>
-        </div>
-        <div class="flex flex-1 justify-end gap-6 items-center">
-            <label class="hidden md:flex flex-col min-w-40 !h-10 max-w-64">
-                <div class="flex w-full flex-1 items-stretch rounded-lg h-full relative group">
-                    <div
-                        class="text-text-secondary absolute left-3 top-1/2 -translate-y-1/2 flex items-center justify-center pointer-events-none">
-                        <span class="material-symbols-outlined text-[20px]">search</span>
-                    </div>
-                    <input id="searchInput"
-                        class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-white focus:outline-0 focus:ring-1 focus:ring-primary border border-border-dark bg-card-dark focus:border-primary h-full placeholder:text-text-secondary px-4 pl-10 text-sm font-normal leading-normal transition-all"
-                        placeholder="Ara..." value="" />
-                </div>
-            </label>
-            <div class="flex items-center gap-3">
-                <button class="flex items-center justify-center text-text-secondary hover:text-white">
-                    <span class="material-symbols-outlined">notifications</span>
-                </button>
-                <div class="w-px h-6 bg-border-dark mx-1"></div>
-                <button
-                    class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-9 px-4 bg-primary hover:bg-primary-hover transition-colors text-white text-sm font-bold leading-normal tracking-[0.015em]">
-                    <span class="truncate">Giriş Yap</span>
-                </button>
+<body class="flex flex-col min-h-screen overflow-x-hidden">
+    <!-- Header -->
+    <header class="bg-white border-b border-[#DEE2E6] px-8 py-4 flex justify-between items-center sticky top-0 z-50">
+        <a href="index.html" class="font-bold text-xl flex items-center gap-2">
+            <span class="text-[#1B4332] flex items-center gap-1">
+                <span class="material-symbols-outlined text-[28px]">science</span>
+                PhysicaNova
+            </span> <span class="text-[#DEE2E6] font-normal mx-1">|</span> <span class="font-normal text-gray-700">Modern Lab</span>
+        </a>
+        <nav class="hidden md:flex gap-8 text-sm font-medium text-gray-600">
+            <a href="index.html" class="hover:text-[#1B4332]">Simülasyonlar</a>
+            <a href="#" class="hover:text-[#1B4332]">Konular</a>
+            <a href="#" class="hover:text-[#1B4332]">Dersler</a>
+            <a href="haberler.html" class="hover:text-[#1B4332] text-[#1B4332] font-bold">Haberler</a>
+            <a href="hakkimizda.html" class="hover:text-[#1B4332]">Hakkımızda</a>
+        </nav>
+        <div class="flex items-center gap-4">
+            <button class="flex items-center justify-center text-gray-500 hover:text-[#1B4332] transition-colors rounded border border-gray-300 px-3 py-1.5 font-semibold text-sm">
+                Giriş Yap
+            </button>
+            <div class="relative hidden sm:block">
+                <input type="text" id="searchInput" placeholder="Haber veya duyuru ara..." class="bg-gray-100 px-4 pl-10 py-1.5 rounded-full text-sm border focus:outline-none focus:border-[#1B4332] w-48 lg:w-64 text-gray-700">
+                <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 !text-[18px]">search</span>
             </div>
         </div>
     </header>
 
     <!-- Main Content -->
-    <main class="flex-1 flex flex-col py-10 px-6 relative overflow-y-auto">
-        <div
-            class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary/5 via-background-dark to-background-dark -z-10">
-        </div>
-
+    <main class="flex-1 flex flex-col py-10 px-6 relative overflow-y-auto bg-paper">
         <div class="max-w-6xl mx-auto w-full z-10">
-            <div class="flex items-center justify-between mb-8 pb-4 border-b border-border-dark">
-                <h1 class="text-3xl font-display font-bold text-white flex items-center gap-3">
+            <div class="flex items-center justify-between mb-8 pb-4 border-b border-border-soft">
+                <h1 class="text-3xl font-display font-bold text-ink flex items-center gap-3">
                     <span class="material-symbols-outlined text-primary text-3xl">article</span>
                     Haberler & Duyurular
                 </h1>
@@ -100,16 +56,23 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="news-container">
                 <!-- Data fetching in progress... -->
-                <div class="flex justify-center p-10">
+                <div class="flex justify-center p-10 md:col-span-2 lg:col-span-3">
                     <div class="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-primary"></div>
                 </div>
+            </div>
+
+            <!-- Sayfalama (Load More) -->
+            <div class="mt-12 text-center" id="load-more-container" style="display: none;">
+                <button id="load-more-btn" class="px-6 py-3 bg-surface hover:bg-white text-ink rounded border border-border-soft transition-colors shadow-sm font-medium inline-flex items-center gap-2 group">
+                    <span class="material-symbols-outlined text-xl group-hover:translate-y-1 transition-transform">expand_more</span>
+                    Daha Fazla Yükle
+                </button>
             </div>
         </div>
     </main>
 
-    <footer
-        style="text-align: center; padding: 1.5rem; color: #9da1b9; font-size: 0.85rem; border-top: 1px solid #282b39; background-color: #111218;">
-        <p>© 2026 PhysicaNova</p>
+    <footer class="text-center py-6 text-ink-light text-sm border-t border-border-soft bg-surface mt-auto">
+        <p>© 2026 PhysicaNova Project.</p>
     </footer>
     <script type="module" src="haberler.js"></script>
 </body>
