@@ -71,7 +71,7 @@ function renderNews(posts) {
     
     // Fallback Image or Youtube Thumbnail
     let imageHtml;
-    const imgUrl = urlFor(post.coverImage)?.width(800).height(400).url();
+    const imgUrl = post.coverImage ? urlFor(post.coverImage).width(800).height(400).url() : null;
     const ytThumbUrl = post.youtubeUrl ? getYouTubeThumbnailUrl(post.youtubeUrl) : null;
     
     if (imgUrl) {

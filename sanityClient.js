@@ -51,11 +51,10 @@ export function renderPortableText(blocks) {
 // Güvenli YouTube embed URL
 export function getYouTubeEmbedUrl(url) {
   if (!url) return null;
-  // Sadece güvenilir youtube formatlarını parse et
-  const regExp = /^(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
+  const regExp = /^.*(youtu.be\/|v\/|e\/|u\/\w+\/|embed\/|v=|shorts\/)([^#\&\?]*).*/;
   const match = url.match(regExp);
-  if (match && match[1].length === 11) {
-    return `https://www.youtube-nocookie.com/embed/${match[1]}?rel=0`; // Privacy-enhanced mod ve rel=0 (önerilen videolar izole)
+  if (match && match[2].length === 11) {
+    return `https://www.youtube-nocookie.com/embed/${match[2]}?rel=0`;
   }
   return null;
 }
@@ -63,10 +62,10 @@ export function getYouTubeEmbedUrl(url) {
 // Youtube Thumbnail Alıcı
 export function getYouTubeThumbnailUrl(url) {
   if (!url) return null;
-  const regExp = /^(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
+  const regExp = /^.*(youtu.be\/|v\/|e\/|u\/\w+\/|embed\/|v=|shorts\/)([^#\&\?]*).*/;
   const match = url.match(regExp);
-  if (match && match[1].length === 11) {
-    return `https://img.youtube.com/vi/${match[1]}/maxresdefault.jpg`;
+  if (match && match[2].length === 11) {
+    return `https://img.youtube.com/vi/${match[2]}/maxresdefault.jpg`;
   }
   return null;
 }
