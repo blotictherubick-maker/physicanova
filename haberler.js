@@ -39,6 +39,7 @@ async function fetchNews() {
         </button>
       </div>
     `;
+  }
 }
 
 function renderNews(posts) {
