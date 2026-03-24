@@ -1,4 +1,4 @@
-import { sanityClient, urlFor, escapeHTML } from './sanityClient.js';
+import { sanityClient, urlFor, escapeHTML, getYouTubeThumbnailUrl } from './sanityClient.js';
 
 const categoryStyles = {
   'Güncelleme': 'bg-primary/10 text-primary border-primary/20',
@@ -20,7 +20,8 @@ async function fetchNews() {
     publishedAt,
     category,
     featured,
-    coverImage
+    coverImage,
+    youtubeUrl
   }`;
 
   try {
@@ -38,7 +39,6 @@ async function fetchNews() {
         </button>
       </div>
     `;
-  }
 }
 
 function renderNews(posts) {
@@ -68,12 +68,22 @@ function renderNews(posts) {
     
     const style = categoryStyles[safeCategory] || 'bg-gray-500/10 text-gray-400 border-gray-500/20';
     
-    // Fallback Image
+    // Fallback Image or Youtube Thumbnail
     let imageHtml;
     const imgUrl = urlFor(post.coverImage)?.width(800).height(400).url();
+    const ytThumbUrl = post.youtubeUrl ? getYouTubeThumbnailUrl(post.youtubeUrl) : null;
     
     if (imgUrl) {
       imageHtml = `<img src="${imgUrl}" alt="${safeTitle}" loading="lazy" class="w-full h-48 object-cover rounded-lg mb-4 opacity-80 hover:opacity-100 transition-opacity">`;
+    } else if (ytThumbUrl) {
+       // Video kapak fotoğrafı ve üzerine Play butonu eklentisi
+       imageHtml = `
+       <div class="relative w-full h-48 mb-4 opacity-80 hover:opacity-100 transition-opacity rounded-lg overflow-hidden group">
+         <img src="${ytThumbUrl}" alt="${safeTitle}" loading="lazy" class="w-full h-full object-cover">
+         <div class="absolute inset-0 bg-black/40 flex items-center justify-center group-hover:bg-black/20 transition-colors">
+            <span class="material-symbols-outlined text-white text-5xl">play_circle</span>
+         </div>
+       </div>`;
     } else {
       imageHtml = `<div class="w-full h-48 bg-background-dark border-2 border-dashed border-border-dark rounded-lg mb-4 flex items-center justify-center opacity-80 hover:opacity-100 transition-opacity">
         <span class="material-symbols-outlined text-5xl text-border-dark">image</span>
