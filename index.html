@@ -1,20 +1,47 @@
 <!DOCTYPE html>
 <html lang="tr">
+
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>PhysicaNova - Modern Lab</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
     <style>
-        body { background-color: #F8F9FA; color: #212529; font-family: 'Inter', sans-serif; }
-        .sidebar { background-color: #F1F3F5; border-right: 1px solid #DEE2E6; }
-        .hero-banner { background: linear-gradient(rgba(27, 67, 50, 0.05), rgba(27, 67, 50, 0.05)), url('assets/lab-bg.jpg'); background-size: cover; background-position: center; }
-        .btn-primary { background-color: #1B4332; color: white; padding: 10px 24px; border-radius: 6px; transition: all 0.2s; }
-        .btn-primary:hover { background-color: #2D6A4F; }
+        body {
+            background-color: #F8F9FA;
+            color: #212529;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .sidebar {
+            background-color: #F1F3F5;
+            border-right: 1px solid #DEE2E6;
+        }
+
+        .hero-banner {
+            background: url('assets/prizma.jpg');
+            background-size: cover;
+            background-position: 50% center;
+        }
+
+        .btn-primary {
+            background-color: #1B4332;
+            color: white;
+            padding: 10px 24px;
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+
+        .btn-primary:hover {
+            background-color: #2D6A4F;
+        }
     </style>
 </head>
+
 <body class="flex flex-col min-h-screen overflow-x-hidden">
     <!-- Header -->
     <header class="bg-white border-b border-[#DEE2E6] px-8 py-4 flex justify-between items-center sticky top-0 z-50">
@@ -22,7 +49,8 @@
             <span class="text-[#1B4332] flex items-center gap-1">
                 <span class="material-symbols-outlined text-[28px]">science</span>
                 PhysicaNova
-            </span> <span class="text-[#DEE2E6] font-normal mx-1">|</span> <span class="font-normal text-gray-700">Modern Lab</span>
+            </span> <span class="text-[#DEE2E6] font-normal mx-1">|</span> <span
+                class="font-normal text-gray-700">Modern Lab</span>
         </a>
         <nav class="hidden md:flex gap-8 text-sm font-medium text-gray-600">
             <a href="index.html" class="hover:text-[#1B4332] text-[#1B4332] font-bold">Simülasyonlar</a>
@@ -32,12 +60,15 @@
             <a href="hakkimizda.html" class="hover:text-[#1B4332]">Hakkımızda</a>
         </nav>
         <div class="flex items-center gap-4">
-            <button class="flex items-center justify-center text-gray-500 hover:text-[#1B4332] transition-colors rounded border border-gray-300 px-3 py-1.5 font-semibold text-sm">
+            <button
+                class="flex items-center justify-center text-gray-500 hover:text-[#1B4332] transition-colors rounded border border-gray-300 px-3 py-1.5 font-semibold text-sm">
                 Giriş Yap
             </button>
             <div class="relative hidden sm:block">
-                <input type="text" id="searchInput" placeholder="Haber veya duyuru ara..." class="bg-gray-100 px-4 pl-10 py-1.5 rounded-full text-sm border focus:outline-none focus:border-[#1B4332] w-48 lg:w-64 text-gray-700">
-                <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 !text-[18px]">search</span>
+                <input type="text" id="searchInput" placeholder="Haber veya duyuru ara..."
+                    class="bg-gray-100 px-4 pl-10 py-1.5 rounded-full text-sm border focus:outline-none focus:border-[#1B4332] w-48 lg:w-64 text-gray-700">
+                <span
+                    class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 !text-[18px]">search</span>
             </div>
         </div>
     </header>
@@ -47,21 +78,38 @@
         <aside class="w-64 sidebar p-6 hidden lg:block sticky top-[73px] h-[calc(100vh-73px)] overflow-y-auto">
             <h3 class="font-bold text-sm mb-4 uppercase tracking-wider text-[#1B4332]">Modülleri Keşfet</h3>
             <ul class="space-y-4 text-sm" id="categoryList">
-                <li class="font-semibold text-gray-700 mt-4"><label class="cursor-pointer hover:text-[#1B4332] flex gap-2 items-center"><input type="checkbox" class="filter-checkbox accent-[#1B4332]" value="Kuantum Mekaniği"> Kuantum Mekaniği</label></li>
-                <li class="font-semibold text-gray-700 mt-4"><label class="cursor-pointer hover:text-[#1B4332] flex gap-2 items-center"><input type="checkbox" class="filter-checkbox accent-[#1B4332]" value="Termodinamik"> Termodinamik</label></li>
-                <li class="font-semibold text-gray-700 mt-4"><label class="cursor-pointer hover:text-[#1B4332] flex gap-2 items-center"><input type="checkbox" class="filter-checkbox accent-[#1B4332]" value="Optik"> Optik</label></li>
-                <li class="font-semibold text-gray-700 mt-4"><label class="cursor-pointer hover:text-[#1B4332] flex gap-2 items-center"><input type="checkbox" class="filter-checkbox accent-[#1B4332]" value="Görelilik"> Görelilik</label></li>
-                <li class="font-semibold text-gray-700 mt-4"><label class="cursor-pointer hover:text-[#1B4332] flex gap-2 items-center"><input type="checkbox" class="filter-checkbox accent-[#1B4332]" value="Atom Fiziği"> Atom Fiziği</label></li>
-                <li class="font-semibold text-gray-700 mt-4"><label class="cursor-pointer hover:text-[#1B4332] flex gap-2 items-center"><input type="checkbox" class="filter-checkbox accent-[#1B4332]" value="Nükleer Fizik"> Nükleer Fizik</label></li>
-                <li class="font-semibold text-gray-700 mt-4"><label class="cursor-pointer hover:text-[#1B4332] flex gap-2 items-center"><input type="checkbox" class="filter-checkbox accent-[#1B4332]" value="Klasik"> Klasik Fizik</label></li>
+                <li class="font-semibold text-gray-700 mt-4"><label
+                        class="cursor-pointer hover:text-[#1B4332] flex gap-2 items-center"><input type="checkbox"
+                            class="filter-checkbox accent-[#1B4332]" value="Kuantum Mekaniği"> Kuantum Mekaniği</label>
+                </li>
+                <li class="font-semibold text-gray-700 mt-4"><label
+                        class="cursor-pointer hover:text-[#1B4332] flex gap-2 items-center"><input type="checkbox"
+                            class="filter-checkbox accent-[#1B4332]" value="Termodinamik"> Termodinamik</label></li>
+                <li class="font-semibold text-gray-700 mt-4"><label
+                        class="cursor-pointer hover:text-[#1B4332] flex gap-2 items-center"><input type="checkbox"
+                            class="filter-checkbox accent-[#1B4332]" value="Optik"> Optik</label></li>
+                <li class="font-semibold text-gray-700 mt-4"><label
+                        class="cursor-pointer hover:text-[#1B4332] flex gap-2 items-center"><input type="checkbox"
+                            class="filter-checkbox accent-[#1B4332]" value="Görelilik"> Görelilik</label></li>
+                <li class="font-semibold text-gray-700 mt-4"><label
+                        class="cursor-pointer hover:text-[#1B4332] flex gap-2 items-center"><input type="checkbox"
+                            class="filter-checkbox accent-[#1B4332]" value="Atom Fiziği"> Atom Fiziği</label></li>
+                <li class="font-semibold text-gray-700 mt-4"><label
+                        class="cursor-pointer hover:text-[#1B4332] flex gap-2 items-center"><input type="checkbox"
+                            class="filter-checkbox accent-[#1B4332]" value="Nükleer Fizik"> Nükleer Fizik</label></li>
+                <li class="font-semibold text-gray-700 mt-4"><label
+                        class="cursor-pointer hover:text-[#1B4332] flex gap-2 items-center"><input type="checkbox"
+                            class="filter-checkbox accent-[#1B4332]" value="Klasik"> Klasik Fizik</label></li>
             </ul>
-            <div id="resetFilters" class="mt-6 text-xs text-gray-500 cursor-pointer hover:text-[#1B4332] font-semibold underline">Filtreleri Sıfırla</div>
-            
+            <div id="resetFilters"
+                class="mt-6 text-xs text-gray-500 cursor-pointer hover:text-[#1B4332] font-semibold underline">
+                Filtreleri Sıfırla</div>
+
             <!-- Active Filters visually hidden, purely for script compatibility -->
             <div id="activeFiltersContainer" class="hidden"></div>
             <!-- Extra logic pill hidden -->
             <input class="filter-radio hidden" name="level" type="radio" value="Tümü" checked />
-            
+
             <div class="mt-10 pt-6 border-t border-[#DEE2E6]">
                 <h3 class="font-bold text-sm mb-2 text-gray-800">Öne Çıkan Araç</h3>
                 <div class="bg-white border rounded-lg p-3 flex gap-3 shadow-sm">
@@ -70,7 +118,8 @@
                     </div>
                     <div>
                         <h4 class="text-xs font-bold text-gray-800 mb-1 leading-tight">Veri Analizi Paketi 2.0</h4>
-                        <p class="text-[10px] text-gray-500 leading-snug">Veri analizi ve gelişmiş çizim araçlarıyla fiziksel olayları inceleyin.</p>
+                        <p class="text-[10px] text-gray-500 leading-snug">Veri analizi ve gelişmiş çizim araçlarıyla
+                            fiziksel olayları inceleyin.</p>
                     </div>
                 </div>
             </div>
@@ -78,7 +127,7 @@
 
         <!-- Main Content -->
         <main class="flex-1 p-6 lg:p-8 overflow-x-hidden min-h-screen">
-            
+
             <!-- Breadcrumbs -->
             <div class="text-xs text-gray-500 font-medium flex items-center gap-1.5 mb-4">
                 <a href="#" class="hover:underline">Ana Sayfa</a>
@@ -89,259 +138,366 @@
             </div>
 
             <!-- Hero Banner -->
-            <section class="hero-banner rounded-xl p-8 lg:p-12 mb-10 border border-[#DEE2E6] flex flex-col justify-center min-h-[300px] relative overflow-hidden bg-[#F1F3F5]">
-                <div class="absolute inset-0 bg-gradient-to-br from-[#1B4332]/5 to-transparent"></div>
-                <div class="relative z-10 w-full md:w-3/4 lg:w-[60%] p-6 lg:p-8 rounded-xl">
+            <section
+                class="hero-banner rounded-xl mb-10 border border-[#DEE2E6] flex flex-col justify-center min-h-[380px] lg:min-h-[440px] relative overflow-hidden bg-[#F1F3F5]">
+                <div class="absolute inset-0 bg-gradient-to-r from-black/30 to-transparent"></div>
+                <div
+                    class="relative z-10 w-[90%] md:w-3/4 lg:w-[55%] p-8 lg:p-10 rounded-2xl bg-[#EBECEB]/50 backdrop-blur-sm shadow-xl border border-white/60 ml-6 lg:ml-12 my-8 lg:my-10">
                     <h1 class="text-3xl lg:text-4xl font-bold text-[#1B4332] mb-4 leading-tight tracking-tight">
-                        Modern Laboratuvar için İleri Fizik Simülasyonları
+                        İleri Fizik Simülasyonları için Modern Laboratuvar
                     </h1>
-                    <p class="text-sm lg:text-base text-gray-700 mb-6 font-medium leading-relaxed max-w-md">Akademik araştırma ve eğitim için tasarlanmış etkileşimli, veri odaklı modeller aracılığıyla karmaşık olayları keşfedin.</p>
-                    <button onclick="document.getElementById('simulationGrid').scrollIntoView({behavior: 'smooth'})" class="btn-primary w-fit font-bold shadow-sm uppercase tracking-wide text-[13px]">KEŞFETMEYE BAŞLA</button>
+                    <p class="text-sm lg:text-base text-gray-700 mb-6 font-medium leading-relaxed max-w-md">Akademik
+                        araştırma ve eğitim için tasarlanmış etkileşimli, veri odaklı modeller aracılığıyla karmaşık
+                        olayları keşfedin.</p>
+                    <button onclick="document.getElementById('simulationGrid').scrollIntoView({behavior: 'smooth'})"
+                        class="btn-primary w-fit font-bold shadow-sm uppercase tracking-wide text-[13px]">KEŞFETMEYE
+                        BAŞLA</button>
                 </div>
             </section>
 
             <!-- Featured Simulations -->
-            <h2 class="font-bold text-sm tracking-wider uppercase mb-6 text-gray-800 border-b pb-2 border-[#DEE2E6]">Öne Çıkan Simülasyonlar</h2>
-            
+            <h2 class="font-bold text-sm tracking-wider uppercase mb-6 text-gray-800 border-b pb-2 border-[#DEE2E6]">Öne
+                Çıkan Simülasyonlar</h2>
+
             <div id="simulationGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 pb-12">
 
                 <!-- Card 1: Fotoelektrik -->
-                <div class="bg-white border rounded-lg overflow-hidden shadow-sm hover:shadow-md hover:border-[#1B4332]/50 transition cursor-pointer flex flex-col sim-card" onclick="window.location='photoelectric.html'" data-topic="Kuantum Mekaniği" data-level="Lise" data-title="Fotoelektrik Etki">
+                <div class="bg-white border rounded-lg overflow-hidden shadow-sm hover:shadow-md hover:border-[#1B4332]/50 transition cursor-pointer flex flex-col sim-card"
+                    onclick="window.location='photoelectric.html'" data-topic="Kuantum Mekaniği" data-level="Lise"
+                    data-title="Fotoelektrik Etki">
                     <div class="h-32 bg-[#F1F3F5] flex items-center justify-center relative border-b group shrink-0">
-                        <span class="material-symbols-outlined text-[#1B4332]/40 text-[48px] group-hover:scale-110 transition-transform duration-500">lightbulb</span>
+                        <span
+                            class="material-symbols-outlined text-[#1B4332]/40 text-[48px] group-hover:scale-110 transition-transform duration-500">lightbulb</span>
                     </div>
                     <div class="p-4 flex flex-col flex-1 h-[120px]">
                         <h4 class="font-bold text-sm mb-2 text-[#1B4332] line-clamp-2">Fotoelektrik Etki</h4>
-                        <div class="text-[11px] text-gray-500 flex justify-between border-t border-[#DEE2E6] pt-3 mt-auto">
+                        <div
+                            class="text-[11px] text-gray-500 flex justify-between border-t border-[#DEE2E6] pt-3 mt-auto">
                             <span class="font-medium">Zorluk: Orta</span>
-                            <span class="font-medium flex items-center gap-1"><span class="material-symbols-outlined text-[12px]">schedule</span> 30 dk</span>
+                            <span class="font-medium flex items-center gap-1"><span
+                                    class="material-symbols-outlined text-[12px]">schedule</span> 30 dk</span>
                         </div>
                     </div>
                 </div>
 
                 <!-- Card 2: Millikan -->
-                <div class="bg-white border rounded-lg overflow-hidden shadow-sm hover:shadow-md hover:border-[#1B4332]/50 transition cursor-pointer flex flex-col sim-card" onclick="window.location='millikan.html'" data-topic="Klasik" data-level="Lise" data-title="Millikan Yağ Damlası">
+                <div class="bg-white border rounded-lg overflow-hidden shadow-sm hover:shadow-md hover:border-[#1B4332]/50 transition cursor-pointer flex flex-col sim-card"
+                    onclick="window.location='millikan.html'" data-topic="Klasik" data-level="Lise"
+                    data-title="Millikan Yağ Damlası">
                     <div class="h-32 bg-[#F1F3F5] flex items-center justify-center relative border-b group shrink-0">
-                        <span class="material-symbols-outlined text-[#1B4332]/40 text-[48px] group-hover:scale-110 transition-transform duration-500">science</span>
+                        <span
+                            class="material-symbols-outlined text-[#1B4332]/40 text-[48px] group-hover:scale-110 transition-transform duration-500">science</span>
                     </div>
                     <div class="p-4 flex flex-col flex-1 h-[120px]">
                         <h4 class="font-bold text-sm mb-2 text-[#1B4332] line-clamp-2">Millikan Yağ Damlası</h4>
-                        <div class="text-[11px] text-gray-500 flex justify-between border-t border-[#DEE2E6] pt-3 mt-auto">
+                        <div
+                            class="text-[11px] text-gray-500 flex justify-between border-t border-[#DEE2E6] pt-3 mt-auto">
                             <span class="font-medium">Zorluk: Orta</span>
-                            <span class="font-medium flex items-center gap-1"><span class="material-symbols-outlined text-[12px]">schedule</span> 45 dk</span>
+                            <span class="font-medium flex items-center gap-1"><span
+                                    class="material-symbols-outlined text-[12px]">schedule</span> 45 dk</span>
                         </div>
                     </div>
                 </div>
 
                 <!-- Card 3: Compton Saçılması -->
-                <div class="bg-white border rounded-lg overflow-hidden shadow-sm hover:shadow-md hover:border-[#1B4332]/50 transition cursor-pointer flex flex-col sim-card" onclick="window.location='compton.html'" data-topic="Kuantum Mekaniği" data-level="Lisans" data-title="Compton Saçılması">
+                <div class="bg-white border rounded-lg overflow-hidden shadow-sm hover:shadow-md hover:border-[#1B4332]/50 transition cursor-pointer flex flex-col sim-card"
+                    onclick="window.location='compton.html'" data-topic="Kuantum Mekaniği" data-level="Lisans"
+                    data-title="Compton Saçılması">
                     <div class="h-32 bg-[#F1F3F5] flex items-center justify-center relative border-b group shrink-0">
-                        <span class="material-symbols-outlined text-[#1B4332]/40 text-[48px] group-hover:scale-110 transition-transform duration-500">scatter_plot</span>
+                        <span
+                            class="material-symbols-outlined text-[#1B4332]/40 text-[48px] group-hover:scale-110 transition-transform duration-500">scatter_plot</span>
                     </div>
                     <div class="p-4 flex flex-col flex-1 h-[120px]">
                         <h4 class="font-bold text-sm mb-2 text-[#1B4332] line-clamp-2">Compton Saçılması</h4>
-                        <div class="text-[11px] text-gray-500 flex justify-between border-t border-[#DEE2E6] pt-3 mt-auto">
+                        <div
+                            class="text-[11px] text-gray-500 flex justify-between border-t border-[#DEE2E6] pt-3 mt-auto">
                             <span class="font-medium">Zorluk: Zor</span>
-                            <span class="font-medium flex items-center gap-1"><span class="material-symbols-outlined text-[12px]">schedule</span> 60 dk</span>
+                            <span class="font-medium flex items-center gap-1"><span
+                                    class="material-symbols-outlined text-[12px]">schedule</span> 60 dk</span>
                         </div>
                     </div>
                 </div>
 
                 <!-- Card 4: Frank-Hertz -->
-                <div class="bg-white border rounded-lg overflow-hidden shadow-sm hover:shadow-md hover:border-[#1B4332]/50 transition cursor-pointer flex flex-col sim-card" onclick="window.location='frank_hertz.html'" data-topic="Atom Fiziği" data-level="Lisans" data-title="Frank-Hertz Deneyi">
+                <div class="bg-white border rounded-lg overflow-hidden shadow-sm hover:shadow-md hover:border-[#1B4332]/50 transition cursor-pointer flex flex-col sim-card"
+                    onclick="window.location='frank_hertz.html'" data-topic="Atom Fiziği" data-level="Lisans"
+                    data-title="Frank-Hertz Deneyi">
                     <div class="h-32 bg-[#F1F3F5] flex items-center justify-center relative border-b group shrink-0">
-                        <span class="material-symbols-outlined text-[#1B4332]/40 text-[48px] group-hover:scale-110 transition-transform duration-500">electric_bolt</span>
+                        <span
+                            class="material-symbols-outlined text-[#1B4332]/40 text-[48px] group-hover:scale-110 transition-transform duration-500">electric_bolt</span>
                     </div>
                     <div class="p-4 flex flex-col flex-1 h-[120px]">
                         <h4 class="font-bold text-sm mb-2 text-[#1B4332] line-clamp-2">Frank-Hertz Deneyi</h4>
-                        <div class="text-[11px] text-gray-500 flex justify-between border-t border-[#DEE2E6] pt-3 mt-auto">
+                        <div
+                            class="text-[11px] text-gray-500 flex justify-between border-t border-[#DEE2E6] pt-3 mt-auto">
                             <span class="font-medium">Zorluk: Zor</span>
-                            <span class="font-medium flex items-center gap-1"><span class="material-symbols-outlined text-[12px]">schedule</span> 50 dk</span>
+                            <span class="font-medium flex items-center gap-1"><span
+                                    class="material-symbols-outlined text-[12px]">schedule</span> 50 dk</span>
                         </div>
                     </div>
                 </div>
 
                 <!-- Card 5: Kırınım -->
-                <div class="bg-white border rounded-lg overflow-hidden shadow-sm hover:shadow-md hover:border-[#1B4332]/50 transition cursor-pointer flex flex-col sim-card" onclick="window.location='diffraction.html'" data-topic="Optik" data-level="Lise" data-title="Tek ve Çift Yarıkta Kırınım">
+                <div class="bg-white border rounded-lg overflow-hidden shadow-sm hover:shadow-md hover:border-[#1B4332]/50 transition cursor-pointer flex flex-col sim-card"
+                    onclick="window.location='diffraction.html'" data-topic="Optik" data-level="Lise"
+                    data-title="Tek ve Çift Yarıkta Kırınım">
                     <div class="h-32 bg-[#F1F3F5] flex items-center justify-center relative border-b group shrink-0">
-                        <span class="material-symbols-outlined text-[#1B4332]/40 text-[48px] group-hover:scale-110 transition-transform duration-500">waves</span>
+                        <span
+                            class="material-symbols-outlined text-[#1B4332]/40 text-[48px] group-hover:scale-110 transition-transform duration-500">waves</span>
                     </div>
                     <div class="p-4 flex flex-col flex-1 h-[120px]">
                         <h4 class="font-bold text-sm mb-2 text-[#1B4332] line-clamp-2">Tek ve Çift Yarıkta Kırınım</h4>
-                        <div class="text-[11px] text-gray-500 flex justify-between border-t border-[#DEE2E6] pt-3 mt-auto">
+                        <div
+                            class="text-[11px] text-gray-500 flex justify-between border-t border-[#DEE2E6] pt-3 mt-auto">
                             <span class="font-medium">Zorluk: Orta</span>
-                            <span class="font-medium flex items-center gap-1"><span class="material-symbols-outlined text-[12px]">schedule</span> 40 dk</span>
+                            <span class="font-medium flex items-center gap-1"><span
+                                    class="material-symbols-outlined text-[12px]">schedule</span> 40 dk</span>
                         </div>
                     </div>
                 </div>
 
                 <!-- Card 6: Fermat Prensibi -->
-                <div class="bg-white border rounded-lg overflow-hidden shadow-sm hover:shadow-md hover:border-[#1B4332]/50 transition cursor-pointer flex flex-col sim-card" onclick="window.location='202_sinif_deneyleri.html'" data-topic="Optik" data-level="Lise" data-title="Fermat Prensibi ve Snell Yasası">
+                <div class="bg-white border rounded-lg overflow-hidden shadow-sm hover:shadow-md hover:border-[#1B4332]/50 transition cursor-pointer flex flex-col sim-card"
+                    onclick="window.location='202_sinif_deneyleri.html'" data-topic="Optik" data-level="Lise"
+                    data-title="Fermat Prensibi ve Snell Yasası">
                     <div class="h-32 bg-[#F1F3F5] flex items-center justify-center relative border-b group shrink-0">
-                        <span class="material-symbols-outlined text-[#1B4332]/40 text-[48px] group-hover:scale-110 transition-transform duration-500">timeline</span>
+                        <span
+                            class="material-symbols-outlined text-[#1B4332]/40 text-[48px] group-hover:scale-110 transition-transform duration-500">timeline</span>
                     </div>
                     <div class="p-4 flex flex-col flex-1 h-[120px]">
                         <h4 class="font-bold text-sm mb-2 text-[#1B4332] line-clamp-2">Fermat Prensibi</h4>
-                        <div class="text-[11px] text-gray-500 flex justify-between border-t border-[#DEE2E6] pt-3 mt-auto">
+                        <div
+                            class="text-[11px] text-gray-500 flex justify-between border-t border-[#DEE2E6] pt-3 mt-auto">
                             <span class="font-medium">Zorluk: Orta</span>
-                            <span class="font-medium flex items-center gap-1"><span class="material-symbols-outlined text-[12px]">schedule</span> 30 dk</span>
+                            <span class="font-medium flex items-center gap-1"><span
+                                    class="material-symbols-outlined text-[12px]">schedule</span> 30 dk</span>
                         </div>
                     </div>
                 </div>
 
                 <!-- Card 7: Malus Yasası -->
-                <div class="bg-white border rounded-lg overflow-hidden shadow-sm hover:shadow-md hover:border-[#1B4332]/50 transition cursor-pointer flex flex-col sim-card" onclick="window.location='malus.html'" data-topic="Optik" data-level="Lise" data-title="Malus Yasası ve Polarizasyon">
+                <div class="bg-white border rounded-lg overflow-hidden shadow-sm hover:shadow-md hover:border-[#1B4332]/50 transition cursor-pointer flex flex-col sim-card"
+                    onclick="window.location='malus.html'" data-topic="Optik" data-level="Lise"
+                    data-title="Malus Yasası ve Polarizasyon">
                     <div class="h-32 bg-[#F1F3F5] flex items-center justify-center relative border-b group shrink-0">
-                        <span class="material-symbols-outlined text-[#1B4332]/40 text-[48px] group-hover:scale-110 transition-transform duration-500">filter_tilt_shift</span>
+                        <span
+                            class="material-symbols-outlined text-[#1B4332]/40 text-[48px] group-hover:scale-110 transition-transform duration-500">filter_tilt_shift</span>
                     </div>
                     <div class="p-4 flex flex-col flex-1 h-[120px]">
                         <h4 class="font-bold text-sm mb-2 text-[#1B4332] line-clamp-2">Malus Yasası</h4>
-                        <div class="text-[11px] text-gray-500 flex justify-between border-t border-[#DEE2E6] pt-3 mt-auto">
+                        <div
+                            class="text-[11px] text-gray-500 flex justify-between border-t border-[#DEE2E6] pt-3 mt-auto">
                             <span class="font-medium">Zorluk: Orta</span>
-                            <span class="font-medium flex items-center gap-1"><span class="material-symbols-outlined text-[12px]">schedule</span> 45 dk</span>
+                            <span class="font-medium flex items-center gap-1"><span
+                                    class="material-symbols-outlined text-[12px]">schedule</span> 45 dk</span>
                         </div>
                     </div>
                 </div>
 
                 <!-- Card 8: İkizler Paradoksu -->
-                <div class="bg-white border rounded-lg overflow-hidden shadow-sm hover:shadow-md hover:border-[#1B4332]/50 transition cursor-pointer flex flex-col sim-card" onclick="alert('Bu simülasyon henüz hazır değil. Yapım aşamasında!');" data-topic="Görelilik" data-level="Lisans" data-title="Özel Görelilik: İkizler Paradoksu">
+                <div class="bg-white border rounded-lg overflow-hidden shadow-sm hover:shadow-md hover:border-[#1B4332]/50 transition cursor-pointer flex flex-col sim-card"
+                    onclick="alert('Bu simülasyon henüz hazır değil. Yapım aşamasında!');" data-topic="Görelilik"
+                    data-level="Lisans" data-title="Özel Görelilik: İkizler Paradoksu">
                     <div class="h-32 bg-[#F1F3F5] flex items-center justify-center relative border-b group shrink-0">
-                        <span class="material-symbols-outlined text-[#1B4332]/40 text-[48px] group-hover:scale-110 transition-transform duration-500">hourglass_empty</span>
+                        <span
+                            class="material-symbols-outlined text-[#1B4332]/40 text-[48px] group-hover:scale-110 transition-transform duration-500">hourglass_empty</span>
                     </div>
                     <div class="p-4 flex flex-col flex-1 h-[120px]">
-                        <h4 class="font-bold text-sm mb-2 text-[#1B4332] line-clamp-2">Özel Görelilik: İkizler Paradoksu</h4>
-                        <div class="text-[11px] text-gray-500 flex justify-between border-t border-[#DEE2E6] pt-3 mt-auto">
+                        <h4 class="font-bold text-sm mb-2 text-[#1B4332] line-clamp-2">Özel Görelilik: İkizler Paradoksu
+                        </h4>
+                        <div
+                            class="text-[11px] text-gray-500 flex justify-between border-t border-[#DEE2E6] pt-3 mt-auto">
                             <span class="font-medium">Zorluk: Zor</span>
-                            <span class="font-medium flex items-center gap-1 text-[#856404]"><span class="material-symbols-outlined text-[12px]">engineering</span> Yapım Aşamasında</span>
+                            <span class="font-medium flex items-center gap-1 text-[#856404]"><span
+                                    class="material-symbols-outlined text-[12px]">engineering</span> Yapım
+                                Aşamasında</span>
                         </div>
                     </div>
                 </div>
 
                 <!-- Card 9: Stokes Parametreleri -->
-                <div class="bg-white border rounded-lg overflow-hidden shadow-sm hover:shadow-md hover:border-[#1B4332]/50 transition cursor-pointer flex flex-col sim-card" onclick="window.location='stokes.html'" data-topic="Optik" data-level="İleri Seviye" data-title="Stokes Parametreleri">
+                <div class="bg-white border rounded-lg overflow-hidden shadow-sm hover:shadow-md hover:border-[#1B4332]/50 transition cursor-pointer flex flex-col sim-card"
+                    onclick="window.location='stokes.html'" data-topic="Optik" data-level="İleri Seviye"
+                    data-title="Stokes Parametreleri">
                     <div class="h-32 bg-[#F1F3F5] flex items-center justify-center relative border-b group shrink-0">
-                        <span class="material-symbols-outlined text-[#1B4332]/40 text-[48px] group-hover:scale-110 transition-transform duration-500">line_axis</span>
+                        <span
+                            class="material-symbols-outlined text-[#1B4332]/40 text-[48px] group-hover:scale-110 transition-transform duration-500">line_axis</span>
                     </div>
                     <div class="p-4 flex flex-col flex-1 h-[120px]">
                         <h4 class="font-bold text-sm mb-2 text-[#1B4332] line-clamp-2">Stokes Parametreleri</h4>
-                        <div class="text-[11px] text-gray-500 flex justify-between border-t border-[#DEE2E6] pt-3 mt-auto">
+                        <div
+                            class="text-[11px] text-gray-500 flex justify-between border-t border-[#DEE2E6] pt-3 mt-auto">
                             <span class="font-medium">Zorluk: İleri Seviye</span>
-                            <span class="font-medium flex items-center gap-1"><span class="material-symbols-outlined text-[12px]">schedule</span> 60 dk</span>
+                            <span class="font-medium flex items-center gap-1"><span
+                                    class="material-symbols-outlined text-[12px]">schedule</span> 60 dk</span>
                         </div>
                     </div>
                 </div>
 
                 <!-- Card 10: Michelson-Morley -->
-                <div class="bg-white border rounded-lg overflow-hidden shadow-sm hover:shadow-md hover:border-[#1B4332]/50 transition cursor-pointer flex flex-col sim-card" onclick="window.location='michelson_morley.html'" data-topic="Optik" data-level="İleri Seviye" data-title="Michelson-Morley Deneyi">
+                <div class="bg-white border rounded-lg overflow-hidden shadow-sm hover:shadow-md hover:border-[#1B4332]/50 transition cursor-pointer flex flex-col sim-card"
+                    onclick="window.location='michelson_morley.html'" data-topic="Optik" data-level="İleri Seviye"
+                    data-title="Michelson-Morley Deneyi">
                     <div class="h-32 bg-[#F1F3F5] relative border-b group shrink-0 overflow-hidden">
-                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKmcDozik1xMAvsVDanZvyXzRnu6NI_IjxbZVGuACbVNy_QcuE9U8bt8LpmYwA9PfUe3BUrjtKVr1bJFMp_GLD6zCb_Mo7DxJKHGY8KGXeVY-OjD6gWW55Q4TY2jpu0CSsa5DktYJrATZBl_hDHEZ3rF5yxhSxbtVVs_3nu1epanW8ohEHolP4vM-0vwemsxJpQ6CyyGxi9bVSs2rRy6wYhoDDmpVrFhbvjW9NmnBj9VuiM75hvsoMM_uVhTg07YpgRfenSP19pxq3" onerror="this.style.display='none';" class="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-all duration-500 group-hover:scale-105">
-                        <div class="absolute inset-0 bg-[#1B4332]/10 transition-opacity duration-500 group-hover:opacity-0"></div>
+                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKmcDozik1xMAvsVDanZvyXzRnu6NI_IjxbZVGuACbVNy_QcuE9U8bt8LpmYwA9PfUe3BUrjtKVr1bJFMp_GLD6zCb_Mo7DxJKHGY8KGXeVY-OjD6gWW55Q4TY2jpu0CSsa5DktYJrATZBl_hDHEZ3rF5yxhSxbtVVs_3nu1epanW8ohEHolP4vM-0vwemsxJpQ6CyyGxi9bVSs2rRy6wYhoDDmpVrFhbvjW9NmnBj9VuiM75hvsoMM_uVhTg07YpgRfenSP19pxq3"
+                            onerror="this.style.display='none';"
+                            class="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-all duration-500 group-hover:scale-105">
+                        <div
+                            class="absolute inset-0 bg-[#1B4332]/10 transition-opacity duration-500 group-hover:opacity-0">
+                        </div>
                     </div>
                     <div class="p-4 flex flex-col flex-1 h-[120px]">
                         <h4 class="font-bold text-sm mb-2 text-[#1B4332] line-clamp-2">Michelson-Morley Deneyi</h4>
-                        <div class="text-[11px] text-gray-500 flex justify-between border-t border-[#DEE2E6] pt-3 mt-auto">
+                        <div
+                            class="text-[11px] text-gray-500 flex justify-between border-t border-[#DEE2E6] pt-3 mt-auto">
                             <span class="font-medium">Zorluk: İleri Seviye</span>
-                            <span class="font-medium flex items-center gap-1"><span class="material-symbols-outlined text-[12px]">schedule</span> 60 dk</span>
+                            <span class="font-medium flex items-center gap-1"><span
+                                    class="material-symbols-outlined text-[12px]">schedule</span> 60 dk</span>
                         </div>
                     </div>
                 </div>
 
                 <!-- Card 11: Rutherford Atom Modeli -->
-                <div class="bg-white border rounded-lg overflow-hidden shadow-sm hover:shadow-md hover:border-[#1B4332]/50 transition cursor-pointer flex flex-col sim-card" onclick="alert('Bu simülasyon henüz hazır değil. Yapım aşamasında!');" data-topic="Atom Fiziği" data-level="Lise" data-title="Rutherford Atom Modeli">
+                <div class="bg-white border rounded-lg overflow-hidden shadow-sm hover:shadow-md hover:border-[#1B4332]/50 transition cursor-pointer flex flex-col sim-card"
+                    onclick="alert('Bu simülasyon henüz hazır değil. Yapım aşamasında!');" data-topic="Atom Fiziği"
+                    data-level="Lise" data-title="Rutherford Atom Modeli">
                     <div class="h-32 bg-[#F1F3F5] relative border-b group shrink-0 overflow-hidden">
-                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtDcjpdkljkfISupZdwPU1NzmwHrQNV-NFdGxDBRdFYeTs3E0HeYmyARL3srX9luiDUMqy98GmD2r9CYWMxM9hiaWPEsz-NVi8xNj2w1npboHYvTk10ZhVbav0AWAgrTSgXXMv0oGS2BXufWfWIpRvNtOI6LUa63Zr3A3tZFteiR-jl5JPIVt1BFtT16X_pj3hK7do9vRiJD2_rphFCXPL3r3TXgQzRQyos7ZnwNNNoy5GrGln7Fs54X8FeW8aXEwLrthuic7LwG-r" onerror="this.style.display='none';" class="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-all duration-500 group-hover:scale-105">
-                        <div class="absolute inset-0 bg-[#1B4332]/10 transition-opacity duration-500 group-hover:opacity-0"></div>
+                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtDcjpdkljkfISupZdwPU1NzmwHrQNV-NFdGxDBRdFYeTs3E0HeYmyARL3srX9luiDUMqy98GmD2r9CYWMxM9hiaWPEsz-NVi8xNj2w1npboHYvTk10ZhVbav0AWAgrTSgXXMv0oGS2BXufWfWIpRvNtOI6LUa63Zr3A3tZFteiR-jl5JPIVt1BFtT16X_pj3hK7do9vRiJD2_rphFCXPL3r3TXgQzRQyos7ZnwNNNoy5GrGln7Fs54X8FeW8aXEwLrthuic7LwG-r"
+                            onerror="this.style.display='none';"
+                            class="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-all duration-500 group-hover:scale-105">
+                        <div
+                            class="absolute inset-0 bg-[#1B4332]/10 transition-opacity duration-500 group-hover:opacity-0">
+                        </div>
                     </div>
                     <div class="p-4 flex flex-col flex-1 h-[120px]">
                         <h4 class="font-bold text-sm mb-2 text-[#1B4332] line-clamp-2">Rutherford Atom Modeli</h4>
-                        <div class="text-[11px] text-gray-500 flex justify-between border-t border-[#DEE2E6] pt-3 mt-auto">
+                        <div
+                            class="text-[11px] text-gray-500 flex justify-between border-t border-[#DEE2E6] pt-3 mt-auto">
                             <span class="font-medium">Zorluk: Orta</span>
-                            <span class="font-medium flex items-center gap-1 text-[#856404]"><span class="material-symbols-outlined text-[12px]">engineering</span> Yapım Aşamasında</span>
+                            <span class="font-medium flex items-center gap-1 text-[#856404]"><span
+                                    class="material-symbols-outlined text-[12px]">engineering</span> Yapım
+                                Aşamasında</span>
                         </div>
                     </div>
                 </div>
 
                 <!-- Card 12: Yarı Ömür -->
-                <div class="bg-white border rounded-lg overflow-hidden shadow-sm hover:shadow-md hover:border-[#1B4332]/50 transition cursor-pointer flex flex-col sim-card" onclick="alert('Bu simülasyon henüz hazır değil. Yapım aşamasında!');" data-topic="Nükleer Fizik" data-level="Lisans" data-title="Yarı Ömür ve Radyoaktif Bozunma">
+                <div class="bg-white border rounded-lg overflow-hidden shadow-sm hover:shadow-md hover:border-[#1B4332]/50 transition cursor-pointer flex flex-col sim-card"
+                    onclick="alert('Bu simülasyon henüz hazır değil. Yapım aşamasında!');" data-topic="Nükleer Fizik"
+                    data-level="Lisans" data-title="Yarı Ömür ve Radyoaktif Bozunma">
                     <div class="h-32 bg-[#F1F3F5] relative border-b group shrink-0 overflow-hidden">
-                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCoD5k1UKeBi99SCkloHnQpYdA9fFHz-yrc8K1qAddftaHRMHNFJxHis9gMeC19IgS7pMKlECjIUA5YW8UcUtDmwvm8VObE4zksCOqEx3mk1m2z-YHLQ3e_6igvJEntlZH0j25yGbdEtgzEQQ1lO5fVTIAJ1mgC4m0dfhgPb3KcXmljBBF6LQGQIqtnQ8KLBBGyo4-HKseHebeNEI3rdPISmLTJu9PY3D4ulMIB1telBSglbrjBgnwSBwj9h8mLWeRRrKCr-Ml4BIyq" onerror="this.style.display='none';" class="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-all duration-500 group-hover:scale-105">
-                        <div class="absolute inset-0 bg-[#1B4332]/10 transition-opacity duration-500 group-hover:opacity-0"></div>
+                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCoD5k1UKeBi99SCkloHnQpYdA9fFHz-yrc8K1qAddftaHRMHNFJxHis9gMeC19IgS7pMKlECjIUA5YW8UcUtDmwvm8VObE4zksCOqEx3mk1m2z-YHLQ3e_6igvJEntlZH0j25yGbdEtgzEQQ1lO5fVTIAJ1mgC4m0dfhgPb3KcXmljBBF6LQGQIqtnQ8KLBBGyo4-HKseHebeNEI3rdPISmLTJu9PY3D4ulMIB1telBSglbrjBgnwSBwj9h8mLWeRRrKCr-Ml4BIyq"
+                            onerror="this.style.display='none';"
+                            class="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-all duration-500 group-hover:scale-105">
+                        <div
+                            class="absolute inset-0 bg-[#1B4332]/10 transition-opacity duration-500 group-hover:opacity-0">
+                        </div>
                     </div>
                     <div class="p-4 flex flex-col flex-1 h-[120px]">
-                        <h4 class="font-bold text-sm mb-2 text-[#1B4332] line-clamp-2">Yarı Ömür ve Radyoaktif Bozunma</h4>
-                        <div class="text-[11px] text-gray-500 flex justify-between border-t border-[#DEE2E6] pt-3 mt-auto">
+                        <h4 class="font-bold text-sm mb-2 text-[#1B4332] line-clamp-2">Yarı Ömür ve Radyoaktif Bozunma
+                        </h4>
+                        <div
+                            class="text-[11px] text-gray-500 flex justify-between border-t border-[#DEE2E6] pt-3 mt-auto">
                             <span class="font-medium">Zorluk: Zor</span>
-                            <span class="font-medium flex items-center gap-1 text-[#856404]"><span class="material-symbols-outlined text-[12px]">engineering</span> Yapım Aşamasında</span>
+                            <span class="font-medium flex items-center gap-1 text-[#856404]"><span
+                                    class="material-symbols-outlined text-[12px]">engineering</span> Yapım
+                                Aşamasında</span>
                         </div>
                     </div>
                 </div>
 
                 <!-- Card 13: Stern-Gerlach -->
-                <div class="bg-white border rounded-lg overflow-hidden shadow-sm hover:shadow-md hover:border-[#1B4332]/50 transition cursor-pointer flex flex-col sim-card" onclick="alert('Bu simülasyon henüz hazır değil. Yapım aşamasında!');" data-topic="Kuantum Mekaniği" data-level="İleri Seviye" data-title="Stern-Gerlach Deneyi">
+                <div class="bg-white border rounded-lg overflow-hidden shadow-sm hover:shadow-md hover:border-[#1B4332]/50 transition cursor-pointer flex flex-col sim-card"
+                    onclick="alert('Bu simülasyon henüz hazır değil. Yapım aşamasında!');" data-topic="Kuantum Mekaniği"
+                    data-level="İleri Seviye" data-title="Stern-Gerlach Deneyi">
                     <div class="h-32 bg-[#F1F3F5] flex items-center justify-center relative border-b group shrink-0">
-                        <span class="material-symbols-outlined text-[#1B4332]/40 text-[48px] group-hover:scale-110 transition-transform duration-500">splitscreen</span>
+                        <span
+                            class="material-symbols-outlined text-[#1B4332]/40 text-[48px] group-hover:scale-110 transition-transform duration-500">splitscreen</span>
                     </div>
                     <div class="p-4 flex flex-col flex-1 h-[120px]">
                         <h4 class="font-bold text-sm mb-2 text-[#1B4332] line-clamp-2">Stern-Gerlach Deneyi</h4>
-                        <div class="text-[11px] text-gray-500 flex justify-between border-t border-[#DEE2E6] pt-3 mt-auto">
+                        <div
+                            class="text-[11px] text-gray-500 flex justify-between border-t border-[#DEE2E6] pt-3 mt-auto">
                             <span class="font-medium">Zorluk: İleri Seviye</span>
-                            <span class="font-medium flex items-center gap-1 text-[#856404]"><span class="material-symbols-outlined text-[12px]">engineering</span> Yapım Aşamasında</span>
+                            <span class="font-medium flex items-center gap-1 text-[#856404]"><span
+                                    class="material-symbols-outlined text-[12px]">engineering</span> Yapım
+                                Aşamasında</span>
                         </div>
                     </div>
                 </div>
 
                 <!-- Card 14: Ayna Laboratuvarı -->
-                <div class="bg-white border rounded-lg overflow-hidden shadow-sm hover:shadow-md hover:border-[#1B4332]/50 transition cursor-pointer flex flex-col sim-card" onclick="window.location='mirror_lab.html'" data-topic="Optik" data-level="Lise" data-title="Ayna Laboratuvarı">
+                <div class="bg-white border rounded-lg overflow-hidden shadow-sm hover:shadow-md hover:border-[#1B4332]/50 transition cursor-pointer flex flex-col sim-card"
+                    onclick="window.location='mirror_lab.html'" data-topic="Optik" data-level="Lise"
+                    data-title="Ayna Laboratuvarı">
                     <div class="h-32 bg-[#F1F3F5] flex items-center justify-center relative border-b group shrink-0">
-                        <span class="material-symbols-outlined text-[#1B4332]/40 text-[48px] group-hover:scale-110 transition-transform duration-500">flip</span>
+                        <span
+                            class="material-symbols-outlined text-[#1B4332]/40 text-[48px] group-hover:scale-110 transition-transform duration-500">flip</span>
                     </div>
                     <div class="p-4 flex flex-col flex-1 h-[120px]">
                         <h4 class="font-bold text-sm mb-2 text-[#1B4332] line-clamp-2">Ayna Laboratuvarı</h4>
-                        <div class="text-[11px] text-gray-500 flex justify-between border-t border-[#DEE2E6] pt-3 mt-auto">
+                        <div
+                            class="text-[11px] text-gray-500 flex justify-between border-t border-[#DEE2E6] pt-3 mt-auto">
                             <span class="font-medium">Zorluk: Orta</span>
-                            <span class="font-medium flex items-center gap-1"><span class="material-symbols-outlined text-[12px]">schedule</span> 45 dk</span>
+                            <span class="font-medium flex items-center gap-1"><span
+                                    class="material-symbols-outlined text-[12px]">schedule</span> 45 dk</span>
                         </div>
                     </div>
                 </div>
 
                 <!-- Card 15: İnce Mercek Simülatörü -->
-                <div class="bg-white border rounded-lg overflow-hidden shadow-sm hover:shadow-md hover:border-[#1B4332]/50 transition cursor-pointer flex flex-col sim-card" onclick="window.location='lens_sim.html'" data-topic="Optik" data-level="Lise" data-title="İnce Mercek Simülatörü">
+                <div class="bg-white border rounded-lg overflow-hidden shadow-sm hover:shadow-md hover:border-[#1B4332]/50 transition cursor-pointer flex flex-col sim-card"
+                    onclick="window.location='lens_sim.html'" data-topic="Optik" data-level="Lise"
+                    data-title="İnce Mercek Simülatörü">
                     <div class="h-32 bg-[#F1F3F5] flex items-center justify-center relative border-b group shrink-0">
-                        <span class="material-symbols-outlined text-[#1B4332]/40 text-[48px] group-hover:scale-110 transition-transform duration-500">lens</span>
+                        <span
+                            class="material-symbols-outlined text-[#1B4332]/40 text-[48px] group-hover:scale-110 transition-transform duration-500">lens</span>
                     </div>
                     <div class="p-4 flex flex-col flex-1 h-[120px]">
                         <h4 class="font-bold text-sm mb-2 text-[#1B4332] line-clamp-2">İnce Mercek Simülatörü</h4>
-                        <div class="text-[11px] text-gray-500 flex justify-between border-t border-[#DEE2E6] pt-3 mt-auto">
+                        <div
+                            class="text-[11px] text-gray-500 flex justify-between border-t border-[#DEE2E6] pt-3 mt-auto">
                             <span class="font-medium">Zorluk: Orta</span>
-                            <span class="font-medium flex items-center gap-1"><span class="material-symbols-outlined text-[12px]">schedule</span> 40 dk</span>
+                            <span class="font-medium flex items-center gap-1"><span
+                                    class="material-symbols-outlined text-[12px]">schedule</span> 40 dk</span>
                         </div>
                     </div>
                 </div>
 
                 <!-- Card 16: Mercek Yapıcı Denklemi -->
-                <div class="bg-white border rounded-lg overflow-hidden shadow-sm hover:shadow-md hover:border-[#1B4332]/50 transition cursor-pointer flex flex-col sim-card" onclick="window.location='lens_maker.html'" data-topic="Optik" data-level="Lisans" data-title="Mercek Yapıcı Denklemi">
+                <div class="bg-white border rounded-lg overflow-hidden shadow-sm hover:shadow-md hover:border-[#1B4332]/50 transition cursor-pointer flex flex-col sim-card"
+                    onclick="window.location='lens_maker.html'" data-topic="Optik" data-level="Lisans"
+                    data-title="Mercek Yapıcı Denklemi">
                     <div class="h-32 bg-[#F1F3F5] flex items-center justify-center relative border-b group shrink-0">
-                        <span class="material-symbols-outlined text-[#1B4332]/40 text-[48px] group-hover:scale-110 transition-transform duration-500">architecture</span>
+                        <span
+                            class="material-symbols-outlined text-[#1B4332]/40 text-[48px] group-hover:scale-110 transition-transform duration-500">architecture</span>
                     </div>
                     <div class="p-4 flex flex-col flex-1 h-[120px]">
                         <h4 class="font-bold text-sm mb-2 text-[#1B4332] line-clamp-2">Mercek Yapıcı Denklemi</h4>
-                        <div class="text-[11px] text-gray-500 flex justify-between border-t border-[#DEE2E6] pt-3 mt-auto">
+                        <div
+                            class="text-[11px] text-gray-500 flex justify-between border-t border-[#DEE2E6] pt-3 mt-auto">
                             <span class="font-medium">Zorluk: Zor</span>
-                            <span class="font-medium flex items-center gap-1"><span class="material-symbols-outlined text-[12px]">schedule</span> 50 dk</span>
+                            <span class="font-medium flex items-center gap-1"><span
+                                    class="material-symbols-outlined text-[12px]">schedule</span> 50 dk</span>
                         </div>
                     </div>
                 </div>
 
                 <!-- Card 17: Kırılma ve Görünür Derinlik -->
-                <div class="bg-white border rounded-lg overflow-hidden shadow-sm hover:shadow-md hover:border-[#1B4332]/50 transition cursor-pointer flex flex-col sim-card" onclick="window.location='refraction.html'" data-topic="Optik" data-level="Lise" data-title="Kırılma ve Görünür Derinlik">
+                <div class="bg-white border rounded-lg overflow-hidden shadow-sm hover:shadow-md hover:border-[#1B4332]/50 transition cursor-pointer flex flex-col sim-card"
+                    onclick="window.location='refraction.html'" data-topic="Optik" data-level="Lise"
+                    data-title="Kırılma ve Görünür Derinlik">
                     <div class="h-32 bg-[#F1F3F5] flex items-center justify-center relative border-b group shrink-0">
-                        <span class="material-symbols-outlined text-[#1B4332]/40 text-[48px] group-hover:scale-110 transition-transform duration-500">water_drop</span>
+                        <span
+                            class="material-symbols-outlined text-[#1B4332]/40 text-[48px] group-hover:scale-110 transition-transform duration-500">water_drop</span>
                     </div>
                     <div class="p-4 flex flex-col flex-1 h-[120px]">
                         <h4 class="font-bold text-sm mb-2 text-[#1B4332] line-clamp-2">Kırılma ve Görünür Derinlik</h4>
-                        <div class="text-[11px] text-gray-500 flex justify-between border-t border-[#DEE2E6] pt-3 mt-auto">
+                        <div
+                            class="text-[11px] text-gray-500 flex justify-between border-t border-[#DEE2E6] pt-3 mt-auto">
                             <span class="font-medium">Zorluk: Orta</span>
-                            <span class="font-medium flex items-center gap-1"><span class="material-symbols-outlined text-[12px]">schedule</span> 40 dk</span>
+                            <span class="font-medium flex items-center gap-1"><span
+                                    class="material-symbols-outlined text-[12px]">schedule</span> 40 dk</span>
                         </div>
                     </div>
                 </div>
@@ -349,9 +505,11 @@
             </div>
 
             <!-- Validation/Result Status -->
-            <div class="max-w-7xl mx-auto mt-12 mb-8 flex flex-col md:flex-row items-center justify-between border-t border-border-soft pt-6">
+            <div
+                class="max-w-7xl mx-auto mt-12 mb-8 flex flex-col md:flex-row items-center justify-between border-t border-border-soft pt-6">
                 <span class="text-sm text-ink-light mb-4 md:mb-0 font-medium">
-                    Toplam <span id="resultCount" class="text-ink font-bold font-display">14</span> simülasyon listelendi
+                    Toplam <span id="resultCount" class="text-ink font-bold font-display">14</span> simülasyon
+                    listelendi
                 </span>
 
                 <!-- Omitted Pagination for now, as cards are filtered directly -->
@@ -496,6 +654,18 @@
         });
     </script>
     <script type="module" src="featuredNews.js"></script>
+
+    <!-- Vercel Web Analytics -->
+    <script>
+        window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
+
+    <!-- Vercel Speed Insights -->
+    <script>
+        window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/speed-insights/script.js"></script>
 </body>
 
 </html>
