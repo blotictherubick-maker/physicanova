@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Ders Detayı | PhysicaNova</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <style>
+        body {
+            background-color: #F8F9FA;
+            color: #212529;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .btn-primary {
+            background-color: #1B4332;
+            color: white;
+            transition: all 0.2s;
+        }
+
+        .btn-primary:hover {
+            background-color: #2D6A4F;
+        }
+    </style>
+</head>
+
+<body class="flex flex-col min-h-screen overflow-x-hidden">
+    <!-- Header -->
+    <header class="bg-white border-b border-[#DEE2E6] px-8 py-4 flex justify-between items-center sticky top-0 z-50">
+        <a href="index.html" class="font-bold text-xl flex items-center gap-2">
+            <span class="text-[#1B4332] flex items-center gap-1">
+                <span class="material-symbols-outlined text-[28px]">science</span>
+                PhysicaNova
+            </span> <span class="text-[#DEE2E6] font-normal mx-1">|</span> <span
+                class="font-normal text-gray-700">Modern Lab</span>
+        </a>
+        <nav class="hidden md:flex gap-8 text-sm font-medium text-gray-600">
+            <a href="index.html" class="hover:text-[#1B4332]">Simülasyonlar</a>
+            <a href="konular.html" class="hover:text-[#1B4332]">Konular</a>
+            <a href="dersler.html" class="hover:text-[#1B4332] text-[#1B4332] font-bold">Dersler</a>
+            <a href="haberler.html" class="hover:text-[#1B4332]">Haberler</a>
+            <a href="hakkimizda.html" class="hover:text-[#1B4332]">Hakkımızda</a>
+        </nav>
+        <div class="flex items-center gap-4">
+            <button
+                class="flex items-center justify-center text-gray-500 hover:text-[#1B4332] transition-colors rounded border border-gray-300 px-3 py-1.5 font-semibold text-sm">
+                Giriş Yap
+            </button>
+        </div>
+    </header>
+
+    <main class="flex-1 max-w-5xl w-full mx-auto p-6 lg:p-8 min-h-screen" id="main-content" style="display: none;">
+        
+        <!-- Breadcrumbs -->
+        <div class="text-xs text-gray-500 font-medium flex items-center gap-1.5 mb-8">
+            <a href="dersler.html" class="hover:underline">Dersler</a>
+            <span class="material-symbols-outlined !text-[14px]">chevron_right</span>
+            <span class="text-gray-800" id="bc-title">...</span>
+        </div>
+
+        <div class="bg-white border border-[#DEE2E6] rounded-2xl p-8 lg:p-10 shadow-sm mb-10">
+            <div class="flex items-center gap-3 mb-4">
+                <span class="text-xs font-bold px-3 py-1 rounded bg-gray-100 text-gray-700" id="course-diff">...</span>
+                <span class="text-xs font-semibold text-gray-500 flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">schedule</span> <span id="course-duration">...</span></span>
+            </div>
+            
+            <h1 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-6" id="course-title">Yükleniyor...</h1>
+            <p class="text-lg text-gray-600 leading-relaxed mb-8 border-b border-gray-100 pb-8" id="course-intro">...</p>
+            
+            <div class="mb-10">
+                <h3 class="text-lg font-bold text-gray-800 mb-4 flex items-center gap-2">
+                    <span class="material-symbols-outlined text-[#1B4332]">task_alt</span> Öğrenme Hedefleri
+                </h3>
+                <ul class="space-y-3 pl-2" id="course-objectives">
+                    <!-- Objectives -->
+                </ul>
+            </div>
+
+            <div class="mb-10">
+                <h3 class="text-lg font-bold text-gray-800 mb-4 flex items-center gap-2">
+                    <span class="material-symbols-outlined text-[#1B4332]">view_timeline</span> Sıralı Modüller
+                </h3>
+                <div class="space-y-3" id="course-modules">
+                    <!-- Modules -->
+                </div>
+            </div>
+
+            <div class="mb-10">
+                <h3 class="text-lg font-bold text-gray-800 mb-4 flex items-center gap-2">
+                    <span class="material-symbols-outlined text-[#1B4332]">biotech</span> İlgili Simülasyonlar
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="course-sims">
+                    <!-- Simulations -->
+                </div>
+            </div>
+
+            <div class="mb-10">
+                <h3 class="text-lg font-bold text-gray-800 mb-4 flex items-center gap-2">
+                    <span class="material-symbols-outlined text-[#1B4332]">quiz</span> Kontrol Soruları
+                </h3>
+                <div class="bg-[#F1F3F5] rounded-xl p-6" id="course-questions">
+                    <!-- Questions -->
+                </div>
+            </div>
+
+            <!-- Mini Quiz Placeholder -->
+            <div>
+                <h3 class="text-lg font-bold text-gray-800 mb-4 flex items-center gap-2">
+                    <span class="material-symbols-outlined text-[#1B4332]">assignment</span> Mini Quiz (Çok Yakında)
+                </h3>
+                <div class="border-2 border-dashed border-gray-300 rounded-xl p-8 text-center text-gray-500">
+                    <span class="material-symbols-outlined text-4xl text-gray-300 mb-2">construction</span>
+                    <p class="font-medium">Bu derse ait interaktif mini quiz ve ödev sistemi geliştirme aşamasındadır.</p>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <footer style="text-align: center; padding: 1rem; color: #94a3b8; font-size: 0.8rem; margin-top: auto; border-top: 1px solid #DEE2E6;">
+        <p>© 2026 PhysicaNova</p>
+    </footer>
+
+    <script src="derslerData.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const courseId = urlParams.get('id');
+
+            const courseData = coursesData.find(c => c.id === courseId);
+
+            if (!courseData) {
+                document.body.innerHTML = "<div class='p-10 text-center'><h1 class='text-2xl font-bold text-red-600'>Ders Bulunamadı</h1><a href='dersler.html' class='text-blue-500 underline mt-4 inline-block'>Derslere Dön</a></div>";
+                return;
+            }
+
+            document.getElementById("main-content").style.display = "block";
+            document.title = `${courseData.title} | PhysicaNova`;
+            
+            document.getElementById("bc-title").textContent = courseData.title;
+            document.getElementById("course-title").textContent = courseData.title;
+            document.getElementById("course-diff").textContent = `Zorluk: ${courseData.difficulty}`;
+            document.getElementById("course-duration").textContent = courseData.duration;
+            document.getElementById("course-intro").textContent = courseData.intro;
+
+            // Objectives
+            const objList = document.getElementById("course-objectives");
+            courseData.objectives.forEach(obj => {
+                const li = document.createElement("li");
+                li.className = "flex items-start gap-2 text-gray-700 font-medium";
+                li.innerHTML = `<span class="material-symbols-outlined text-[#1B4332] text-[20px]">check</span> <span>${obj}</span>`;
+                objList.appendChild(li);
+            });
+
+            // Modules
+            const modList = document.getElementById("course-modules");
+            courseData.modules.forEach((mod, idx) => {
+                const div = document.createElement("div");
+                div.className = "flex items-center gap-4 bg-gray-50 border border-gray-100 p-4 rounded-lg";
+                div.innerHTML = `<div class="w-8 h-8 rounded-full bg-[#1B4332] text-white flex items-center justify-center font-bold shrink-0">${idx+1}</div>
+                                 <span class="font-semibold text-gray-800">${mod}</span>`;
+                modList.appendChild(div);
+            });
+
+            // Simulations
+            const simList = document.getElementById("course-sims");
+            if (courseData.simulations.length === 0) {
+                simList.innerHTML = `<div class="col-span-2 text-gray-500 italic">Bu derse ait simülasyon bulunmuyor.</div>`;
+            } else {
+                courseData.simulations.forEach(sim => {
+                    const card = document.createElement("div");
+                    card.className = "bg-white border border-[#DEE2E6] rounded-lg p-4 shadow-sm hover:shadow-md hover:border-[#1B4332]/50 transition cursor-pointer flex flex-col";
+                    card.onclick = () => window.location.href = sim.url;
+                    
+                    let iconHtml = sim.url !== "#" ? 
+                        `<span class="material-symbols-outlined text-[#1B4332] text-[24px]">play_circle</span>` : 
+                        `<span class="material-symbols-outlined text-gray-400 text-[24px]">lock</span>`;
+
+                    let titleColor = sim.url !== "#" ? "text-gray-900" : "text-gray-500";
+
+                    card.innerHTML = `
+                        <div class="flex justify-between items-start mb-2">
+                            <h4 class="font-bold text-sm ${titleColor}">${sim.title}</h4>
+                            ${iconHtml}
+                        </div>
+                        <div class="text-[11px] text-gray-500 mt-auto pt-3 border-t border-gray-100">
+                            <span class="font-medium bg-gray-100 px-2 py-0.5 rounded text-gray-600">${sim.type}</span>
+                        </div>
+                    `;
+                    simList.appendChild(card);
+                });
+            }
+
+            // Questions
+            const qList = document.getElementById("course-questions");
+            courseData.questions.forEach((q, idx) => {
+                const p = document.createElement("p");
+                p.className = "mb-3 last:mb-0 text-gray-800 font-medium flex gap-2";
+                p.innerHTML = `<strong class="text-[#1B4332]">S${idx+1}:</strong> <span>${q}</span>`;
+                qList.appendChild(p);
+            });
+
+        });
+    </script>
+</body>
+
+</html>

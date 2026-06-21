@@ -26,6 +26,19 @@
             background: url('assets/prizma.jpg');
             background-size: cover;
             background-position: 50% center;
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            max-height: 600px;
+            opacity: 1;
+        }
+
+        .hero-banner.hero-hidden {
+            max-height: 0 !important;
+            min-height: 0 !important;
+            opacity: 0 !important;
+            margin-bottom: 0 !important;
+            border-width: 0 !important;
+            padding: 0 !important;
+            pointer-events: none;
         }
 
         .btn-primary {
@@ -54,8 +67,8 @@
         </a>
         <nav class="hidden md:flex gap-8 text-sm font-medium text-gray-600">
             <a href="index.html" class="hover:text-[#1B4332] text-[#1B4332] font-bold">Simülasyonlar</a>
-            <a href="#" class="hover:text-[#1B4332]">Konular</a>
-            <a href="#" class="hover:text-[#1B4332]">Dersler</a>
+            <a href="konular.html" class="hover:text-[#1B4332]">Konular</a>
+            <a href="dersler.html" class="hover:text-[#1B4332]">Dersler</a>
             <a href="haberler.html" class="hover:text-[#1B4332]">Haberler</a>
             <a href="hakkimizda.html" class="hover:text-[#1B4332]">Hakkımızda</a>
         </nav>
@@ -82,9 +95,7 @@
                         class="cursor-pointer hover:text-[#1B4332] flex gap-2 items-center"><input type="checkbox"
                             class="filter-checkbox accent-[#1B4332]" value="Kuantum Mekaniği"> Kuantum Mekaniği</label>
                 </li>
-                <li class="font-semibold text-gray-700 mt-4"><label
-                        class="cursor-pointer hover:text-[#1B4332] flex gap-2 items-center"><input type="checkbox"
-                            class="filter-checkbox accent-[#1B4332]" value="Termodinamik"> Termodinamik</label></li>
+
                 <li class="font-semibold text-gray-700 mt-4"><label
                         class="cursor-pointer hover:text-[#1B4332] flex gap-2 items-center"><input type="checkbox"
                             class="filter-checkbox accent-[#1B4332]" value="Optik"> Optik</label></li>
@@ -97,9 +108,7 @@
                 <li class="font-semibold text-gray-700 mt-4"><label
                         class="cursor-pointer hover:text-[#1B4332] flex gap-2 items-center"><input type="checkbox"
                             class="filter-checkbox accent-[#1B4332]" value="Nükleer Fizik"> Nükleer Fizik</label></li>
-                <li class="font-semibold text-gray-700 mt-4"><label
-                        class="cursor-pointer hover:text-[#1B4332] flex gap-2 items-center"><input type="checkbox"
-                            class="filter-checkbox accent-[#1B4332]" value="Klasik"> Klasik Fizik</label></li>
+
             </ul>
             <div id="resetFilters"
                 class="mt-6 text-xs text-gray-500 cursor-pointer hover:text-[#1B4332] font-semibold underline">
@@ -110,19 +119,7 @@
             <!-- Extra logic pill hidden -->
             <input class="filter-radio hidden" name="level" type="radio" value="Tümü" checked />
 
-            <div class="mt-10 pt-6 border-t border-[#DEE2E6]">
-                <h3 class="font-bold text-sm mb-2 text-gray-800">Öne Çıkan Araç</h3>
-                <div class="bg-white border rounded-lg p-3 flex gap-3 shadow-sm">
-                    <div class="text-[#2D6A4F] bg-[#1B4332]/10 p-1.5 rounded h-fit shrink-0">
-                        <span class="material-symbols-outlined !text-[20px]">analytics</span>
-                    </div>
-                    <div>
-                        <h4 class="text-xs font-bold text-gray-800 mb-1 leading-tight">Veri Analizi Paketi 2.0</h4>
-                        <p class="text-[10px] text-gray-500 leading-snug">Veri analizi ve gelişmiş çizim araçlarıyla
-                            fiziksel olayları inceleyin.</p>
-                    </div>
-                </div>
-            </div>
+            <div id="sidebar-news-widget" class="mt-6"></div>
         </aside>
 
         <!-- Main Content -->
@@ -182,7 +179,7 @@
 
                 <!-- Card 2: Millikan -->
                 <div class="bg-white border rounded-lg overflow-hidden shadow-sm hover:shadow-md hover:border-[#1B4332]/50 transition cursor-pointer flex flex-col sim-card"
-                    onclick="window.location='millikan.html'" data-topic="Klasik" data-level="Lise"
+                    onclick="window.location='millikan.html'" data-topic="Atom Fiziği" data-level="Lise"
                     data-title="Millikan Yağ Damlası">
                     <div class="h-32 bg-[#F1F3F5] flex items-center justify-center relative border-b group shrink-0">
                         <span
@@ -198,6 +195,8 @@
                         </div>
                     </div>
                 </div>
+
+
 
                 <!-- Card 3: Compton Saçılması -->
                 <div class="bg-white border rounded-lg overflow-hidden shadow-sm hover:shadow-md hover:border-[#1B4332]/50 transition cursor-pointer flex flex-col sim-card"
@@ -255,6 +254,8 @@
                         </div>
                     </div>
                 </div>
+
+
 
                 <!-- Card 6: Fermat Prensibi -->
                 <div class="bg-white border rounded-lg overflow-hidden shadow-sm hover:shadow-md hover:border-[#1B4332]/50 transition cursor-pointer flex flex-col sim-card"
@@ -359,7 +360,7 @@
 
                 <!-- Card 11: Rutherford Atom Modeli -->
                 <div class="bg-white border rounded-lg overflow-hidden shadow-sm hover:shadow-md hover:border-[#1B4332]/50 transition cursor-pointer flex flex-col sim-card"
-                    onclick="alert('Bu simülasyon henüz hazır değil. Yapım aşamasında!');" data-topic="Atom Fiziği"
+                    onclick="window.location='rutherford.html'" data-topic="Atom Fiziği"
                     data-level="Lise" data-title="Rutherford Atom Modeli">
                     <div class="h-32 bg-[#F1F3F5] relative border-b group shrink-0 overflow-hidden">
                         <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtDcjpdkljkfISupZdwPU1NzmwHrQNV-NFdGxDBRdFYeTs3E0HeYmyARL3srX9luiDUMqy98GmD2r9CYWMxM9hiaWPEsz-NVi8xNj2w1npboHYvTk10ZhVbav0AWAgrTSgXXMv0oGS2BXufWfWIpRvNtOI6LUa63Zr3A3tZFteiR-jl5JPIVt1BFtT16X_pj3hK7do9vRiJD2_rphFCXPL3r3TXgQzRQyos7ZnwNNNoy5GrGln7Fs54X8FeW8aXEwLrthuic7LwG-r"
@@ -374,9 +375,8 @@
                         <div
                             class="text-[11px] text-gray-500 flex justify-between border-t border-[#DEE2E6] pt-3 mt-auto">
                             <span class="font-medium">Zorluk: Orta</span>
-                            <span class="font-medium flex items-center gap-1 text-[#856404]"><span
-                                    class="material-symbols-outlined text-[12px]">engineering</span> Yapım
-                                Aşamasında</span>
+                            <span class="font-medium flex items-center gap-1"><span
+                                    class="material-symbols-outlined text-[12px]">schedule</span> 45 dk</span>
                         </div>
                     </div>
                 </div>
@@ -527,7 +527,9 @@
             const searchInput = document.getElementById("searchInput");
             const simCards = document.querySelectorAll(".sim-card");
             const resultCount = document.getElementById("resultCount");
-            const clearAllBtn = document.getElementById("clearAllBtn");
+            const clearAllBtn = document.createElement("button");
+            clearAllBtn.className = "text-xs font-semibold text-[#1B4332] underline ml-2 hover:text-[#2D6A4F]";
+            clearAllBtn.textContent = "Temizle";
             const activeFiltersContainer = document.getElementById("activeFiltersContainer");
 
             function updateUI() {
@@ -551,7 +553,7 @@
                 selectedTopics.forEach(topic => {
                     hasActiveFilter = true;
                     const chip = document.createElement("div");
-                    chip.className = "inline-flex items-center bg-primary/10 border border-primary/20 rounded-full px-3 py-1 text-xs font-medium text-primary";
+                    chip.className = "inline-flex items-center bg-[#1B4332]/10 border border-[#1B4332]/20 rounded-full px-3 py-1 text-xs font-medium text-[#1B4332]";
                     chip.innerHTML = `${topic} <button class="ml-1.5 hover:text-red-500 topic-chip-close" data-val="${topic}"><span class="material-symbols-outlined text-sm">close</span></button>`;
                     activeFiltersContainer.appendChild(chip);
                 });
@@ -590,6 +592,14 @@
                 });
 
                 resultCount.textContent = visibleCount;
+
+                // Hide hero banner if any filter or search is active
+                const heroBanner = document.querySelector(".hero-banner");
+                if (selectedTopics.length > 0 || searchText !== "" || selectedLevel !== "Tümü") {
+                    heroBanner.classList.add("hero-hidden");
+                } else {
+                    heroBanner.classList.remove("hero-hidden");
+                }
 
                 // Re-bind chip close buttons
                 document.querySelectorAll(".topic-chip-close").forEach(btn => {

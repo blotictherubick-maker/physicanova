@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rutherford Atom Modeli Simülasyonu | PhysicaNova</title>
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <meta name="description"
+        content="Rutherford Alfa Saçılması Deneyini interaktif olarak keşfedin. Atomun yapısını anlayın.">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Inter:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="rutherford.css">
+</head>
+
+<body>
+
+    <header>
+        <a href="index.html" class="back-link">
+            <div class="logo-icon">
+                <span class="material-symbols-outlined">science</span>
+            </div>
+            <span class="logo-text">Physica<span>Nova</span></span>
+        </a>
+        <h1>Rutherford Alfa Saçılması Deneyi</h1>
+    </header>
+
+    <div class="lab-container">
+        <!-- Simulation View -->
+        <main class="simulation-area" id="sim-container">
+            <canvas id="rutherfordCanvas" width="800" height="600"></canvas>
+
+            <div class="readout-panel">
+                <div class="readout-item">
+                    <span>Atılan Alfa Sayısı:</span>
+                    <span class="readout-value" id="alpha-count">0</span>
+                </div>
+                <div class="readout-item">
+                    <span>Geri Saçılanlar (>90°):</span>
+                    <span class="readout-value" id="backscatter-count">0</span>
+                </div>
+                <div class="readout-item">
+                    <span>Çarpma Parametresi (b):</span>
+                    <span class="readout-value" id="impact-display">0.00 fm</span>
+                </div>
+            </div>
+        </main>
+
+        <!-- Controls -->
+        <aside class="controls-panel">
+
+            <!-- Particle Controls -->
+            <div class="control-group">
+                <h3>Alfa Parçacığı Kaynağı</h3>
+
+                <div class="slider-container">
+                    <label for="energy-slider">Kinetik Enerji (MeV)
+                        <span class="info-icon" data-tooltip="Alfa parçacığının enerjisi. Düşük enerji daha fazla sapmaya neden olur.">i</span>
+                        <span class="value-display" id="energy-val">5.0 MeV</span>
+                    </label>
+                    <input type="range" id="energy-slider" min="1" max="10" value="5.0" step="0.1">
+                </div>
+
+                <div class="slider-container">
+                    <label for="impact-slider">Çarpma Parametresi (b)
+                        <span class="info-icon" data-tooltip="Hedef çekirdek merkezine dikey uzaklık. Sıfıra yakınsa geriye saçılır.">i</span>
+                        <span class="value-display" id="impact-val-control">0.0 fm</span>
+                    </label>
+                    <input type="range" id="impact-slider" min="-20" max="20" value="0" step="0.1">
+                </div>
+                
+                <div class="button-group">
+                    <button id="btn-fire-single" class="btn primary">Tekli Fırlat</button>
+                    <button id="btn-auto-fire" class="btn secondary">Işın Demeti (Rastgele)</button>
+                </div>
+            </div>
+
+            <!-- Material Selection -->
+            <div class="control-group">
+                <h3>Hedef Çekirdek (Folyo)</h3>
+                <label for="target-select">Metal Seçimi:
+                    <span class="info-icon" data-tooltip="Hedef malzemenin atom numarası (Z). Z büyüdükçe itme kuvveti artar.">i</span>
+                </label>
+                <select id="target-select">
+                    <option value="79" selected>Altın (Au) - Z: 79</option>
+                    <option value="47">Gümüş (Ag) - Z: 47</option>
+                    <option value="29">Bakır (Cu) - Z: 29</option>
+                    <option value="13">Alüminyum (Al) - Z: 13</option>
+                </select>
+                <div id="metal-info" class="info-tooltip" style="margin-top:10px;">
+                    Çekirdek Yükü: +<span id="target-z">79</span>e
+                </div>
+            </div>
+
+            <!-- Visualization Controls -->
+            <div class="control-group">
+                <h3>Görselleştirme</h3>
+                <div class="checkbox-container">
+                    <input type="checkbox" id="show-trails" checked>
+                    <label for="show-trails">İzleri Göster</label>
+                </div>
+                <div class="checkbox-container" style="margin-top: 10px;">
+                    <input type="checkbox" id="show-force">
+                    <label for="show-force">Kuvvet Vektörünü Göster</label>
+                </div>
+                <button id="btn-clear-trails" class="btn outline" style="margin-top: 15px; width: 100%;">İzleri Temizle</button>
+            </div>
+
+        </aside>
+    </div>
+
+    <script src="rutherford.js"></script>
+</body>
+
+</html>

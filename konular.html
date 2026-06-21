@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Konular | PhysicaNova</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <style>
+        body {
+            background-color: #F8F9FA;
+            color: #212529;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .btn-primary {
+            background-color: #1B4332;
+            color: white;
+            padding: 10px 24px;
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+
+        .btn-primary:hover {
+            background-color: #2D6A4F;
+        }
+
+        .topic-card:hover .icon-container {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+
+<body class="flex flex-col min-h-screen overflow-x-hidden">
+    <!-- Header -->
+    <header class="bg-white border-b border-[#DEE2E6] px-8 py-4 flex justify-between items-center sticky top-0 z-50">
+        <a href="index.html" class="font-bold text-xl flex items-center gap-2">
+            <span class="text-[#1B4332] flex items-center gap-1">
+                <span class="material-symbols-outlined text-[28px]">science</span>
+                PhysicaNova
+            </span> <span class="text-[#DEE2E6] font-normal mx-1">|</span> <span
+                class="font-normal text-gray-700">Modern Lab</span>
+        </a>
+        <nav class="hidden md:flex gap-8 text-sm font-medium text-gray-600">
+            <a href="index.html" class="hover:text-[#1B4332]">Simülasyonlar</a>
+            <a href="konular.html" class="hover:text-[#1B4332] text-[#1B4332] font-bold">Konular</a>
+            <a href="dersler.html" class="hover:text-[#1B4332]">Dersler</a>
+            <a href="haberler.html" class="hover:text-[#1B4332]">Haberler</a>
+            <a href="hakkimizda.html" class="hover:text-[#1B4332]">Hakkımızda</a>
+        </nav>
+        <div class="flex items-center gap-4">
+            <button
+                class="flex items-center justify-center text-gray-500 hover:text-[#1B4332] transition-colors rounded border border-gray-300 px-3 py-1.5 font-semibold text-sm">
+                Giriş Yap
+            </button>
+        </div>
+    </header>
+
+    <main class="flex-1 max-w-7xl w-full mx-auto p-6 lg:p-8 min-h-screen">
+        <div class="mb-10">
+            <h1 class="text-3xl font-bold text-gray-900 mb-3">Fizik Konuları</h1>
+            <p class="text-gray-600 max-w-2xl">
+                OpenStax University Physics Volume 3 müfredatına dayalı olarak hazırlanmış modern fizik konularını keşfedin. İlginizi çeken bir alanı seçin ve ilgili simülasyonlarla teorik bilgiyi pratiğe dökün.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="topics-container">
+            <!-- Cards will be injected here via JS -->
+        </div>
+    </main>
+
+    <footer style="text-align: center; padding: 1rem; color: #94a3b8; font-size: 0.8rem; margin-top: auto; border-top: 1px solid #DEE2E6;">
+        <p>© 2026 PhysicaNova</p>
+    </footer>
+
+    <script src="konularData.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const container = document.getElementById("topics-container");
+            
+            topicsData.forEach(topic => {
+                const card = document.createElement("div");
+                card.className = "bg-white border border-[#DEE2E6] rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow flex flex-col topic-card";
+                
+                let btnText = "Konuya Git";
+                let btnClass = "btn-primary w-full font-semibold text-sm text-center block mt-4";
+                let simText = `<span class="material-symbols-outlined text-[16px]">science</span> ${topic.simCount} Simülasyon`;
+                
+                if (topic.simCount === 0) {
+                    btnText = "Yakında";
+                    btnClass = "w-full font-semibold text-sm text-center block mt-4 bg-gray-100 text-gray-400 py-2.5 rounded-md cursor-not-allowed";
+                    simText = `<span class="material-symbols-outlined text-[16px]">schedule</span> Yapım Aşamasında`;
+                }
+
+                card.innerHTML = `
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-[#1B4332]/10 text-[#1B4332] flex items-center justify-center shrink-0 icon-container transition-transform duration-300">
+                            <span class="material-symbols-outlined text-[28px]">${topic.icon}</span>
+                        </div>
+                        <h2 class="text-xl font-bold text-gray-800">${topic.title}</h2>
+                    </div>
+                    <p class="text-gray-600 text-sm mb-6 flex-1">${topic.description}</p>
+                    
+                    <div class="flex justify-between items-center text-xs font-medium text-gray-500 mb-2 px-1">
+                        <div class="flex items-center gap-1">
+                            ${simText}
+                        </div>
+                        <div class="flex items-center gap-1 text-[#1B4332]">
+                            <span class="material-symbols-outlined text-[16px]">school</span> ${topic.level}
+                        </div>
+                    </div>
+                    
+                    ${topic.simCount > 0 ? 
+                        `<a href="konu_detay.html?id=${topic.id}" class="${btnClass}">${btnText}</a>` : 
+                        `<button disabled class="${btnClass}">${btnText}</button>`
+                    }
+                `;
+                container.appendChild(card);
+            });
+        });
+    </script>
+</body>
+
+</html>
