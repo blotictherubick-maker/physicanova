@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baryum-137m Yarı Ömür Deneyi | PhysicaNova</title>
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <meta name="description"
+        content="Üniversite seviyesinde Geiger-Müller sayacı ile Baryum-137m radyoaktif bozunma deneyini yapın.">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Inter:wght@400;600&display=swap"
+        rel="stylesheet">
+    <!-- Font for digital display -->
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="yari_omur.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <a href="index.html" class="back-link">
+            <div class="logo-icon">
+                <span class="material-symbols-outlined">science</span>
+            </div>
+            <span class="logo-text">Physica<span>Nova</span></span>
+        </a>
+        <h1>Baryum-137m Yarı Ömür Deneyi</h1>
+    </header>
+
+    <div class="lab-container">
+        <!-- Left Panel: Hardware and Graph -->
+        <main class="hardware-area">
+            
+            <div class="hardware-module">
+                <div class="hardware-header">
+                    <h2>Geiger-Müller Sayacı (Model PN-2026)</h2>
+                    <span class="status-indicator" id="hardware-status">HAZIR</span>
+                </div>
+                
+                <div class="digital-displays">
+                    <div class="display-group">
+                        <label>SÜRE (sn)</label>
+                        <div class="digital-box" id="time-display">000.0</div>
+                    </div>
+                    <div class="display-group">
+                        <label>ANLIK SAYIM</label>
+                        <div class="digital-box" id="count-display">0000</div>
+                    </div>
+                </div>
+
+                <div class="hardware-info">
+                    <div class="info-row">
+                        <span class="material-symbols-outlined">info</span>
+                        <span><strong>Aktif Kaynak:</strong> Baryum-137m (Ba-137m)</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="material-symbols-outlined">radar</span>
+                        <span><strong>Sabit Arkaplan (Background):</strong> 15 sayım / 30 sn (Ölçüldü)</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="material-symbols-outlined">timer</span>
+                        <span><strong>Örnekleme Periyodu:</strong> Her 30 saniyede bir otomatik kayıt</span>
+                    </div>
+                </div>
+
+                <div class="controls-row">
+                    <button id="btn-start" class="btn primary">Ölçümü Başlat</button>
+                    <button id="btn-pause" class="btn secondary" disabled>Durdur</button>
+                    <button id="btn-reset" class="btn outline">Cihazı Sıfırla</button>
+                    
+                    <div class="speed-control">
+                        <label for="sim-speed" style="font-size: 12px; margin-bottom: 2px;">Simülasyon Hızı (<span id="sim-speed-val">1x</span>)</label>
+                        <input type="range" id="sim-speed" min="1" max="10" value="1" step="1">
+                    </div>
+                </div>
+            </div>
+
+            <div class="chart-module">
+                <div class="chart-header">
+                    <h3>Aktivite Grafiği: ln(A) - Zaman</h3>
+                </div>
+                <div class="chart-container-inner">
+                    <canvas id="decayChart"></canvas>
+                </div>
+            </div>
+
+        </main>
+
+        <!-- Right Panel: Data Log -->
+        <aside class="data-panel">
+            <div class="data-header">
+                <h3>Veri Tablosu (Data Log)</h3>
+                <button id="btn-export" class="btn outline small" title="Veriyi İndir">
+                    <span class="material-symbols-outlined" style="font-size: 18px;">download</span>
+                </button>
+            </div>
+            
+            <div class="table-container">
+                <table id="data-table">
+                    <thead>
+                        <tr>
+                            <th>T (sn)</th>
+                            <th title="Son 30s içindeki ham sayım">N (Ham)</th>
+                            <th title="Arkaplan çıkarılmış net sayım (N - 15)">N (Net)</th>
+                            <th>ln(N_net)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Rows will be added here dynamically -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="analysis-panel">
+                <h4>Canlı Analiz Sonucu</h4>
+                <div class="analysis-row">
+                    <span>Hesaplanan Eğim (-λ):</span>
+                    <strong id="slope-display">Bekleniyor...</strong>
+                </div>
+                <div class="analysis-row">
+                    <span>Bulunan Yarı Ömür:</span>
+                    <strong id="halflife-display">Bekleniyor...</strong>
+                </div>
+                <div class="analysis-row" style="margin-top: 10px; font-size: 12px; color: #94a3b8; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 10px;">
+                    Teorik Beklenti: T_1/2 ≈ 153 saniye (2.55 dk)
+                </div>
+            </div>
+
+        </aside>
+    </div>
+
+    <script src="yari_omur.js"></script>
+</body>
+
+</html>

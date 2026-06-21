@@ -155,12 +155,12 @@ const topicsData = [
         },
         nextStep: {
             title: "Yarı Ömür ve Radyoaktif Bozunma",
-            url: "#",
-            desc: "Kararsız izotopların zaman içindeki azalma olasılıklarını inceleyin. (Yapım Aşamasında)"
+            url: "yari_omur.html",
+            desc: "Kararsız izotopların zaman içindeki azalma olasılıklarını inceleyin."
         },
         simulations: [
             { title: "Rutherford Atom Modeli", url: "rutherford.html", type: "Nükleer Fizik", diff: "Orta" },
-            { title: "Yarı Ömür ve Radyoaktif Bozunma", url: "#", type: "Nükleer Fizik", diff: "Zor (Yapım Aşamasında)" }
+            { title: "Yarı Ömür ve Radyoaktif Bozunma", url: "yari_omur.html", type: "Nükleer Fizik", diff: "Orta" }
         ]
     },
     {
